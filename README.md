@@ -1,4 +1,4 @@
-# EKGE-WS2019-CoursePlan
+# EKGI-WS2019-CoursePlan
 
 ### Projektanforderungen
 - Unterstützt die gemeinsame Planung von Lehrveranstaltungsaufgaben innerhalb der Fakultät
@@ -9,7 +9,7 @@
 - Ist innerhalb des Universitätsnetzes erreichbar, läuft auf einem internen Server
 - Implementiert den Editor für verschiedene Zugriffsrollen, schreibgeschützt, admin
 
-# DesignThinking MicroCircle
+### DesignThinking MicroCircle
 1.	Problem Definition
 2.	360° Need Finding
 3.	Synthesis
@@ -17,8 +17,8 @@
 5.	Prototyping
 6.	Testing
 
-1.	Problem Definition
-
+### 1.	Problem Definition
 -	Professoren
 -	Module
--	Workload (+ Plus/Minus Stunden)
+- Workload (+ Plus/Minus Stunden)
+Main Goal: Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
