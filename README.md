@@ -21,4 +21,5 @@
 -	Professoren
 -	Module
 - Workload (+ Plus/Minus Stunden)
+
 Main Goal: Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
