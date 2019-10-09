@@ -34,22 +34,21 @@ Main Goal: Wie kann man die Semesterplanung bezüglich der angebotenen Module un
 -	Strukturen
 -	Ziele
 -	Alles was sonst nirgends reinpasst
-
 ##### Restriktionen, externe Faktoren
-•	Gesetzliche/ rechtliche Vorgaben
-•	Technische Rahmenbedingungen/ Restriktionen
-•	Wirtschaftliche Lage
-•	Marktbedingungen
-•	Wettbewerber
-Potentialfelder in der Zielgruppe
-•	Mittels neuer Technologien
-•	Neuer Prozesse
-•	Durch Trends
-•	Neue Produkte
-Trends & neue Technologien
-•	Weltweite Trends aus der Branche und aus anderen Branchen
-•	Megatrends, Konsumtrends
-•	Soziokulturelle Trends
-•	Neue Technologien
-•	Vertriebstrends
-•	Fertigungstrends
+-	Gesetzliche/ rechtliche Vorgaben
+-	Technische Rahmenbedingungen/ Restriktionen
+-	Wirtschaftliche Lage
+-	Marktbedingungen
+-	Wettbewerber
+##### Potentialfelder in der Zielgruppe
+-	Mittels neuer Technologien
+-	Neuer Prozesse
+-	Durch Trends
+-	Neue Produkte
+##### Trends & neue Technologien
+-	Weltweite Trends aus der Branche und aus anderen Branchen
+-	Megatrends, Konsumtrends
+-	Soziokulturelle Trends
+-	Neue Technologien
+-	Vertriebstrends
+-	Fertigungstrends
