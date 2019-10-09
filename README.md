@@ -22,7 +22,7 @@
 -	Module
 - Workload (+ Plus/Minus Stunden)
 
-Main Goal: Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
+**Main Goal:** Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
 
 ### 2.	360° Need Finding – F1 & F2 Frameworks 
 #### F1 Framework
