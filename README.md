@@ -23,3 +23,33 @@
 - Workload (+ Plus/Minus Stunden)
 
 Main Goal: Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
+
+### 2.	360° Need Finding – F1 & F2 Frameworks 
+#### F1 Framework
+#####	Fakten
+-	Prozesse, Abläufe
+-	Preismodelle/ Geschäftsmodelle
+-	Effizienz/ Effektivitätsaspekte
+-	Branche
+-	Strukturen
+-	Ziele
+-	Alles was sonst nirgends reinpasst
+
+##### Restriktionen, externe Faktoren
+•	Gesetzliche/ rechtliche Vorgaben
+•	Technische Rahmenbedingungen/ Restriktionen
+•	Wirtschaftliche Lage
+•	Marktbedingungen
+•	Wettbewerber
+Potentialfelder in der Zielgruppe
+•	Mittels neuer Technologien
+•	Neuer Prozesse
+•	Durch Trends
+•	Neue Produkte
+Trends & neue Technologien
+•	Weltweite Trends aus der Branche und aus anderen Branchen
+•	Megatrends, Konsumtrends
+•	Soziokulturelle Trends
+•	Neue Technologien
+•	Vertriebstrends
+•	Fertigungstrends
