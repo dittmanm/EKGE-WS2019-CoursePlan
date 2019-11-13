@@ -21,7 +21,7 @@
 **Main Goal:** Wie kann man die Semesterplanung bezüglich der angebotenen Module und der Lehrenden unter Betrachtung des Workloads verbessern?
 ### 2.	360° Need Finding – F1 & F2 Frameworks 
 #### F1 Framework
-#####	Fakten
+##### Fakten
 -	Prozesse, Abläufe
 -	Preismodelle/ Geschäftsmodelle
 -	Effizienz/ Effektivitätsaspekte
@@ -47,3 +47,8 @@
 -	Neue Technologien
 -	Vertriebstrends
 -	Fertigungstrends
+## Problemfragen
+- Raumplanung
+- Betrachtung verschiedener Semester
+- Daten zu Dozenten (Workload)
+- Unterscheidung Winter/SommerSemester

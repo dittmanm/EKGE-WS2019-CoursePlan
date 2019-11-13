@@ -1,0 +1,1035 @@
+@prefix schema: <https://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix unip: <https://bmake.th-brandenburg.de/unip/> .
+
+### Vocabulary Definition ###
+<https://bmake.th-brandenburg.de/> a owl:Ontology , voaf:Vocabulary ;
+	dc:title "Überblick über Studiengänge von verschiedenen Pratnerhochschulen und Universitäten."@de ;
+	dc:rights "Copyright © 2019 Partnerhochschulportal, THB"@de ;
+	dc:publisher  wd:Q1391182 ;
+	rdfs:label "Partnerhochschulportal"@de ;
+	rdfs:comment "Im Englischen 'University Portal' "@de ;
+	owl:versionInfo "v 0.1 - StartVersion."@de . 
+	
+voaf:Vocabulary rdfs:subClassOf schema:CreativeWork .
+	
+wd:Q1391182 a schema:Organization ;
+	rdfs:legalName "THB - Technische Hochschule Brandenburg"@de ; 
+	schema:name	"BUAS - Brandenburg University of Applied Sciences"@en ;	
+	schema:url "http://th-brandenburg.de" .	
+	
+### Definition of Re-Used OWL:Classes ### 
+schema:CreativeWork a owl:Class ;
+			rdfs:label "Werk, Schöpfung"@de ;
+			rdfs:comment "Wird hier verwendet als Oberklasse für die Studiengänge"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:Course a owl:Class ;
+			rdfs:label "Course"@de ;
+			rdfs:subClassOf schema:CreativeWork ;
+			rdfs:comment "Wird hier verwendet als Klasse für die Studiengänge."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Person a owl:Class ;
+			rdfs:label "Person"@de ;
+			rdfs:comment "Basisklasse aller Personen."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Organization a owl:Class ;
+			rdfs:label "Organisation/Einrichtung"@de ;
+			rdfs:comment "Oberklasse aller Organisationen oder Einrichtungen"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:CollegeOrUniversity a owl:Class ;
+			rdfs:label "Hochschule oder Universität"@de ;
+			rdfs:comment "Klasse zur Referenzierung von Hochschule und Universitäten - wird hier verwendet um Hochschulen und Universitäten zu erfassen."@de ;
+			rdfs:subClassOf schema:Organization ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Intangible a owl:Class ;
+			rdfs:label "Intangible"@en ;
+			rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc. (taken from schema.org)."@en ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:PostalAddress a owl:Class ;
+			rdfs:label "Postanschrift"@de ;
+			rdfs:comment "Sammelt alle Elemente einer Postanschrift (Land, Region, Straße, PLZ, Stadt)."@de ;
+			rdfs:subClassOf schema:Intangible ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+### Defintion of Re-used RDFS:Classes ###
+schema:DataType a rdfs:Class ;
+			rdfs:label "Data Type"@en, "Datentyp"@de ;
+			rdfs:comment "Oberklasse für grundlegende Datentypen für Literale."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Text a rdfs:Class ;
+			rdfs:label "Text"@en, "Text"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale eines beliebigen textuellen Datentyps."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:URL a rdfs:Class ;
+			rdfs:label "URL"@en, "URL"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die eine URL darstellen."@de ;
+			rdfs:subClassOf schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Date a rdfs:Class ;
+			rdfs:label "Datum"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die ein Datum angeben."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Duration a rdfs:Class ;
+			rdfs:label "Date"@en, "Datum"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die ein Datum angeben."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+### Definition of specific Classes ###
+unip:InternationalOffice a owl:Class ;
+			rdfs:label "International Office"@de ;
+			rdfs:comment "Klasse zur Referenzierung von International Offices (Abteilung für Austausch-Programme)."@de ;
+			rdfs:subClassOf schema:Organization ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/unip/> .
+
+### Definition of Re-Used ObjectProperties ###
+schema:provider a owl:ObjectProperty ;
+			rdfs:label "has part"@en, "In"@de ;
+			rdfs:comment "wird verwendet, um eine Quelle als Teil eines Sammelwerkes zu kennzeichnen"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:CollegeOrUniversity ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:department a owl:ObjectProperty ;
+			rdfs:label "department"@en, "Abteilung"@de ;
+			rdfs:comment "wird verwendet, um die Abteilungen/Fachbereiche der Hochschule oder Universität zu kennzeichnen."@de ;
+			rdfs:domain schema:Organisation ;
+			rdfs:range schema:Organisation ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:contact a owl:ObjectProperty ;
+			rdfs:label "contact"@en, "Verantwortlicher/Kontakt"@de ;
+			rdfs:comment "Is used to idicate an contact of a ccours."@en, "wird verwendet, um auf eine Person als Kontakt einen Kurses zu verweisen"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:employee a owl:ObjectProperty ;
+			rdfs:label "Mitarbeiter/Berater"@de ;
+			rdfs:comment "wird verwendet, um auf eine Person als Kontakt einer Hochschule oder Universität zu verweisen"@de ;
+			rdfs:domain schema:Organisation ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:address a owl:ObjectProperty ;
+			rdfs:label "address"@en, "Adresse"@de ;
+			rdfs:comment "wird verwendet, um Personen oder Organisationen eine Adresse zuzuordnen"@de ;
+			rdfs:domain schema:Person, schema:CollegeOrUniversity ;
+			rdfs:range schema:PostalAddress ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+### Definition of Re-Used DatatypeProperties ###
+schema:name a owl:DatatypeProperty ;
+			rdfs:label "name"@en, "Name oder Bezeichnung"@de ;
+			rdfs:comment "Wird hauptsächlich für die Bezeichnung von Studiengängen verwendet."@de ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:description a owl:DatatypeProperty ;
+			rdfs:label "description"@en ;
+			rdfs:comment "General datatype property, potentially usable for description of all resources."@en ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+					
+schema:url a owl:DatatypeProperty ;
+			rdfs:label "url"@en, "URL"@de ;
+			rdfs:comment "allgemeines Attribut zur eindeutigen Referenz bzw. zur Bereitstellung weiterführender Informationen zu einer Ressource"@de ;
+			rdfs:range schema:URL ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:familyName a owl:DatatypeProperty ;
+			rdfs:label "family name"@en, "Nachname"@de ;
+			rdfs:comment "Nach- oder Familienname einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:givenName a owl:DatatypeProperty ;
+			rdfs:label "given name"@en, "Vorname"@de ;
+			rdfs:comment "Vorname(n) einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+	
+schema:email a owl:DatatypeProperty ;
+			rdfs:label "email"@en, "E-Mail"@de ;
+			rdfs:comment "E-Mail-Adresse einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Mail ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:datePublished a owl:DatatypeProperty ;
+			rdfs:label "date published"@en, "Veröffentlichungsdatum"@de ;
+			rdfs:comment "is used to specify a publishing date for a creative work"@en, "verweist auf das Datum der Veröffentlichung eines Werks"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Date ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:addressCountry a owl:DatatypeProperty ;
+			rdfs:label "address country"@en, "Land (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um das Land einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:addressRegion a owl:DatatypeProperty ;
+			rdfs:label "address region"@en, "Region (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Region oder das Bundesland einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:addressLocality a owl:DatatypeProperty ;
+			rdfs:label "address locality"@en, "Ort (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Gemeinde oder Stadt einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:postalCode a owl:DatatypeProperty ;
+			rdfs:label "postal code"@en, "PLZ (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um PLZ einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:streetAddress a owl:DatatypeProperty ;
+			rdfs:label "street address"@en, "Straße (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Straße und Hausnummer/Wohnungsnummer einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:inLanguage a owl:DatatypeProperty ;
+			rdfs:label "in language"@en, "auf deutsch"@de ;
+			rdfs:comment "The language of a course."@en ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:knowsLanguage a owl:DatatypeProperty ;
+			rdfs:label "knows language"@en, "kennt Sprache"@de ;
+			rdfs:comment "spelling language of a person."@en ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:availableLanguage a owl:DatatypeProperty ;
+			rdfs:label "available Language"@en, "verfügbare Sprache"@de ;
+			rdfs:comment "language witch is available at a address."@en ;
+			rdfs:domain schema:ContactPoint ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:educationalCredentialAwarded a owl:DatatypeProperty ;
+			rdfs:label "degree of study program"@en, "Akademischer Grad"@de ;
+			rdfs:comment "Akademischer Grad des ABschlusses."@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:timeRequired a owl:DatatypeProperty ;
+			rdfs:label "time of study program"@en, "benötigte Zeit"@de ;
+			rdfs:comment "time of study program."@en ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Duration ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:telephone a owl:DatatypeProperty ;
+			rdfs:label "Telefonnummer"@de ;
+			rdfs:comment "Telefonnummer."@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+### Definition of specific DatatypeProperties ###
+unip:dateStarted a owl:DatatypeProperty ;
+			rdfs:label "date published"@en, "Veröffentlichungsdatum"@de ;
+			rdfs:comment "is used to specify a publishing date for a creative work"@en, "verweist auf das Datum der Veröffentlichung eines Werks"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Date ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+unip:numberOfExchangeStudent a owl:DatatypeProperty ;
+			rdfs:label "Anzahl der Plätze für Studenten"@de ;
+			rdfs:comment "Anzahl der Plätze für Studenten."@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+unip:numberOfStudents a owl:DatatypeProperty ;
+			rdfs:label "Anzahl der Studenten an der universität"@de ;
+			rdfs:comment "Anzahl der Studenten an dem Course."@de ;
+			rdfs:domain schema:CollegeOrUniversity ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+unip:erasmusCode a owl:DatatypeProperty ;
+			rdfs:label "Code for Erasmus"@en, "Erasmus Kürzel"@de ;
+			rdfs:comment "language witch is available at a address."@en ;
+			rdfs:domain schema:CollegeOrUniversity ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+####################
+### Example Data ###
+####################
+
+### Employee ###
+unip:MaximalianUrner a schema:Person ;
+	schema:givenName "Maximalian" ;
+	schema:familyName "Urner";
+	schema:email "Urner@campus02.at" .
+ 		
+unip:JanaWeiss a schema:Person ;
+	schema:givenName "Jana" ;
+	schema:familyName "Weiss";
+	schema:email "weiss@fhv.at" .
+ 	
+unip:GerwazyNowicki a schema:Person ;
+	schema:givenName "Gerwazy" ;
+	schema:familyName "Nowicki";
+	schema:email "gerwazy@katowice.pl" .
+
+unip:WojtekGorski a schema:Person ;
+	schema:givenName "Wojtek" ;
+	schema:familyName "Gorski";
+	schema:email "gorski@put.pl" .
+ 	
+
+unip:SilvinoValladares a schema:Person ;
+	schema:givenName "Silvino" ;
+	schema:familyName "Valladares";
+	schema:email "valla@iscac.pt" .
+
+unip:MarilenaPalerma a schema:Person ;
+	schema:givenName "Marilena" ;
+	schema:familyName "Palerma";
+	schema:email "Palerma@ipleiria.pt" .
+
+unip:RosinaFallaci a schema:Person ;
+	schema:givenName "Rosina" ;
+	schema:familyName "Fallaci";
+	schema:email "fallaci@upv.es" .
+
+unip:RaimondoTrentino a schema:Person ;
+	schema:givenName "Raimondo" ;
+	schema:familyName "Trentino";
+	schema:email "trentino@tec.mex" .
+
+unip:KongTai a schema:Person ;
+	schema:givenName "Kong" ;
+	schema:familyName "Tai";
+	schema:email "tai@yuntech.tw" .
+	
+### CollegeOrUniversity ###
+
+unip:IO_FachhochschuleKufsteinTirol a unip:InternationalOffice ;
+	schema:name "Inernational Office - Fachhochschule Kufstein Tirol" ;
+	schema:employee unip:JanaWeiss, unip:MaximalianUrner .
+
+unip:FachhochschuleKufsteinTirol a schema:CollegeOrUniversity ;
+	schema:name "Fachhochschule Kufstein Tirol" ;
+	schema:streetAddress "Andreas Hofer-Straße 7" ;
+	schema:postalCode "6330" ;
+	schema:addressLocality "Kufstein" ;
+	schema:addressCountry "Austria" ;
+	schema:url "https://www.fh-kufstein.ac.at" ;
+	schema:department unip:IO_FachhochschuleKufsteinTirol ;
+	unip:numberOfStudents "10000" .
+
+unip:IO_FreieUniversityBozen a unip:InternationalOffice ;
+	schema:name "Inernational Office - Freie Universität Bozen" ;
+	schema:employee unip:WojtekGorski, unip:GerwazyNowicki .
+
+unip:FreieUniversityBozen a schema:CollegeOrUniversity ;
+	schema:name "Freie Universität Bozen" ;
+	schema:streetAddress "Universitätsplatz 1" ;
+	schema:postalCode "39100" ;
+	schema:addressLocality "Bozen" ;
+	schema:addressCountry "Italien" ;
+	schema:url "https://www.unibz.it/de/" ;
+	schema:department unip:IO_FreieUniversityBozen;
+	unip:numberOfStudents "10000" .
+
+unip:NewDesignUniversity a schema:CollegeOrUniversity ;
+	schema:name "New Design University – Privatuniversität St. Pölten" ;
+	schema:streetAddress "Mariazeller Straße 97a" ;
+	schema:postalCode "3100" ;
+	schema:addressLocality "St. Pölten" ;
+	schema:addressCountry "Austria" ;
+	schema:url "https://www.ndu.ac.at/new-design-university/" ;
+	unip:numberOfStudents "10000" .
+
+unip:FachhochschuleSalzburg a schema:CollegeOrUniversity ;
+	schema:name "Fachhochschule Salzburg" ;
+	schema:streetAddress "Urstein Süd 1" ;
+	schema:postalCode "5412" ;
+	schema:addressLocality "Puch bei Salzburg" ;
+	schema:addressCountry "Austria" ;
+	schema:url "https://www.fh-salzburg.ac.at/" ;
+	unip:numberOfStudents "10000" .
+
+unip:IO_CollegeofEurope a unip:InternationalOffice ;
+	schema:name "Inernational Office - College of Europe" ;
+	schema:employee unip:SilvinoValladares .
+
+unip:CollegeofEurope a schema:CollegeOrUniversity ;
+	schema:name "College of Europe" ;
+	schema:streetAddress "Dijver 9-11" ;
+	schema:postalCode "8000" ;
+	schema:addressLocality "Brügge" ;
+	schema:addressCountry "Belgien" ;
+	schema:url "https://www.coleurope.eu/" ;
+	schema:department unip:IO_CollegeofEurope ;
+	unip:numberOfStudents "15000" .
+
+unip:IO_AndrassyUniversityBudapest a unip:InternationalOffice ;
+	schema:name "Inernational Office - Andrássy Universität Budapest" ;
+	schema:employee unip:RosinaFallaci, unip:MarilenaPalerma .
+
+unip:AndrassyUniversityBudapest a schema:CollegeOrUniversity ;
+	schema:name "Andrássy Universität Budapest" ;
+	schema:streetAddress "Pollack Mihály tér 3" ;
+	schema:postalCode "1088" ;
+	schema:addressLocality "Budapest" ;
+	schema:addressCountry "Ungarn" ;
+	schema:url "https://www.andrassyuni.eu/" ;
+	schema:department unip:IO_AndrassyUniversityBudapest ;
+	unip:numberOfStudents "8000" .
+
+unip:UniversitaetLuzern a schema:CollegeOrUniversity ;
+	schema:name "Universität Luzern" ;
+	schema:streetAddress "Frohburgstrasse 3" ;
+	schema:postalCode "6002" ;
+	schema:addressLocality "Luzern" ;
+	schema:addressCountry "Luzern" ;
+	schema:url "https://www.unilu.ch/" ;
+	unip:numberOfStudents "10000" .
+
+unip:UniversityofTwente schema:name "University of Twente" ;
+	a schema:CollegeOrUniversity ;
+	schema:streetAddress "Drienerlolaan 5" ;
+	schema:postalCode "7522" ;
+	schema:addressLocality "Enschede" ;
+	schema:addressCountry "Netherlands" ;
+	schema:url "https://www.utwente.nl/de/bildung/" ;
+	unip:numberOfStudents "10000" .
+
+unip:MedizinischeUniversitaetInnsbruck a schema:CollegeOrUniversity ;
+	schema:name "Medizinische Universität Innsbruck" ;
+	schema:streetAddress "Innrain 52" ;
+	schema:postalCode "6020" ;
+	schema:addressLocality "Innsbruck" ;
+	schema:addressCountry "Austria" ;
+	schema:url "https://www.i-med.ac.at/mypoint/" ;
+	unip:numberOfStudents "15000" .
+
+unip:KunstUniversitaetLinz a schema:CollegeOrUniversity ;
+	schema:name "Kunstuniversität Linz" ;
+	schema:streetAddress "Hauptplatz 6" ;
+	schema:postalCode "4020" ;
+	schema:addressLocality "Linz" ;
+	schema:addressCountry "Austria" ;
+	schema:url "https://www.ufg.at/" ;
+	unip:numberOfStudents "15000" .
+
+unip:FHNW a schema:CollegeOrUniversity ;
+	schema:name "Hochschule für Gestaltung und Kunst FHNW" ;
+	schema:streetAddress "Freilager-Platz 1" ;
+	schema:postalCode "4142" ;
+	schema:addressLocality "Basel" ;
+	schema:addressCountry "Schweiz" ;
+	schema:url "https://www.fhnw.ch/de/die-fhnw/hochschulen/hgk" ;
+	unip:numberOfStudents "10000" .
+
+unip:EthZuerich a schema:CollegeOrUniversity ;
+	schema:name "ETH Zürich" ;
+	schema:streetAddress "Stampfenbachstrasse 69" ;
+	schema:postalCode "8092" ;
+	schema:addressLocality "Zürich" ;
+	schema:addressCountry "Schweiz" ;
+	schema:url "https://www.ethz.ch/de.html" ;
+	unip:numberOfStudents "25000" .
+
+unip:IO_HTWChur a unip:InternationalOffice ;
+	schema:name "Inernational Office - Hochschule für Technik und Wirtschaft HTW Chur" ;
+	schema:employee unip:KongTai, unip:RaimondoTrentino . 
+
+unip:HTWChur a schema:CollegeOrUniversity ;
+	schema:name "Hochschule für Technik und Wirtschaft HTW Chur" ;
+	schema:streetAddress "Pulvermühlestrasse 57" ;
+	schema:postalCode "7004" ;
+	schema:addressLocality "Chur" ;
+	schema:addressCountry "Schweiz" ;
+	schema:url "https://www.htwchur.ch/" ;
+	schema:department unip:IO_HTWChur ;
+	unip:numberOfStudents "10000" .
+
+### Andrássy Universität Budapest ###
+
+unip:InternationaleBeziehungen-EuroaeischeStudien a schema:Course ;
+	schema:name "Internationale Beziehungen - Europäische Studien" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:DoppelmasterprogrammEuropeanIntegrationinEastCentralEuropeInternationaleBeziehungen a schema:Course ;
+	schema:name "Doppelmasterprogramm European Integration in East Central Europe / Internationale Beziehungen" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:DoppelmasterprogrammGovernanceinMehrebenensystemenInternationaleBeziehungenStaatswissenschaften a schema:Course ;
+	schema:name "Doppelmasterprogramm Governance in Mehrebenensystemen – Internationale Beziehungen / Staatswissenschaften" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:InternationalEconomyandBusiness a schema:Course ;
+	schema:name "International Economy and Business" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:ManagementandLeadership a schema:Course ;
+	schema:name "Management and Leadership" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:VergleichendeStaats-undRechtswissenschaften a schema:Course ;
+	schema:name "Vergleichende Staats- und Rechtswissenschaften" ;
+	schema:educationalCredentialAwarded "weitere Abschlüsse" ;
+	schema:timeRequired "2" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:EuroaeischeundInternationaleVerwaltung a schema:Course ;
+	schema:name "Europäische und Internationale Verwaltung" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:MitteleuroaeischeGeschichte a schema:Course ;
+	schema:name "Mitteleuropäische Geschichte" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:MitteleuroaeischeStudien-Diplomatie a schema:Course ;
+	schema:name "Mitteleuropäische Studien - Diplomatie" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+unip:DonauraumStudien a schema:Course ;
+	schema:name "Donauraum Studien" ;
+	schema:educationalCredentialAwarded "weitere Abschlüsse" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:AndrassyUniversityBudapest .
+
+### College of Europe ###
+
+unip:EuropeanEconomicStudies a schema:Course ;
+	schema:name "European Economic Studies" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "2" ;
+	schema:provider unip:CollegeofEurope .
+
+unip:EUInternationalRelationsandDiplomacyStudies a schema:Course ;
+	schema:name "EU International Relations and Diplomacy Studies" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "2" ;
+	schema:provider unip:CollegeofEurope .
+
+unip:EuropeanLegalStudies a schema:Course ;
+	schema:name "European Legal Studies" ;
+	schema:educationalCredentialAwarded "weitere Abschlüsse" ;
+	schema:timeRequired "2" ;
+	schema:provider unip:CollegeofEurope .
+
+unip:EuropeanInterdisciplinaryStudies a schema:Course ;
+	schema:name "European Interdisciplinary Studies" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "2" ;
+	schema:provider unip:CollegeofEurope .
+
+### ETH Zürich ###
+
+unip:MasterofScienceinScienceTechnologyandPolicy a schema:Course ;
+	schema:name "Master of Science in Science, Technology and Policy" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:EthZuerich .
+
+### Fachhochschule Kufstein Tirol ###
+
+unip:DIGITALMARKETING a schema:Course ;
+	schema:name "DIGITAL MARKETING" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:ERP-SYSTEMEGESCHAEFTSPROZESSMANAGEMENT a schema:Course ;
+	schema:name "ERP-SYSTEME & GESCHÄFTSPROZESSMANAGEMENT" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:EUROPAEISCHEENERGIEWIRTSCHAFT a schema:Course ;
+	schema:name "EUROPÄISCHE ENERGIEWIRTSCHAFT" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:FACILITY-IMMOBILIENMANAGEMENT a schema:Course ;
+	schema:name "FACILITY- & IMMOBILIENMANAGEMENT" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:INTERNATIONALBUSINESSSTUDIES a schema:Course ;
+	schema:name "INTERNATIONAL BUSINESS STUDIES" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:SMARTPRODUCTSSOLUTIONS a schema:Course ;
+	schema:name "SMART PRODUCTS & SOLUTIONS" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:SPORT-KULTUR-VERANSTALTUNGSMANAGEMENT a schema:Course ;
+	schema:name "SPORT-, KULTUR- & VERANSTALTUNGSMANAGEMENT" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:UNTERNEHMENSRESTRUKTURIERUNG-SANIERUNG a schema:Course ;
+	schema:name "UNTERNEHMENSRESTRUKTURIERUNG & -SANIERUNG" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:WEBCOMMUNICATIONINFORMATIONSYSTEMS a schema:Course ;
+	schema:name "WEB COMMUNICATION & INFORMATION SYSTEMS" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:DataScienceIntelligentAnalytics a schema:Course ;
+	schema:name "Data Science & Intelligent Analytics" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+unip:DigitalTransformationManagement a schema:Course ;
+	schema:name "Digital Transformation Management" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "3" ;
+	schema:provider unip:FachhochschuleKufsteinTirol .
+
+### Fachhochschule Salzburg ###	
+
+unip:SozialeInnovation a schema:Course ;
+	schema:name "Soziale Innovation" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:InformationstechnikSystem-Management a schema:Course ;
+	schema:name "Informationstechnik & System-Management" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:AppliedImageandSignalProcessing a schema:Course ;
+	schema:name "Applied Image and Signal Processing" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:HolztechnologieHolzwirtschaft a schema:Course ;
+	schema:name "Holztechnologie & Holzwirtschaft" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:SmartBuildingsinSmartCities a schema:Course ;
+	schema:name "Smart Buildings in Smart Cities" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:Betriebswirtschaft a schema:Course ;
+	schema:name "Betriebswirtschaft" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:InnovationManagementinTourism a schema:Course ;
+	schema:name "Innovation & Management in Tourism" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:DesignProduktmanagment a schema:Course ;
+	schema:name "Design & Produktmanagment" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:MultiMediaTechnology a schema:Course ;
+	schema:name "MultiMediaTechnology" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:MultiMediaArt a schema:Course ;
+	schema:name "MultiMediaArt" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+unip:HumanComputer-Interaction a schema:Course ;
+	schema:name "Human Computer-Interaction" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "Sonstige" ;
+	schema:provider unip:FachhochschuleSalzburg .
+
+### Freie Universität Bozen ###	
+
+unip:Agrar-Lebensmittel-undBergumweltwissenschaften a schema:Course ;
+	schema:name "Agrar-, Lebensmittel- und Bergumweltwissenschaften" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Design a schema:Course ;
+	schema:name "Design" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Energie-Ingenieurwissenschaften a schema:Course ;
+	schema:name "Energie-Ingenieurwissenschaften" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Industrie-undMaschineningenieurwesen a schema:Course ;
+	schema:name "Industrie- und Maschineningenieurwesen" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Informatik a schema:Course ;
+	schema:name "Informatik" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:MasterinComputationalDataScience a schema:Course ;
+	schema:name "Master in Computational Data Science" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Kommunikations-undKulturwissenschaft a schema:Course ;
+	schema:name "Kommunikations- und Kulturwissenschaft" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:VerwaltungundPolitikoeffentlicherInstitutionen a schema:Course ;
+	schema:name "Verwaltung und Politik öffentlicher Institutionen" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:OekonomieundSozialwissenschaften a schema:Course ;
+	schema:name "Ökonomie und Sozialwissenschaften" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Sozialarbeit a schema:Course ;
+	schema:name "Sozialarbeit" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Sozialaedagogik a schema:Course ;
+	schema:name "Sozialpädagogik" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Tourismus-Sport-undEventmanagement a schema:Course ;
+	schema:name "Tourismus-, Sport- und Eventmanagement" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:UnternehmensfuehrungundInnovation a schema:Course ;
+	schema:name "Unternehmensführung und Innovation" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:WirtschaftswissenschaftenundBetriebsfuehrung a schema:Course ;
+	schema:name "Wirtschaftswissenschaften und Betriebsführung" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:AccountingundFinanzwirtschaft a schema:Course ;
+	schema:name "Accounting und Finanzwirtschaft" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:InnovationinForschungundPraxisdersozialenArbeit a schema:Course ;
+	schema:name "Innovation in Forschung und Praxis der sozialen Arbeit" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:FoodSciencesforInnovationandAuthenticity a schema:Course ;
+	schema:name "Food Sciences for Innovation and Authenticity" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Eco-SocialDesign a schema:Course ;
+	schema:name "Eco-Social Design" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Musikologie a schema:Course ;
+	schema:name "Musikologie" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:IndustrialMechanicalEngineering a schema:Course ;
+	schema:name "Industrial Mechanical Engineering" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:DesignundKuenste-StudienzweigKunst a schema:Course ;
+	schema:name "Design und Künste - Studienzweig Kunst" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:Wirtschaftsinformatik a schema:Course ;
+	schema:name "Wirtschaftsinformatik" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:FreieUniversityBozen .
+
+unip:AngewandteLinguistik a schema:Course ;
+	schema:name "Angewandte Linguistik" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:FreieUniversityBozen .
+
+### Hochschule für Gestaltung und Kunst FHNW ###
+
+unip:MasterstudioDesign a schema:Course ;
+	schema:name "Masterstudio Design" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "3" ;
+	schema:provider unip:FHNW .
+	
+### Hochschule für Technik und Wirtschaft HTW Chur ###
+
+unip:Tourismus a schema:Course ;
+	schema:name "Tourismus" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:HTWChur .
+
+### Kunstuniversität Linz ###
+
+unip:MasterArchitekturBASEhabitat a schema:Course ;
+	schema:name "Master Architektur BASEhabitat" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:KunstUniversitaetLinz .
+	
+### Medizinische Universität Innsbruck ###
+
+unip:MolekulareMedizin a schema:Course ;
+	schema:name "Molekulare Medizin" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:MedizinischeUniversitaetInnsbruck .
+
+### New Design University – Privatuniversität St. Pölten ###
+
+unip:EntrepreneurshipInnovation a schema:Course ;
+	schema:name "Entrepreneurship & Innovation" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:Raum-undInformationsdesign a schema:Course ;
+	schema:name "Raum- und Informationsdesign" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:ManagementbyDesign a schema:Course ;
+	schema:name "Management by Design" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:EventEngineering a schema:Course ;
+	schema:name "Event Engineering" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:DesignHandwerkmaterielleKultur a schema:Course ;
+	schema:name "Design, Handwerk & materielle Kultur" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:Innenarchitektur3DGestaltung a schema:Course ;
+	schema:name "Innenarchitektur & 3D Gestaltung" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:NewDesignUniversity .
+
+unip:Grafik-Informationsdesign a schema:Course ;
+	schema:name "Grafik- & Informationsdesign" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:NewDesignUniversity .
+
+### Universität Luzern ###
+
+unip:JointDegreeMasterReligion-Wirtschaft-Politik a schema:Course ;
+	schema:name "Joint Degree Master Religion - Wirtschaft - Politik" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:UniversitaetLuzern .
+
+unip:MasterPrograminHealthSciences a schema:Course ;
+	schema:name "Master Program in Health Sciences" ;
+	schema:educationalCredentialAwarded "Master" ;
+	schema:timeRequired "4" ;
+	schema:provider unip:UniversitaetLuzern .
+
+### University of Twente ###
+
+unip:InternationalBusinessAdministration a schema:Course ;
+	schema:name "International Business Administration" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;	
+	schema:provider unip:UniversityofTwente .
+
+unip:IndustrialDesign a schema:Course ;
+	schema:name "Industrial Design" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:EuropeanPublicAdministration a schema:Course ;
+	schema:name "European Public Administration" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:ElectricalEngineering a schema:Course ;
+	schema:name "Electrical Engineering" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:InternationalBusinessAdministration a schema:Course ;
+	schema:name "International Business Administration" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:ElectricalEngineering a schema:Course ;
+	schema:name "Electrical Engineering" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:AdvancedTechnology a schema:Course ;
+	schema:name "Advanced Technology" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:CommunicationScience a schema:Course ;
+	schema:name "Communication Science" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:EuropeanPublicAdministration a schema:Course ;
+	schema:name "European Public Administration" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:BusinessIT a schema:Course ;
+	schema:name "Business & IT" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:TechnicalComputerScience a schema:Course ;
+	schema:name "Technical Computer Science" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:IndustrialDesign a schema:Course ;
+	schema:name "Industrial Design" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:CivilEngineering a schema:Course ;
+	schema:name "Civil Engineering" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+
+unip:MechanicalEngineering a schema:Course ;
+	schema:name "Mechanical Engineering" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:timeRequired "6" ;
+	schema:provider unip:UniversityofTwente .
+	
