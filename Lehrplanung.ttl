@@ -90,12 +90,14 @@ cp:Module a owl:Class ;
 cp:ModulInstance a owl:Class ;
 			rdfs:label "Modulinstanz"@de ;
 			rdfs:comment "Wird hier verwendet als Klasse für die Modulinstanz (Kurseinheit) ."@de ;
+			rdfs:subClassOf schema:CourseInstance ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> . 
 
 
 cp:StudyProgramm a owl:Class ;
 			rdfs:label " Studienprogramm"@de ;
 			rdfs:comment "Wird hier verwendet als Klasse für alle Studienprogramme."@de ;
+			rdfs:subClassOf schema:Course
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 
 			
