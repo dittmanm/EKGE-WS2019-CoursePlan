@@ -44,17 +44,17 @@ schema:Person a owl:Class ;
 schema:Event a owl:Class ;
 			rdfs:label "Event"@de ;
 			rdfs:comment "Wird hier verwendet als Oberklasse für die Kursinstanz (Kurseinheit) ."@de ;
-			rdfs:isDefinedBy <https://schema.org/> 
+			rdfs:isDefinedBy <https://schema.org/> .
 
 schema:CourseInstance a owl:Class ;
-			rdfs:label "CourseInstance"@de ;
+			rdfs:label "Kursinstanz"@de ;
 			rdfs:comment "Wird hier verwendet als Oberklasse für die Modulinstanz (Moduleinheit) ."@de ;
-			rdfs:isDefinedBy <https://schema.org/> 
+			rdfs:isDefinedBy <https://schema.org/> .
 
 schema:Faculty a owl:Class ;
 			rdfs:label "Fachbereich/Fakultät"@de ;
 			rdfs:comment "Fachbereiche der Technischen Hochschule Brandenburg."@de ;
-			rdfs:isDefinedBy <https://schema.org/>
+			rdfs:isDefinedBy <https://schema.org/> .
 
 
 ### Defintion of Re-used RDFS:Classes ###
@@ -97,8 +97,8 @@ cp:ModulInstance a owl:Class ;
 cp:StudyProgramm a owl:Class ;
 			rdfs:label " Studienprogramm"@de ;
 			rdfs:comment "Wird hier verwendet als Klasse für alle Studienprogramme."@de ;
-			rdfs:subClassOf schema:Course
-			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+			rdfs:subClassOf schema:Course ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> . 
 
 			
 ### Definition of Re-Used ObjectProperties ###
@@ -221,7 +221,7 @@ cp:semesterSeason a owl:DatatypeProperty ;
 			rdfs:range schema:Text ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 			
-cp:contractualHour a owl:DatatypeProperty ;
+cp:contractualHours a owl:DatatypeProperty ;
 			rdfs:label "Semestergesamtstunden, Deputatsstunden"@de ;
 			rdfs:comment "Anzahl der Semesterstunden, die der einzelne Professor ableisten muss."@de ;
 			rdfs:domain schema:Person ;
@@ -236,9 +236,40 @@ cp:reductingHours a owl:DatatypeProperty ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 
 
+####################
+### Example Data ###
+####################
 
+### instructor ###
 
-
-
-
+cp: a schema:Person ;
+	schema:honorificPrefix "*" ;
+	schema:givenName "*" ;
+	schema:familyName "*";
+##	cp:contructualHours "*" ;
+##	cp:reductingHours "*" ;
+	schema:email "*" .
 	
+### Module ###
+cp: a cp:Module;
+	schema:Name "*";
+	schema:timeRequired "*";
+	cp:semesterSeason "*";
+##	schema:startDate "*" ;   
+	schema:isPartOf cp: . ## (studyprogramm am anderen Beispiel bei github orientieren) 
+
+
+### StudyProgram
+cp: a cp:StudyProgram;
+	schema:Name "*";
+	schema:educationalCredentialAwarded ;
+	schema:provider cp: . ##(faculty am anderen beispiel bei github orientieren) .
+
+### Faculty ###
+cp: a schema:Faculty ;
+	schema:Name "*".
+
+
+## Die Struktur der Beispieldaten ist im Moment nicht komplett korrekt.
+## Einzelne Elemente (startdate, contructualHours, reductingHours) sind im Moment auskommentiert, da diese vorerst für die Beispieldaten nicht relevant sind bzw. die Struktur der Beispieldaten nochmal überarbeitet werden muss. 
+## Die Struktur müssen wir nochmal besprechen, aber die meisten Beispieldaten können in der aktuellen Struktur eingepflegt werden.
