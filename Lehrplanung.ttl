@@ -212,21 +212,21 @@ schema:timeRequired a owl:DatatypeProperty ;
 
 ### Definition of specific DatatypeProperties ###
 
-unip:semesterSeason a owl:DatatypeProperty ;
+cp:semesterSeason a owl:DatatypeProperty ;
 			rdfs:label "Vorlesungszeitraum/Semester"@de ;
 			rdfs:comment "Sommersemester oder Winteremester"@de ;
 			rdfs:domain schema:Module ;
 			rdfs:range schema:Text ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 			
-unip:contractualHour a owl:DatatypeProperty ;
+cp:contractualHour a owl:DatatypeProperty ;
 			rdfs:label "Semestergesamtstunden, Deputatsstunden"@de ;
 			rdfs:comment "Anzahl der Semesterstunden, die der einzelne Professor ableisten muss."@de ;
 			rdfs:domain schema:Person ;
 			rdfs:range schema:Duration ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 			
-unip:reductingHours a owl:DatatypeProperty ;
+cp:reductingHours a owl:DatatypeProperty ;
 			rdfs:label "Deputatsstundenminderung"@de ;
 			rdfs:comment "Anzahl der Stunden die von den Deputatstunden abgezogen werden, durch andere Aufgaben (Forschung, oder andere Posten/Ämter an der Hochschule)."@de ;
 			rdfs:domain schema:Person;
