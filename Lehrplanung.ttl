@@ -269,6 +269,19 @@ cp: a cp:StudyProgram;
 cp: a schema:Faculty ;
 	schema:Name "*".
 
+### EXAMPLE ###
+cp:wirtschaft a schema:Faceulty ;
+	schema:Name "Wirtschaft" .
+cp:wi_ba a cp:StudyProgram ;
+	schema:Name "Wirtschaftsinformatik Bachelor" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:provider cp:wirtschaft .
+cp:systemanalyse a cp:Module ;
+	schema:Name "Systemanalyse" ;
+	schema:timeRequired "4" ;
+	cp:semesterSeason "Wintersemester" ;
+##	schema:startDate "*" ;   
+	schema:isPartOf cp:wi_ba .
 
 ## Die Struktur der Beispieldaten ist im Moment nicht komplett korrekt.
 ## Einzelne Elemente (startdate, contructualHours, reductingHours) sind im Moment auskommentiert, da diese vorerst für die Beispieldaten nicht relevant sind bzw. die Struktur der Beispieldaten nochmal überarbeitet werden muss. 
