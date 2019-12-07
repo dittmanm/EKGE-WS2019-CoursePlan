@@ -1,0 +1,152 @@
+/*** ALLGEMEIN ***/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+	list-style: none;
+}
+#main {
+  box-shadow: 0px 0px 20px #888;
+  clear: both;
+  margin: 0px auto;
+  overflow: hidden;
+  width: 1024px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+.success {
+  color: #008000;
+}
+.error {
+  color: #FF0000;
+}
+.select {
+  width: 500px;
+}
+
+/*** HEADER ***/
+#header {
+    border-bottom: 1px solid #7A8B8B;
+  clear: both;
+  overflow: hidden;
+}
+#header .logo {
+  margin: 15px;
+  width: 200px;
+}
+#header .login-menu {
+	margin: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+#header .login-menu li {
+	float: right;
+	margin: 10px;
+}
+#header .headline {
+  color: #7A8B8B;
+  margin: 35px 20px;
+}
+#header .headline h1 {
+	margin: 0px;
+}
+#header .first-menu {
+  background: #7A8B8B;
+  clear: both;
+  overflow: hidden;
+}
+/*** MENU ***/
+#menu {
+  background-color: #2F4F4F;
+  border-right: 1px solid #7A8B8B;
+  clear: both;
+  float: left;
+  overflow: hidden;
+  width: 200px;
+}
+#menu .menu-first {
+    
+}
+#menu ul.menu {
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+}
+#menu ul.menu li {
+  color: #BEBEBE;
+  float: left;
+  padding: 0px;
+  margin: 10px 20px;
+}
+#menu ul.submenu {
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 15px;
+}
+#menu ul.submenu li {
+  float: none;
+  padding: 0px;
+  margin: 0px;
+}
+#menu ul.menu a {
+  color: #BEBEBE;
+}
+/*** MAIN ***/
+#content {
+  overflow: hidden;
+}
+#content .section {
+  padding: 0px 20px;
+}
+.search {
+  margin-top: 10px;
+}
+.list {
+  overflow: hidden;
+}
+.book {
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+}
+ul.categories {
+  border-bottom: 1px solid #BEBEBE;
+  clear: both;
+  list-style: none;
+  margin: 0px;
+  margin-left: -20px;
+  overflow: hidden;
+  padding: 0px 10px;
+  width: 780px;
+}
+ul.categories li {
+  float: left;
+}
+ul.categories li a {
+  border: 1px solid #BEBEBE;
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: -1px;
+  text-decoration: none;
+}
+
+ul.categories a.activ {
+  border: 1px solid #000;
+  /* border-bottom: 1px solid #fff; */
+  margin-bottom: -1px;
+}
+/*** FOOTER ***/
+#footer {
+  margin: 20px;
+  overflow: hidden;
+}
