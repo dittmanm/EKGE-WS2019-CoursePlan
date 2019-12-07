@@ -1,0 +1,287 @@
+@prefix schema: <https://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix cp: <https://bmake.th-brandenburg.de/cp/> .                  
+
+
+### Vocabulary Definition ###
+<https://bmake.th-brandenburg.de/> a owl:Ontology , voaf:Vocabulary ;
+	dc:title "Überblick zur Kursplanung mit den Modulen und Professoren der Technischen Hochschule Brandenburg (Wirtschaftsbereich)." @de ;
+	dc:rights "Copyright © 2019 Kursplanung, THB"@de ;
+	dc:publisher  wd:Q1391182 ;
+	rdfs:label "Kursplanung"@de ;
+	rdfs:comment "Im Englischen 'courseplan' "@de ;
+	owl:versionInfo "v 0.1 - StartVersion."@de . 
+		
+wd:Q1391182 a schema:Organization ;
+	rdfs:legalName "THB - Technische Hochschule Brandenburg"@de ; 
+	schema:name	"BUAS - Brandenburg University of Applied Sciences"@en ;	
+	schema:url "http://th-brandenburg.de" .	
+
+
+
+### Definition of Re-Used OWL:Classes ### 
+schema:CreativeWork a owl:Class ;
+			rdfs:label "Werk, Schöpfung"@de ;
+			rdfs:comment "Wird hier verwendet als Oberklasse für die Studiengänge"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:Course a owl:Class ;
+			rdfs:label "Ausbildungsangebot (Kurs/Studiengang)"@de ;
+			rdfs:subClassOf schema:CreativeWork ;
+			rdfs:comment "Wird hier verwendet als Oberklasse für die Studiengänge und Module."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:Person a owl:Class ;
+			rdfs:label "Person"@de ;
+			rdfs:comment "Basisklasse aller Personen, beinhaltet die Dozenten und Professoren die die einzelnen Module unterrichten."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:Event a owl:Class ;
+			rdfs:label "Event"@de ;
+			rdfs:comment "Wird hier verwendet als Oberklasse für die Kursinstanz (Kurseinheit) ."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:CourseInstance a owl:Class ;
+			rdfs:label "Kursinstanz"@de ;
+			rdfs:comment "Wird hier verwendet als Oberklasse für die Modulinstanz (Moduleinheit) ."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+### Defintion of Re-used RDFS:Classes ###
+
+schema:DataType a rdfs:Class ;
+			rdfs:label "Data Type"@en, "Datentyp"@de ;
+			rdfs:comment "Oberklasse für grundlegende Datentypen für Literale."@de ;
+			rdfs:isDefinedBy <https://schema.org/> .     
+	
+schema:Text a rdfs:Class ;
+			rdfs:label "Text"@en, "Text"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale eines beliebigen textuellen Datentyps."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+
+schema:Duration a rdfs:Class ;
+			rdfs:label "Duration"@en, "Dauer/Zeitraum"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die einen Zeitraum/Dauer angeben."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+
+### Definition of specific Classes ###
+
+cp:Module a owl:Class ;
+			rdfs:label "Module"@de ;
+			rdfs:comment "Klasse für die einzelnen Module (Studienfächer)"@de ;
+			rdfs:comment "Wird hier verwendet als Klasse für die Modul (Studienfach)."@de ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+			
+
+cp:ModulInstance a owl:Class ;
+			rdfs:label "Modulinstanz"@de ;
+			rdfs:comment "Wird hier verwendet als Klasse für die Modulinstanz (Kurseinheit) ."@de ;
+			rdfs:subClassOf schema:CourseInstance ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> . 
+
+
+cp:StudyProgramm a owl:Class ;
+			rdfs:label " Studienprogramm"@de ;
+			rdfs:comment "Wird hier verwendet als Klasse für alle Studienprogramme."@de ;
+			rdfs:subClassOf schema:Course ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> . 
+			
+cp:Faculty a owl:Class ;
+			rdfs:label "Fachbereich/Fakultät"@de ;
+			rdfs:comment "Fachbereiche der Technischen Hochschule Brandenburg."@de ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+
+			
+### Definition of Re-Used ObjectProperties ###
+
+schema:provider a owl:ObjectProperty ;
+			rdfs:label "Anbieter/"@de ; 
+			rdfs:comment "eine Falkultät bietet verschieden Studienprogramme an"@de ;
+			rdfs:domain schema:StudyProgram ;
+			rdfs:range schema:Faculty ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:employee a owl:ObjectProperty ;
+			rdfs:label "Mitarbeiter/Berater/Lehrbeauftrager/Professor"@de ;
+			rdfs:comment "wird verwendet, um auf eine Person einer Hochschule oder Universität zu verweisen"@de ;
+			rdfs:domain schema:Faculty ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:instructor a owl:ObjectProperty ;
+			rdfs:label "Lehrbeauftragter/Dozent"@de ;
+			rdfs:comment "wird verwendet um auf eine Person (Lehrbauftragten) der Hochschule zu verweisen, die eine bestimmtes Modulinstanz unterrichtet"@de ;
+			rdfs:domain schema:CourseInstance ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:isPartOf a owl:ObjectProperty ;
+			rdfs:label "ist Teil von"@de ;
+			rdfs:comment "ein Modul ist Teil eines Studienganges "@de ;
+			rdfs:domain schema:Module ;
+			rdfs:range schema:Studyprogram ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:hasCourseInstance a owl:ObjectProperty ;
+			rdfs:label "hat Kursinstanz"@de ;
+			rdfs:comment "ein Modul verweist auf eineModulinstanz"@de ;
+			rdfs:domain schema:Module ;
+			rdfs:range schema:ModulInstance ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+
+### Definition of Re-Used DatatypeProperties ###
+
+schema:name a owl:DatatypeProperty ;
+			rdfs:label "name"@en, "Name oder Bezeichnung"@de ;
+			rdfs:comment "Wird hauptsächlich für die Bezeichnung von Studiengängen verwendet."@de ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+
+schema:description a owl:DatatypeProperty ;
+			rdfs:label "Beschreibung"@de, "description"@en ;
+			rdfs:comment "Beschreibung der einzelnen Module."@de, "General datatype property, potentially usable for description of all resources."@en ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+				
+
+schema:familyName a owl:DatatypeProperty ;
+			rdfs:label "family name"@en, "Nachname"@de ;
+			rdfs:comment "Nach- oder Familienname einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:givenName a owl:DatatypeProperty ;
+			rdfs:label "given name"@en, "Vorname"@de ;
+			rdfs:comment "Vorname(n) einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:email a owl:DatatypeProperty ;
+			rdfs:label "email"@en, "E-Mail"@de ;
+			rdfs:comment "E-Mail-Adresse einer Person/Dozenten (optional in der Anwendung)"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Mail ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:educationalCredentialAwarded a owl:DatatypeProperty ;
+			rdfs:label "degree of study program"@en, "Akademischer Grad"@de ;
+			rdfs:comment "Akademischer Grad des Abschlusses."@de ;
+			rdfs:domain schema:StudyProgram ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:honorificPrefix a owl:DatatypeProperty ;
+			rdfs:label "academic degree"@en, "Akademischer Titel"@de ;
+			rdfs:comment "Akademischer Titel der vor dem Namen ."@de, "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr."@en ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:courseWorkload a owl:DatatypeProperty ;
+			rdfs:label  "SWS / Semesterwochenstunden"@de ;
+			rdfs:comment "Anzahl der Semesterwochenstunden die abgeleistet werden müssen"@de, "The amount of work expected of students taking the course."@en ;
+			rdfs:domain schema:CourseInstance ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:startDate a owl:DatatypeProperty ;
+			rdfs:label  "Startdatum"@de ;
+			rdfs:comment "Der Zeitpunkt(Jahr) in dem das Modul beginnt"@de ;
+			rdfs:domain schema:ModulInstance ;
+			rdfs:range schema:Date ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:timeRequired a owl:DatatypeProperty ;
+			rdfs:label "time of study program"@en, "benötigte Zeit (hier SWS pro Modul)"@de ;
+			rdfs:comment "Semesterwochenstunden die für das einzelnen Modul aufgewendet werden müssen"@de ;
+			rdfs:domain schema:Module ;
+			rdfs:range schema:Duration ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+
+### Definition of specific DatatypeProperties ###
+
+cp:semesterSeason a owl:DatatypeProperty ;
+			rdfs:label "Vorlesungszeitraum/Semester"@de ;
+			rdfs:comment "Sommersemester oder Winteremester"@de ;
+			rdfs:domain schema:Module ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+			
+cp:contractualHours a owl:DatatypeProperty ;
+			rdfs:label "Semestergesamtstunden, Deputatsstunden"@de ;
+			rdfs:comment "Anzahl der Semesterstunden, die der einzelne Professor ableisten muss."@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Duration ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+			
+cp:reductingHours a owl:DatatypeProperty ;
+			rdfs:label "Deputatsstundenminderung"@de ;
+			rdfs:comment "Anzahl der Stunden die von den Deputatstunden abgezogen werden, durch andere Aufgaben (Forschung, oder andere Posten/Ämter an der Hochschule)."@de ;
+			rdfs:domain schema:Person;
+			rdfs:range schema:Duration ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
+
+
+####################
+### Example Data ###
+####################
+
+### instructor ###
+
+cp: a schema:Person ;
+	schema:honorificPrefix "*" ;
+	schema:givenName "*" ;
+	schema:familyName "*";
+##	cp:contructualHours "*" ;
+##	cp:reductingHours "*" ;
+	schema:email "*" .
+	
+### Module ###
+cp: a cp:Module;
+	schema:Name "*";
+	schema:timeRequired "*";
+	cp:semesterSeason "*";
+##	schema:startDate "*" ;   
+	schema:isPartOf cp: . ## (studyprogramm am anderen Beispiel bei github orientieren) 
+
+
+### StudyProgram
+cp: a cp:StudyProgram;
+	schema:Name "*";
+	schema:educationalCredentialAwarded "*";
+	schema:provider cp: . ##(faculty am anderen beispiel bei github orientieren) .
+
+### Faculty ###
+cp: a cp:Faculty ;
+	schema:Name "*".
+
+### EXAMPLE ###
+cp:wirtschaft a cp:Faculty ;
+	schema:Name "Wirtschaft" .
+cp:wi_ba a cp:StudyProgram ;
+	schema:Name "Wirtschaftsinformatik Bachelor" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:provider cp:Wirtschaft .
+cp:systemanalyse a cp:Module ;
+	schema:Name "Systemanalyse" ;
+	schema:timeRequired "4" ;
+	cp:semesterSeason "Wintersemester" ;
+##	schema:startDate "*" ;   
+	schema:isPartOf cp:wi_ba .
+
+## Die Struktur der Beispieldaten ist im Moment nicht komplett korrekt.
+## Einzelne Elemente (startdate, contructualHours, reductingHours) sind im Moment auskommentiert, da diese vorerst für die Beispieldaten nicht relevant sind bzw. die Struktur der Beispieldaten nochmal überarbeitet werden muss. 
+## Die Struktur müssen wir nochmal besprechen, aber die meisten Beispieldaten können in der aktuellen Struktur eingepflegt werden.
