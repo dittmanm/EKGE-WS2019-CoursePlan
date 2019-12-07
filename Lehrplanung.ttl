@@ -51,12 +51,6 @@ schema:CourseInstance a owl:Class ;
 			rdfs:comment "Wird hier verwendet als Oberklasse für die Modulinstanz (Moduleinheit) ."@de ;
 			rdfs:isDefinedBy <https://schema.org/> .
 
-schema:Faculty a owl:Class ;
-			rdfs:label "Fachbereich/Fakultät"@de ;
-			rdfs:comment "Fachbereiche der Technischen Hochschule Brandenburg."@de ;
-			rdfs:isDefinedBy <https://schema.org/> .
-
-
 ### Defintion of Re-used RDFS:Classes ###
 
 schema:DataType a rdfs:Class ;
@@ -99,6 +93,11 @@ cp:StudyProgramm a owl:Class ;
 			rdfs:comment "Wird hier verwendet als Klasse für alle Studienprogramme."@de ;
 			rdfs:subClassOf schema:Course ;
 			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> . 
+			
+cp:Faculty a owl:Class ;
+			rdfs:label "Fachbereich/Fakultät"@de ;
+			rdfs:comment "Fachbereiche der Technischen Hochschule Brandenburg."@de ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/cp/> .
 
 			
 ### Definition of Re-Used ObjectProperties ###
@@ -109,7 +108,7 @@ schema:provider a owl:ObjectProperty ;
 			rdfs:domain schema:StudyProgram ;
 			rdfs:range schema:Faculty ;
 			rdfs:isDefinedBy <https://schema.org/> .
-.			
+			
 schema:employee a owl:ObjectProperty ;
 			rdfs:label "Mitarbeiter/Berater/Lehrbeauftrager/Professor"@de ;
 			rdfs:comment "wird verwendet, um auf eine Person einer Hochschule oder Universität zu verweisen"@de ;
@@ -149,8 +148,8 @@ schema:name a owl:DatatypeProperty ;
 
 
 schema:description a owl:DatatypeProperty ;
-			rdfs:label "Beschreibung"@de "description"@en ;
-			rdfs:comment "Beschreibung der einzelnen Module."@de "General datatype property, potentially usable for description of all resources."@en ;
+			rdfs:label "Beschreibung"@de, "description"@en ;
+			rdfs:comment "Beschreibung der einzelnen Module."@de, "General datatype property, potentially usable for description of all resources."@en ;
 			rdfs:range schema:Text ;
 			rdfs:isDefinedBy <https://schema.org/> .
 				
@@ -262,13 +261,26 @@ cp: a cp:Module;
 ### StudyProgram
 cp: a cp:StudyProgram;
 	schema:Name "*";
-	schema:educationalCredentialAwarded ;
+	schema:educationalCredentialAwarded "*";
 	schema:provider cp: . ##(faculty am anderen beispiel bei github orientieren) .
 
 ### Faculty ###
-cp: a schema:Faculty ;
+cp: a cp:Faculty ;
 	schema:Name "*".
 
+### EXAMPLE ###
+cp:wirtschaft a cp:Faculty ;
+	schema:Name "Wirtschaft" .
+cp:wi_ba a cp:StudyProgram ;
+	schema:Name "Wirtschaftsinformatik Bachelor" ;
+	schema:educationalCredentialAwarded "Bachelor" ;
+	schema:provider cp:Wirtschaft .
+cp:systemanalyse a cp:Module ;
+	schema:Name "Systemanalyse" ;
+	schema:timeRequired "4" ;
+	cp:semesterSeason "Wintersemester" ;
+##	schema:startDate "*" ;   
+	schema:isPartOf cp:wi_ba .
 
 ## Die Struktur der Beispieldaten ist im Moment nicht komplett korrekt.
 ## Einzelne Elemente (startdate, contructualHours, reductingHours) sind im Moment auskommentiert, da diese vorerst für die Beispieldaten nicht relevant sind bzw. die Struktur der Beispieldaten nochmal überarbeitet werden muss. 
