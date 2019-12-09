@@ -20,7 +20,10 @@
     <body>
       <div id="main">
         <div id="header">
-          <div class="logo left"><?php $logo = $layout->getLogo(); echo $logo; ?></div>
+          <div class="logo left" style="width: 200px;">
+            <a href="index.php">
+              <?php $logo = $layout->getLogo(); echo $logo; ?></div>
+            </a>
           <div class="login-menu right"><?php $loginmenu = $layout->getLoginMenu($session); echo $loginmenu; ?></div>
           <div class="headline left"><h1><?php $name = $layout->getName(); echo $name; ?></h1></div>
         </div>

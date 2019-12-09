@@ -145,6 +145,46 @@ ul.categories a.activ {
   /* border-bottom: 1px solid #fff; */
   margin-bottom: -1px;
 }
+/*** TABLE ***/
+.section table {
+  border: 1px solid #000;
+  text-align: center;
+}
+/*** WORKLOAD ***/
+#workload {
+  clear: both;
+  margin: 20px 0px;
+  overflow: hidden;
+  width: 100%;
+}
+#workload .wp {
+  clear: both;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+#workload .wp p {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  width: 33px;
+}
+#workload .c100 {
+  border: 1px solid;
+  float: left;
+  overflow: hidden;
+  padding: 3px 0px;
+  width: 700px;
+}
+#workload .dp {
+  background: #ffa500;
+  float: left;
+}
+#workload .vl{
+  background: #32CD32;
+  float: left;
+}
+
 /*** FOOTER ***/
 #footer {
   margin: 20px;
