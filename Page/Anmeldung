@@ -1,0 +1,17 @@
+<script language="JavaScript">
+
+function loadpage(){document.location.href=document.Anmeldung.pswd.value + ".html"}
+
+</script>
+
+LOGINBEREICH<br>
+
+Passwort <br>
+
+<form name="Anmeldung">
+
+<input type=text name=pswd><br><br>
+
+<input type=button value="Absenden" onClick="loadpage()"><br>
+
+</form>

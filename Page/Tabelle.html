@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tabelle</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>	
+</html>
+
+
+
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+      td:first-of-type {vertical-align: middle !important;}     }
+      button[type=submit] {margin: 20px 0 30px;}
+    </style>
+  <body ng-cloak ng-controller="AppController as vm">
+    <div class="container">
+      <form ng-submit="vm.onSubmit()">
+          <table class="table">
+            <tr>
+              <th>#</th>
+              <th>Kurs</th>
+              <th>Soll</th>
+              <th>Ist</th>
+              <th>DepMin</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="order in vm.orders track by $index">
+              <td>{{$index + 1}}</td>
+              <td><input type="text" class="form-control" ng-model="order.Kurs"></td>
+              <td><input type="number" class="form-control" ng-model="order.Soll"></td>
+              <td><input type="number" class="form-control" ng-model="order.Ist"></td>
+              <td><input type="number" class="form-control" ng-model="order.DepMin"></td>
+              <td>
+                <button type="button" class="btn btn-default" ng-click="vm.onAdd()">Kurs hinzufügen</button>
+                <button type="button" class="btn btn-default" ng-click="vm.onDelete($index)" ng-if="!$first">Kurs Löschen</button>
+              </td>
+            </tr>
+          </table>
+          <div>
+             <button type="submit" class="btn btn-primary">Ergebnisse</button>
+          </div>
+      </form>
+
+      <ul class="list-unstyled" ng-if="vm.results">
+        <li>Result</li>
+        <li ng-repeat="order in vm.orders">
+          Kurs: <strong>{{order.Kurs}}</strong>, hours: <strong>{{order.Soll - order.Ist + order.MinDep}}</strong>
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script>
+      angular.module('myApp', [])
+        .controller('AppController', [function() {
+          this.orders = [
+            {customer: '', research: '', design: '', development: ''}
+          ];
+          this.onAdd = function() {
+            this.orders.push({customer: '', research: '', design: '', development: ''});
+          }
+          this.onDelete = function(index) {
+            this.orders.splice(index, 1);
+          }
+          this.onSubmit = function() {
+            this.results = true;
+          }
+        }]);
+  </script>
+  </body>
+</html>
