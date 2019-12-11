@@ -336,7 +336,7 @@ cp:wi_ba a cp:StudyProgram;
 	schema:educationalCredentialAwarded "Bachelor";
 	schema:provider cp:wirtschaft. 
 
-cp:wi_ma cp:StudyProgram;
+cp:wi_ma a cp:StudyProgram;
 	schema:Name "Wirtschaftsinformatik Master";
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:wirtschaft. 
@@ -417,7 +417,7 @@ cp:ManagementOrganisation a cp:Module;
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp:DV-orientiertes Wirtschaftsrecht a cp:Module;
+cp:DVOrientiertesWirtschaftsrecht a cp:Module;
 	schema:Name "DV-orientiertes Wirtschaftsrecht";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";

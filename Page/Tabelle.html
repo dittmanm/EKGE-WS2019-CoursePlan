@@ -11,13 +11,14 @@
 
 <!doctype html>
 <html ng-app="myApp">
-  <head>
+  <header>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style>
-      td:first-of-type {vertical-align: middle !important;}     }
+      td:first-of-type {vertical-align: middle !important;}
       button[type=submit] {margin: 20px 0 30px;}
     </style>
+  </header>
   <body ng-cloak ng-controller="AppController as vm">
     <div class="container">
       <form ng-submit="vm.onSubmit()">

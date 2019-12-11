@@ -33,7 +33,6 @@ a {
 .select {
   width: 500px;
 }
-
 /*** HEADER ***/
 #header {
     border-bottom: 1px solid #7A8B8B;
@@ -139,24 +138,45 @@ ul.categories li a {
   margin-bottom: -1px;
   text-decoration: none;
 }
-
 ul.categories a.activ {
   border: 1px solid #000;
   /* border-bottom: 1px solid #fff; */
   margin-bottom: -1px;
 }
 /*** TABLE ***/
-.section table {
+.section table, th, td {
   border: 1px solid #000;
+  border-collapse: collapse;
   text-align: center;
 }
 /*** WORKLOAD ***/
 #workload {
   clear: both;
-  margin: 20px 0px;
+  margin: 15px 0px;
   overflow: hidden;
+  padding: 5px 0px 20px 0px;
+  position: relative;
   width: 100%;
 }
+#workload .block {
+  border-right: 3px dotted #000;
+  bottom: 0;
+  position: absolute;
+  right: 150px;
+  top: 0;
+}
+#workload .z0, .z5, .z10, .z15, .z20, .z25 {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 35px;
+}
+#workload .z0 { left: calc(00% + 16px) }
+#workload .z5 { left: calc(20% + 6px); }
+#workload .z10 { left: calc(40% - 0px); }
+#workload .z15 { left: calc(60% - 6px); }
+#workload .z20 { left: calc(80% - 12px); }
+#workload .z25 { left: calc(100% - 26px); }
 #workload .wp {
   clear: both;
   overflow: hidden;
@@ -166,7 +186,7 @@ ul.categories a.activ {
 #workload .wp p {
   float: left;
   margin: 0px;
-  padding: 0px;
+  padding: 4px 0px;
   width: 33px;
 }
 #workload .c100 {
@@ -174,7 +194,7 @@ ul.categories a.activ {
   float: left;
   overflow: hidden;
   padding: 3px 0px;
-  width: 700px;
+  width: calc(100% - 35px);
 }
 #workload .dp {
   background: #ffa500;
@@ -184,7 +204,6 @@ ul.categories a.activ {
   background: #32CD32;
   float: left;
 }
-
 /*** FOOTER ***/
 #footer {
   margin: 20px;
