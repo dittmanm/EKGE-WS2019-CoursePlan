@@ -250,72 +250,72 @@ cp:AJ a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Andreas" ;
 	schema:familyName "Johannsen";
-##	cp:contructualHours "10" ;
-##	cp:reductingHours "1" ;
+	cp:contructualHours "10" ;
+	cp:reductingHours "1" ;
 	schema:email "andreas.johannsen(at)th-brandenburg.de" .
 
 cp:FS a schema:Person ;
 	schema:honorificPrefix "*" ;
 	schema:givenName "*" ;
 	schema:familyName "*";
-##	cp:contructualHours "18" ;
-##	cp:reductingHours "0" ;
+	cp:contructualHours "18" ;
+	cp:reductingHours "0" ;
 	schema:email "*" .
 
 cp:IK a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Ivo" ;
 	schema:familyName "Keller";
-##	cp:contructualHours "8" ;
-##	cp:reductingHours "0" ;
+	cp:contructualHours "8" ;
+	cp:reductingHours "0" ;
 	schema:email "ivo.keller(at)th-brandenburg.de" .
 
 cp:JS a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Jochen" ;
 	schema:familyName "Scheeg";
-##	cp:contructualHours "0.5" ;
-##	cp:reductingHours "2" ;
+	cp:contructualHours "0.5" ;
+	cp:reductingHours "2" ;
 	schema:email "jochen.scheeg(at)th-brandenburg.de" .
 
 cp:KJ a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Kai" ;
 	schema:familyName "Jander";
-##	cp:contructualHours "18" ;
-##	cp:reductingHours "2" ;
+	cp:contructualHours "18" ;
+	cp:reductingHours "2" ;
 	schema:email "kai.jander(at)th-brandenburg.de" .
 
 cp:MH a schema:Person ;
 	schema:honorificPrefix "Prof. Dr.-Ing." ;
 	schema:givenName "Michael" ;
 	schema:familyName "Höding";
-##	cp:contructualHours "17" ;
-##	cp:reductingHours "1" ;
+	cp:contructualHours "17" ;
+	cp:reductingHours "1" ;
 	schema:email "michael.hoeding(at)th-brandenburg.de" .
 
 cp:RF a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Robert" ;
 	schema:familyName "Franz";
-##	cp:contructualHours "12" ;
-##	cp:reductingHours "0" ;
+	cp:contructualHours "12" ;
+	cp:reductingHours "0" ;
 	schema:email "robert.franz(at)th-brandenburg.de" .
 
 cp:VM a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Vera" ;
 	schema:familyName "Meister";
-##	cp:contructualHours "14" ;
-##	cp:reductingHours "0" ;
+	cp:contructualHours "14" ;
+	cp:reductingHours "0" ;
 	schema:email "vera.meister(at)th-brandenburg.de" .
 
 cp:WP a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
 	schema:givenName "Winfried" ;
 	schema:familyName "Pfister";
-##	cp:contructualHours "18" ;
-##	cp:reductingHours "12" ;
+	cp:contructualHours "18" ;
+	cp:reductingHours "12" ;
 	schema:email "winfried.pfister(at)th-brandenburg.de" .
 
 ####################
