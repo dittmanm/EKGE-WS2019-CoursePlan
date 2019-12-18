@@ -255,12 +255,12 @@ cp:AJ a schema:Person ;
 	schema:email "andreas.johannsen(at)th-brandenburg.de" .
 
 cp:FS a schema:Person ;
-	schema:honorificPrefix "*" ;
-	schema:givenName "*" ;
-	schema:familyName "*";
+	schema:honorificPrefix "Prof. Dr." ;
+	schema:givenName "Felix" ;
+	schema:familyName "Sasaki";
 	cp:contructualHours "18" ;
 	cp:reductingHours "0" ;
-	schema:email "*" .
+	schema:email "felix.sasaki(a)th-brandenburg.de" .
 
 cp:IK a schema:Person ;
 	schema:honorificPrefix "Prof. Dr." ;
@@ -340,11 +340,6 @@ cp:wi_ma a cp:StudyProgram;
 	schema:Name "Wirtschaftsinformatik Master";
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:wirtschaft. 
-
-cp:secm_ba a cp:StudyProgram;
-	schema:Name "Securitymanagement Bachelor";
-	schema:educationalCredentialAwarded "Bachelor";
-	schema:provider cp:informatik. 
 
 cp:secm_ma a cp:StudyProgram;
 	schema:Name "Securitymanagement Master";
