@@ -346,9 +346,9 @@ cp:secm_ma a cp:StudyProgram;
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:informatik. 
 
-##############
-### MODULE ###
-##############
+###############
+### MODULE ####
+###############
 cp:GrundlagenStatistischerMethoden a cp:Module;
 	schema:Name "Grundlagen statistischer Methoden";
 	schema:timeRequired "6";
