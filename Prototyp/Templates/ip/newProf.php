@@ -1,8 +1,4 @@
-<?php
-  echo 'new prof';
-  $table = $_GET["model"];
-?>
-<h2>Einen neuen Benutzer anlegen</h2>
+<h2>Einen neuen Lehrbauftragten anlegen</h2>
 <div class="new">
   <form action="index.php">
     <p>Name: <input name="familyName" type="text" /></p>

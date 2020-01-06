@@ -101,11 +101,6 @@ class Layout {
    * @return string
    */
   public function getLoginMenu($session=0) {
-//		if($session === 1) {
-//			$menu = array("Logout" => "?model=login&controller=logout");
-//		} else {
-//			$menu = array("Login" => "?model=login&controller=login");
-//		}
     $menu = array("Einstellungen" => "?model=settings&controller=settings");
 		$data = '';
 		$data.= '<ul class="login-menu">';

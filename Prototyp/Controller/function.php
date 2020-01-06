@@ -1,5 +1,7 @@
 <?php
 class Main {
+  protected $prevUrl = 'http://localhost:3030/Test_2_Unip/';
+  
   public function index() {
     global $request;
     print_r($request);
@@ -64,11 +66,33 @@ class Main {
     return $data;
   }
   
-  public function listAction ($table) {
-    $db = new Database();
-    $db->openDatabase();
-    $data = $db->dbSelect($table);
-    return $data;
+  public function queryAction ($data) {
+    $url = $this->prevUrl.'query';
+    $options = array('http' => array(
+      'header'  => ['Content-type: application/sparql-query'],['Accept: application/json'],
+      'method'  => 'POST',
+      'content' => $data
+    ));
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    if ($result === FALSE) { /* Handle error */ }
+    $xml = simplexml_load_string($result);
+    $jsonEn = json_encode($xml);
+    $jsonDe= json_decode($jsonEn,TRUE);
+    $result1 = $jsonDe[results];
+    foreach ($result1[result] as $key2 => $val2) {
+      foreach ($val2['binding'] as $key3 => $val3) {    
+        foreach ($val3 as $key4 => $val4) {
+          $val = '';
+          if (is_array($val4)) {
+            foreach ($val4 as $key5 => $val5) { $key = $val5; }
+          } else { $val = $val4; }
+          $resArr[$key] = $val;
+        }
+      }
+      $finalArr[] = $resArr;
+    }
+    return $finalArr;
   }
   
   public function updateAction ($id,$table) {
@@ -88,13 +112,6 @@ class Main {
     if ($result) {$result = '<p class="success">Das Löschen war erfolgreich.</p>';}
     else {$result = '<p class="error">Das Löschen war NICHT erfolgreich.</p>';}
     return $result;
-  }
-  
-  public function SearchAction ($where,$table) {
-    $db = new Database();
-    $db->openDatabase();
-    $data = $db->dbSelectWhere($table,$where);
-    return $data;
   }
   
   public function getFielddata($table,$request) {

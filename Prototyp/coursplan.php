@@ -13,31 +13,32 @@ WHERE {
 			schema:honorificPrefix ?hon.
 }
 ORDER BY (?fname)';
+
 $options = array(
     'http' => array(
         'header'  => ['Content-type: application/sparql-query'],['Accept: application/json'],
         'method'  => 'POST',
-        //'content' => http_build_query($data)
         'content' => $data
     )
 );
-print('test 1');
 
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 if ($result === FALSE) { /* Handle error */ }
 $xml = simplexml_load_string($result);
-$json = json_encode($xml);
-$array = json_decode($json,TRUE);
-print('test 2');
-
-$result1 = $array[results];
-print('test 3');
-
-$result2 = $result1[result];
-print_r($result2);
-print('test 4');
-
-foreach ($result2 as $key => $value) {
-  
+$jsonEn = json_encode($xml);
+$jsonDe= json_decode($jsonEn,TRUE);
+$result1 = $jsonDe[results];
+foreach ($result1[result] as $key2 => $val2) {
+  foreach ($val2['binding'] as $key3 => $val3) {    
+    foreach ($val3 as $key4 => $val4) {
+      $val = '';
+      if (is_array($val4)) {
+        foreach ($val4 as $key5 => $val5) { $key = $val5; }
+      } else { $val = $val4; }
+      $resArr[$key] = $val;
+    }
+  }
+  $finalArr[] = $resArr;
 }
+print_r($finalArr);
