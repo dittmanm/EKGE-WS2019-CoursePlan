@@ -17,6 +17,20 @@ function deleteActiv () {
 }
 
 $(document).ready(function(){
+    $(".post").on("click",function(){
+        $.ajax({
+            url: "http://www.yourwebsite.com/page.php",
+            type: "POST",
+            data: { name: "John", location: "Boston" },
+            success: function(){
+                  //do action  
+            },
+            error: function(){
+                  // do action
+            }
+        });
+    });
+
   $('.section a.math').bind('click', function(e) {
     clearAll(e);
     console.log('a.math');
@@ -41,4 +55,5 @@ $(document).ready(function(){
     $('.section .other-group').show();
     $('.section a.other').addClass('activ');
   });
+  
 });

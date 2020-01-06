@@ -1,0 +1,6 @@
+session => Zur Auswahl von Wintersemester oder Sommersemester
+   WS => 1
+   SS => 2
+   0 => nichts ausgewählt -> Automatische Auswahl durch Monat
+
+ip => 

@@ -23,8 +23,7 @@ class Layout {
       "5. Semester" => "?model=cp&controller=bwl_ma&season=5S"  
     );
     $dp = array(
-      "Sommersemester" => "?model=ip&controller=ip&season=WS",
-      "Wintersemester" => "?model=ip&controller=ip&season=SS"
+      "Dozentenplanung" => "?model=ip&controller=ip"
     );
     
     $menu = array(
@@ -32,7 +31,7 @@ class Layout {
 			"WI Master" => $wi_ma,
       "BWL Bachelor" => $bwl_ba,
       "BWL Master" => $bwl_ma,
-      "Dozentenplanung" => $dp
+      "Einstellungen" => $dp
 		);
     return $menu;
   }
@@ -55,8 +54,7 @@ class Layout {
       "4. Semester" => "?model=cp&controller=bwl_ma&season=4S"  
     );
     $dp = array(
-      "Sommersemester" => "?model=ip&controller=ip&season=WS",
-      "Wintersemester" => "?model=ip&controller=ip&season=SS"
+      "Dozentenplanung" => "?model=ip&controller=ip"
     );
     
     $menu = array(
@@ -64,20 +62,27 @@ class Layout {
 			"WI Master" => $wi_ma,
       "BWL Bachelor" => $bwl_ba,
       "BWL Master" => $bwl_ma,
-      "Dozentenplanung" => $dp
+      "Einstellungen" => $dp
 		);
     return $menu;
   }
   
   /**
    * Create Menu for all Users
+   * WS => 1
+   * SS => 2
+   * 0 => Automatische Auswahl durch Monat
    * @return string
    */
-  public function getMenu($season=1) {
-		if($season === 1) {
+  public function getMenu($session) {
+		if($session === 1) {
+			$menu = $this->getWsMenu();
+		} elseif($session === 2) {
 			$menu = $this->getSsMenu();
 		} else {
-			$menu = $this->getWsMenu();
+      //$datum = date("n");
+      if((date("n") > 3) AND (date("n") < 10)) { $menu = $this->getWsMenu(); }
+      else { $menu = $this->getSsMenu(); }
 		}
 		$data = '';
     $data.= '<ul class="menu">';
