@@ -1,7 +1,9 @@
 <?php
-  //global $request;
-  //$season = $request['season'];
-  $season = $_GET['season'];
+  global $request;
+  $season = $request['season'];
+  
+  
+  
   if ($season === '1S') {$text = '1. Semester';}
   elseif ($season === '2S') {$text = '2. Semester';}
   elseif ($season === '3S') {$text = '3. Semester';}
@@ -19,6 +21,7 @@
   <tr><td><a href=""><img src="images/edit-icon.png" width="15px" /></a></td><td>Englisch anwenden WI</td><td>6</td><td>6</td><td>0</td><td>RF</td><td>4</td><td></td><td></td><td></td><td></td></tr>
   <tr><td><a href=""><img src="images/edit-icon.png" width="15px" /></a></td><td>Datenbanken - Modell + Struktur</td><td>8</td><td>3</td><td>-5</td><td>MH</td><td>2</td><td></td><td></td><td></td><td></td></tr>
 </table>
+
 <div id="workload">
   <div class="block"></div>
   <div class="z0">0</div>

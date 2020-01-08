@@ -1,14 +1,14 @@
 <?php
-class InstructorPerson {
+class CoursPlan {
   protected $result;
     public function getFielddata () {
-    $id = $request["id"];
-    $givenName = $request["givenName"];
-    $familyName = $request["familyName"];
-    $honorificPrefix = $request["honorificPrefix"];
-    $email = $request["email"];
-    $contructualHours = $request["contructualHours"];
-    $reductingHours = $request["reductingHours"];
+    $id = $_GET["id"];
+    $givenName = $_GET["givenName"];
+    $familyName = $_GET["familyName"];
+    $honorificPrefix = $_GET["honorificPrefix"];
+    $email = $_GET["email"];
+    $contructualHours = $_GET["contructualHours"];
+    $reductingHours = $_GET["reductingHours"];
     
     $fielddata = array(
         "id" => $id, 
@@ -40,7 +40,6 @@ class InstructorPerson {
       ORDER BY (?familyName)';
     return $data;
   }
-  
   public function valuesAction($values = '') {
     echo 'valuesAction';
     //VALUES (?givenName ?familyName) {('Robert' 'Franz')}
@@ -64,7 +63,6 @@ class InstructorPerson {
       ORDER BY (?familyName)';
     return $data;
   }
-  
   public function filterAction($filter = '') {
     echo 'filterAction';
     //FILTER ( ?name LIKE "Wirtschaftsinformatik" )

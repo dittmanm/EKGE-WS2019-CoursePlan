@@ -1,9 +1,12 @@
 <?php
-  $id = $_GET["id"];
-  $table = $_GET["model"];
+  $id = $request["id"];
+  $givenName = $request["givenName"];
+  $familyName = $request["familyName"];
+  $person = new InstructorPerson();
+  $data = $person->valuesAction($id);
   $main = new Main();
-  $data = $main->detailAction($id,$table);
-  foreach ($data as $attribute) {
+  $list = $main->queryAction($data);
+  foreach ($list as $attribute) {
 ?>
 <h2>Einen neuen Lehrbauftragten anlegen</h2>
 <div class="new">
@@ -20,4 +23,4 @@
     <p><input value="SPEICHERN" name="button" type="submit"></p>
   </form>
 </div>
-  <?php } ?>
+<?php } ?>

@@ -6,17 +6,18 @@
 ?>
 <h2>Dozenten Planung</h2>
 <table>
-  <tr><th>Dozenten</th> <th>Dep.</th> <th>Mind</th> <th></th><th></th></tr>
+  <tr><th></th><th>Dozenten</th> <th>Dep.</th><th>Mind.</th><th>E-Mail</th><th></th><th></th></tr>
   <?php foreach($list as $arr) {
     //print_r($arr);
-    echo '<tr><td>'.$arr['familyName'].', '.$arr['givenName'].'</td>';
-    echo '<td>'.$arr['honorificPrefix'].'</td>';
-    echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']).'</td>';
+    echo '<tr><td>'.$arr['honorificPrefix'].'</td>';
+    echo '<td>'.$arr['givenName'].' '.$arr['familyName'].'</td>';
+    echo '<td>'.$arr['contructualHours'].'</td>';
+    echo '<td>'.$arr['reductingHours'].'</td>';
+    echo '<td>'.$arr['email'].'</td>';
+    //echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']).'</td>';
     echo '<td>bearbeiten</td></tr>';
     echo '<td>löschen</td></tr>';
     }
   ?>
 </table>
-<p>
-  <a href="?model=ip&controller=newProf">Neuer Lehrbeauftragter</a>
-</p>
+<p><a href="?model=ip&controller=newProf">Neuer Lehrbeauftragter</a></p>

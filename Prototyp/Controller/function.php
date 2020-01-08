@@ -1,6 +1,6 @@
 <?php
 class Main {
-  protected $prevUrl = 'http://localhost:3030/Test_2_Unip/';
+  protected $prevUrl = 'http://localhost:3030/Test_3_Unip/';
   
   public function index() {
     global $request;
@@ -19,9 +19,7 @@ class Main {
     return $data;
   }
   
-  /**
-   * Search for Session
-   */
+  /** Search for Session **/
   public function checkSession() {
     global $request;
     if(isset($request['session'])) {
@@ -73,6 +71,7 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
+    //print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
