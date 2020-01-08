@@ -34,7 +34,7 @@
         </div>
         <div id="menu">
           <form class="switchbtn">
-            <button formmethod="post" name="session" value="SS">SS</button>
+            <button formmethod="post" name="session" value="SS">SoSe</button>
             <button formmethod="post" name="session" value="WS">WS</button>
           </form>
           <div class="first-menu"><?php $menu = $layout->getMenu($session); echo $menu; ?></div>

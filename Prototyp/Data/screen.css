@@ -4,6 +4,12 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+body {
+ background-image: url("");
+ background-color: #cccccc;
+}
+
 ul {
 	list-style: none;
 }
@@ -13,7 +19,10 @@ ul {
   margin: 0px auto;
   overflow: hidden;
   width: 1024px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
 }
+
 .left {
   float: left;
 }
@@ -35,12 +44,13 @@ a {
 }
 /*** HEADER ***/
 #header {
-    border-bottom: 1px solid #7A8B8B;
+    border-bottom: 1px solid #ffffff;
   clear: both;
   overflow: hidden;
 }
 #header .logo {
-  margin: 15px;
+  margin-top: 30px;
+  margin-left: 20px;
   width: 200px;
 }
 #header .login-menu {
@@ -53,12 +63,16 @@ a {
 	margin: 10px;
 }
 #header .headline {
-  color: #7A8B8B;
+  color: #000000;
   margin: 35px 20px;
 }
 #header .headline h1 {
-	margin: 0px;
+	background-color: ;
+	margin-left: 42px;
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	padding: 5px;
 }
+
 #header .first-menu {
   background: #7A8B8B;
   clear: both;
@@ -66,15 +80,20 @@ a {
 }
 /*** MENU ***/
 #menu {
-  background-color: #2F4F4F;
-  border-right: 1px solid #7A8B8B;
+  background-color: #CC082f;
+  border-right: 1px solid #ffffff;
   clear: both;
   float: left;
   overflow: hidden;
-  width: 200px;
+  width: 220px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-top: 20px;
+  height: 460px;
+	
 }
 #menu .menu-first {
-    
+
 }
 #menu ul.menu {
   overflow: hidden;
@@ -82,13 +101,14 @@ a {
   margin: 0px;
 }
 #menu ul.menu li {
-  color: #BEBEBE;
+  color: #ffffff;
   float: left;
   padding: 0px;
   margin: 10px 20px;
 }
 #menu ul.submenu {
   overflow: hidden;
+  color: #ffffff;
   padding: 0px;
   margin: 0px;
   margin-left: 15px;
@@ -99,14 +119,26 @@ a {
   margin: 0px;
 }
 #menu ul.menu a {
-  color: #BEBEBE;
+  color: #EDEDED;
 }
+
+#menu ul.menu a:hover {
+  color: #FFB91A;
+}
+
+#switchbtn {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+
 /*** MAIN ***/
 #content {
   overflow: hidden;
 }
 #content .section {
   padding: 0px 20px;
+  margin-left: 30px;
 }
 .search {
   margin-top: 10px;
@@ -145,7 +177,7 @@ ul.categories a.activ {
 }
 /*** TABLE ***/
 .section table, th, td {
-  border: 1px solid #000;
+  border: 1px solid #BEBEBE;
   border-collapse: collapse;
   text-align: center;
 }
@@ -206,6 +238,12 @@ ul.categories a.activ {
 }
 /*** FOOTER ***/
 #footer {
-  margin: 20px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-right: 20px;
   overflow: hidden;
+  position:absolute;
+  bottom: 0;
+  width: 100%;
 }
