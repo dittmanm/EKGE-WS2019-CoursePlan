@@ -1,27 +1,31 @@
 <?php
   global $request;
-  $season = $request['season'];
-    
-  if ($season === '1S') {$text = '1. Semester';}
-  elseif ($season === '2S') {$text = '2. Semester';}
-  elseif ($season === '3S') {$text = '3. Semester';}
-  elseif ($season === '4S') {$text = '4. Semester';}
-  elseif ($season === '5S') {$text = '5. Semester';}
-  $values = '\''.$text.'\' cp:'.$request['controller'];
+  if ($request['season'] === '1S') {$text = '1. Semester';}
+  elseif ($request['season'] === '2S') {$text = '2. Semester';}
+  elseif ($request['season'] === '3S') {$text = '3. Semester';}
+  elseif ($request['season'] === '4S') {$text = '4. Semester';}
+  elseif ($request['season'] === '5S') {$text = '5. Semester';}
+  $values = '\''.$text.'\' cp:'.$request['sp'];
   $cp = new CoursPlan();
-  $data = $cp->valuesAction($values);
+  $dataCp = $cp->valuesAction($values);
   $main = new Main();
-  $list = $main->queryAction($data);
+  $list = $main->queryAction($dataCp);
+  $sp = new StudyProgram();
+  $dataSp = $sp->filterAction('cp:'.$request['sp']);
+  $splsit = $main->queryAction($dataSp);
+  foreach($splsit as $arr) {
+    echo '<h2>'.$arr['name'].'</h2>';
+  }
 ?>
-<h2>Wirtschaftsinformatik Bachelor</h2>
 <h3><?php echo $text; ?></h3>
 <table>
   <tr><th>&nbsp;</th><th>Module</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Doz 1</th><th>SWS 1</th><th>Doz 2</th><th>SWS 2</th><th>Doz 3</th><th>SWS 3</th></tr>
   <?php  
+  //print_r($list);
   foreach($list as $arr) {
     echo '<tr>';
     echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
-    echo '<td>'.$arr['Name'].'</td>';
+    echo '<td>'.$arr['name'].'</td>';
     echo '<td>'.$arr['timeRequired'].'</td>';
     echo '<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>';
     echo '</tr>';

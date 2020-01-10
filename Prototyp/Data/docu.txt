@@ -5,3 +5,4 @@ session => Zur Auswahl von Wintersemester oder Sommersemester
 
 ip => Instructor Person
 cp => Cours Plan
+sp => Study Program

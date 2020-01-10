@@ -78,22 +78,44 @@ class Main {
     $xml = simplexml_load_string($result);
     $jsonEn = json_encode($xml);
     $jsonDe= json_decode($jsonEn,TRUE);
-    $result1 = $jsonDe[results];
-    foreach ($result1[result] as $key2 => $val2) {
-      foreach ($val2['binding'] as $key3 => $val3) {    
-        foreach ($val3 as $key4 => $val4) {
-          $val = '';
-          if (is_array($val4)) {
-            foreach ($val4 as $key5 => $val5) { $key = $val5; }
-          } else { $val = $val4; }
-          $resArr[$key] = $val;
-        }
+    $result1 = $jsonDe['results'];
+    foreach ($result1['result'] as $key2 => $val2) {
+      if (isset($val2['binding'])) {
+        $resArr = $this->readBinding($val2);
+      } else {
+        $resArr = $this->readAttributes($val2);
       }
       $finalArr[] = $resArr;
     }
     return $finalArr;
   }
   
+  public function readBinding($a) {
+    foreach ($a['binding'] as $key3 => $val3) {
+      foreach ($val3 as $key4 => $val4) {
+        $val = '';
+        if (is_array($val4)) {
+          foreach ($val4 as $key5 => $val5) { $key = $val5; }
+        } else { $val = $val4; }
+        $resultArr[$key] = $val;
+      }
+    }
+    return $resultArr;
+  }
+  
+  public function readAttributes($a) {
+    foreach ($a as $key3 => $val3) {
+      foreach ($val3 as $key4 => $val4) {
+        $val = '';
+        if (is_array($val4)) {
+          foreach ($val4 as $key5 => $val5) { $key = $val5; }
+        } else { $val = $val4; }
+        $resultArr[$key] = $val;
+      }
+    }
+    return $resultArr;
+  }
+
   public function updateAction ($id,$table) {
     $fielddata = $this->getFielddata($table);
     $db = new Database();
@@ -125,7 +147,26 @@ class Main {
           "contructualHours"=>$request['contructualHours'],
           "reductingHours"=>$request['reductingHours']
       );
-    break; 
+    break;
+    case 'cp': //coursPlan
+      $fielddata = array(
+        "id" => $request["id"], 
+        "semesterSeason" => $request["semesterSeason"],
+        "Name" => $request["name"],
+        "startDate" => $request["startDate"],
+        "timeRequired" => $request["timeRequired"],
+        "isPartOf" => $request["isPartOf"]
+      );
+    break;
+    case 'sp': //studyProgram
+      $fielddata = array(
+        "id" => $request["id"], 
+        "Name" => $request["name"],
+        "educationalCredentialAwarded" => $request["educationalCredentialAwarded"],
+        "timeRequired" => $request["timeRequired"],
+        "provider" => $request["provider"]
+      );
+    break;
     default :
       echo 'No Table found. [function]';
     break;

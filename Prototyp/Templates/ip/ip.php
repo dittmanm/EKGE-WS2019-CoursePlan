@@ -15,8 +15,8 @@
     echo '<td>'.$arr['reductingHours'].'</td>';
     echo '<td>'.$arr['email'].'</td>';
     //echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']).'</td>';
-    echo '<td>bearbeiten</td></tr>';
-    echo '<td>löschen</td></tr>';
+    echo '<td><img src="images/edit-icon.png" width="15px" /></td>';
+    echo '<td>L</td></tr>';
     }
   ?>
 </table>
