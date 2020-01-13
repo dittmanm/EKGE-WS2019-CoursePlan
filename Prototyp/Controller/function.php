@@ -46,24 +46,6 @@ class Main {
 		return $result;
   }
   
-  public function newAction ($table) {
-    $fielddata = $this->getFielddata($table);
-    $db = new Database();
-    $db->openDatabase();
-    $result = $db->dbInsert($table,$fielddata);
-    if ($result) {$result = '<p class="success">Das Anlegen war erfolgreich.<br />';}
-    else {$result = '<p class="error">Das Anlegen war NICHT erfolgreich.<br />';}
-    return $result;
-  }
-  
-  public function detailAction ($id,$table) {
-    $where = 'id = '.$id;
-    $db = new Database();
-    $db->openDatabase();
-    $data = $db->dbSelectWhere($table,$where);
-    return $data;
-  }
-  
   public function queryAction ($data) {
     $url = $this->prevUrl.'query';
     $options = array('http' => array(
@@ -131,12 +113,16 @@ class Main {
   }
   
   //http://localhost:3030/MyDataset/sparql
-  public function deleteAction ($id,$table) {
-    $db = new Database();
-    $db->openDatabase();
-    $result = $db->dbDelete($table,$id);
-    if ($result) {$result = '<p class="success">Das Löschen war erfolgreich.</p>';}
-    else {$result = '<p class="error">Das Löschen war NICHT erfolgreich.</p>';}
+  public function deleteAction ($data) {
+    $url = $this->prevUrl.'sparql';
+    $options = array('http' => array(
+      'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],
+      'method'  => 'POST',
+      'content' => $data
+    ));
+    //print_r($options);
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
     return $result;
   }
   
