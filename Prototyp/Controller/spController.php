@@ -22,7 +22,7 @@ class StudyProgram {
       SELECT ?id ?name ?educationalCredentialAwarded ?provider
       WHERE { 
         ?id a cp:StudyProgram ;
-        schema:Name ?name ;
+        schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
       } ORDER BY (?name)';
@@ -30,7 +30,7 @@ class StudyProgram {
   }
   
   public function valuesAction($values = '') {
-    echo 'valuesAction';
+    //echo 'valuesAction';
     //VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
     $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
     $data = 'PREFIX schema: <https://schema.org/>
@@ -41,7 +41,7 @@ class StudyProgram {
       SELECT ?id ?name ?educationalCredentialAwarded ?provider
       WHERE { 
         ?id a cp:StudyProgram ;
-        schema:Name ?name ;
+        schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
         '.$values.'
@@ -50,7 +50,7 @@ class StudyProgram {
   }
   
   public function filterAction($filter = '') {
-    echo 'filterAction';
+    //echo 'filterAction';
     $filter = 'FILTER (?id = '.$filter.')';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -60,7 +60,7 @@ class StudyProgram {
       SELECT ?id ?name ?educationalCredentialAwarded ?provider
       WHERE { 
         ?id a cp:StudyProgram ;
-        schema:Name ?name ;
+        schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
         '.$filter.'

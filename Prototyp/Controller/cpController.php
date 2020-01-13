@@ -24,7 +24,7 @@ class CoursPlan {
       WHERE { 
         ?id a cp:Module ;
               cp:semesterSeason ?semesterSeason ;
-              schema:Name ?name ;
+              schema:name ?name ;
               schema:isPartOf ?isPartOf ;
               schema:startDate ?startDate ;
               schema:timeRequired ?timeRequired.
@@ -33,7 +33,7 @@ class CoursPlan {
   }
   
   public function valuesAction($values = '') {
-    echo 'valuesAction';
+    //echo 'valuesAction';
     //VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
     $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
     $data = 'PREFIX schema: <https://schema.org/>
@@ -45,7 +45,7 @@ class CoursPlan {
       WHERE { 
         ?id a cp:Module ;
           cp:semesterSeason ?semesterSeason ;
-          schema:Name ?name ;
+          schema:name ?name ;
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
           schema:timeRequired ?timeRequired.
@@ -55,7 +55,7 @@ class CoursPlan {
   }
   
   public function filterAction($filter = '') {
-    echo 'filterAction';
+    //echo 'filterAction';
     //FILTER ( ?name LIKE "Wirtschaftsinformatik" )
     $filter = 'FILTER (?id LIKE '.$filter.')';
     $data = 'PREFIX schema: <https://schema.org/>
@@ -67,7 +67,7 @@ class CoursPlan {
       WHERE { 
         ?id a cp:Module ;
           cp:semesterSeason ?semesterSeason ;
-          schema:Name ?name ;
+          schema:name ?name ;
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
           schema:timeRequired ?timeRequired.

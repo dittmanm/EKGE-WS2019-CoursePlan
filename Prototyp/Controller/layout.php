@@ -23,7 +23,8 @@ class Layout {
       "5. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=5S"  
     );
     $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip"
+      "Dozentenplanung" => "?model=ip&controller=ip",
+      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
     );
     
     $menu = array(
@@ -42,19 +43,18 @@ class Layout {
       "4. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=4S"  
 		);
    	$wi_ma = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=2S",
-      "4. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=2S" 
 		);
     $bwl_ba = array(
 			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=2S",
       "4. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=4S"  
     );
     $bwl_ma = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=2S",
-      "4. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=2S"  
     );
     $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip"
+      "Dozentenplanung" => "?model=ip&controller=ip",
+      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
     );
     
     $menu = array(

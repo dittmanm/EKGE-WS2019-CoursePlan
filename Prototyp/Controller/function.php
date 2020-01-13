@@ -1,6 +1,6 @@
 <?php
 class Main {
-  protected $prevUrl = 'http://localhost:3030/Test_3_Unip/';
+  protected $prevUrl = 'http://localhost:3030/Test_4_Unip/';
   
   public function index() {
     global $request;
@@ -115,16 +115,21 @@ class Main {
     }
     return $resultArr;
   }
+  
   //http://localhost:3030/MyDataset/update
-  public function updateAction ($id,$table) {
-    $fielddata = $this->getFielddata($table);
-    $db = new Database();
-    $db->openDatabase();
-    $result = $db->dbUpdate($table,$fielddata,$id);
-    if ($result) {$result = '<p class="success">Das Speichern war erfolgreich.</p>';}
-    else {$result = '<p class="error">Das Speichern war NICHT erfolgreich.</p>';}
+  public function updateAction ($data) {
+    $url = $this->prevUrl.'update';
+    $options = array('http' => array(
+      'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],
+      'method'  => 'POST',
+      'content' => $data
+    ));
+    //print_r($options);
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
     return $result;
   }
+  
   //http://localhost:3030/MyDataset/sparql
   public function deleteAction ($id,$table) {
     $db = new Database();
@@ -152,7 +157,7 @@ class Main {
       $fielddata = array(
         "id" => $request["id"], 
         "semesterSeason" => $request["semesterSeason"],
-        "Name" => $request["name"],
+        "name" => $request["name"],
         "startDate" => $request["startDate"],
         "timeRequired" => $request["timeRequired"],
         "isPartOf" => $request["isPartOf"]
@@ -161,7 +166,7 @@ class Main {
     case 'sp': //studyProgram
       $fielddata = array(
         "id" => $request["id"], 
-        "Name" => $request["name"],
+        "name" => $request["name"],
         "educationalCredentialAwarded" => $request["educationalCredentialAwarded"],
         "timeRequired" => $request["timeRequired"],
         "provider" => $request["provider"]
