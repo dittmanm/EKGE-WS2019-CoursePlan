@@ -115,7 +115,7 @@ class Main {
     }
     return $resultArr;
   }
-
+  //http://localhost:3030/MyDataset/update
   public function updateAction ($id,$table) {
     $fielddata = $this->getFielddata($table);
     $db = new Database();
@@ -125,7 +125,7 @@ class Main {
     else {$result = '<p class="error">Das Speichern war NICHT erfolgreich.</p>';}
     return $result;
   }
-  
+  //http://localhost:3030/MyDataset/sparql
   public function deleteAction ($id,$table) {
     $db = new Database();
     $db->openDatabase();

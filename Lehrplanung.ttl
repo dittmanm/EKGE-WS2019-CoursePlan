@@ -538,212 +538,212 @@ cp:Semesterarbeit_II a cp:Module;
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:secm_ma. 
 
-cp: Systemanalyse a cp:Module;
+cp:Systemanalyse a cp:Module;
 	schema:name "Systemanalyse";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-   	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: AlgorithmenundDatenstrukturen a cp:Module;
+cp:AlgorithmenundDatenstrukturen a cp:Module;
 	schema:name "Algorithmen und Datenstrukturen";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: GrundlagenderBWL a cp:Module;
+cp:GrundlagenderBWL a cp:Module;
 	schema:name "Grundlagen der BWL";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: GrundlagenundWirkungderWirtschaftsinformatik a cp:Module;
+cp:GrundlagenundWirkungderWirtschaftsinformatik a cp:Module;
 	schema:name "Grundlagen und Wirkung der Wirtschaftsinformatik";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: GrundlagenderWirtschaftsundFinanzmathematik a cp:Module;
+cp:GrundlagenderWirtschaftsundFinanzmathematik a cp:Module;
 	schema:name "Grundlagen der Wirtschafts- und Finanzmathematik";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: ProjektstudiumundWissenschaftlichesArbeiten a cp:Module;
+cp:ProjektstudiumundWissenschaftlichesArbeiten a cp:Module;
 	schema:name "Projektstudium und Wissenschaftliches Arbeiten";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: Softwareengineering a cp:Module;
+cp:Softwareengineering a cp:Module;
 	schema:name "Softwareengineering";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: ProjektmanagementundsozialeKompetenzen a cp:Module;
+cp:ProjektmanagementundsozialeKompetenzen a cp:Module;
 	schema:name "Projektmanagement und soziale Kompetenzen";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: Datenbanken-AnwendungundEntwicklung a cp:Module;
+cp:Datenbanken-AnwendungundEntwicklung a cp:Module;
 	schema:name "Datenbanken - Anwendung und Entwicklung";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: UsabilityundSoftware-Ergonomie a cp:Module;
+cp:UsabilityundSoftware-Ergonomie a cp:Module;
 	schema:name "Usability und Software-Ergonomie";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: BetriebssystemeundNetzwerke a cp:Module;
+cp:BetriebssystemeundNetzwerke a cp:Module;
 	schema:name "Betriebssysteme und Netzwerke";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: GruendungsbezogeneBWL a cp:Module;
+cp:GruendungsbezogeneBWL a cp:Module;
 	schema:name "Gründungsbezogene BWL";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: GrundlagenderVWL a cp:Module;
+cp:GrundlagenderVWL a cp:Module;
 	schema:name "Grundlagen der VWL";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: DatenschutzundSicherheit a cp:Module;
+cp:DatenschutzundSicherheit a cp:Module;
 	schema:name "Datenschutz und Sicherheit";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: Produktion,LogistikundVertrieb a cp:Module;
+cp:ProduktionLogistikundVertrieb a cp:Module;
 	schema:name "Produktion, Logistik und Vertrieb";
-	schema:timeRequired „7“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "7";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: Softwareauswahlundanpassung a cp:Module;
+cp:Softwareauswahlundanpassung a cp:Module;
 	schema:name "Softwareauswahl und -anpassung";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
-cp: Buchfuehrung a cp:Module;
+cp:Buchfuehrung a cp:Module;
 	schema:name "Buchführung";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Wirtschaftsenglisch a cp:Module;
+cp:Wirtschaftsenglisch a cp:Module;
 	schema:name "Wirtschaftsenglisch";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Wirtschaftsrecht a cp:Module;
+cp:Wirtschaftsrecht a cp:Module;
 	schema:name "Wirtschaftsrecht";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Volkswirtschaftslehre1 a cp:Module;
+cp:Volkswirtschaftslehre1 a cp:Module;
 	schema:name "Volkswirtschaftslehre 1";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: GrundlagenunternehmerischenHandelns a cp:Module;
+cp:GrundlagenunternehmerischenHandelns a cp:Module;
 	schema:name "Grundlagen unternehmerischen Handelns";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: MathematikStatistik1 a cp:Module;
+cp:MathematikStatistik1 a cp:Module;
 	schema:name "Mathematik/Statistik 1";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    schema:startDate „1. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+    schema:startDate "1. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: ControllingundRisikomanagement a cp:Module;
+cp:ControllingundRisikomanagement a cp:Module;
 	schema:name "Controlling und Risikomanagement";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: ProduktionsundMaterialwirtschaft a cp:Module;
+cp:ProduktionsundMaterialwirtschaft a cp:Module;
 	schema:name "Produktions- und Materialwirtschaft";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+    schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Marketing a cp:Module;
+cp:Marketing a cp:Module;
 	schema:name "Marketing";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: FinanzierungundInvestition a cp:Module;
+cp:FinanzierungundInvestition a cp:Module;
 	schema:name "Finanzierung und Investition";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Projektmanagement a cp:Module;
+cp:Projektmanagement a cp:Module;
 	schema:name "Projektmanagement";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: Wirtschaftsinformatik1 a cp:Module;
+cp:Wirtschaftsinformatik1 a cp:Module;
 	schema:name "Wirtschaftsinformatik 1";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „3. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: StudiumGenerale2 a cp:Module;
+cp:StudiumGenerale2 a cp:Module;
 	schema:name "Studium Generale 2";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
-cp: GruendungsmanagementundNachfolge a cp:Module;
+cp:GruendungsmanagementundNachfolge a cp:Module;
 	schema:name "Gründungsmanagement und Nachfolge";
-	schema:timeRequired „4“;
-	cp:semesterSeason „WiSe";
-    	schema:startDate „5. Semester";   
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
 	schema:isPartOf cp:bwl_ba. 
