@@ -1,22 +1,31 @@
 <?php
   $person = new InstructorPerson();
-  $data = $person->listAction();
   $main = new Main();
-  $list = $main->queryAction($data);
+  global $request;
+  if($request['action'] === 'create') {
+    if(($request['givenname'] != NULL) && ($request['familyname'] != NULL)) {
+      $res = $main->updateAction($person->insertAction());
+      echo 'RESULT: ';
+      print_r($res);
+    }
+  }
+  $list = $main->queryAction($person->listAction());
 ?>
 <h2>Dozenten Planung</h2>
 <table>
-  <tr><th>Dozenten</th> <th>Dep.</th> <th>Mind</th> <th></th><th></th></tr>
+  <tr><th></th><th>Dozenten</th> <th>Dep.</th><th>Mind.</th><th>E-Mail</th><th></th><th></th></tr>
   <?php foreach($list as $arr) {
-    //print_r($arr);
-    echo '<tr><td>'.$arr['familyName'].', '.$arr['givenName'].'</td>';
+    $id = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']);
+    echo '<tr>';
     echo '<td>'.$arr['honorificPrefix'].'</td>';
-    echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']).'</td>';
-    echo '<td>bearbeiten</td></tr>';
-    echo '<td>löschen</td></tr>';
+    echo '<td>'.$arr['givenName'].' '.$arr['familyName'].'</td>';
+    echo '<td>'.$arr['contructualHours'].'</td>';
+    echo '<td>'.$arr['reductingHours'].'</td>';
+    echo '<td>'.$arr['email'].'</td>';
+    echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+    echo '<td><a href="?model=ip&controller=detailProf&id='.$id.'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+    echo '</tr>';
     }
   ?>
 </table>
-<p>
-  <a href="?model=ip&controller=newProf">Neuer Lehrbeauftragter</a>
-</p>
+<p><a href="?model=ip&controller=newProf">Neuer Lehrbeauftragter</a></p>

@@ -11,5 +11,6 @@
     <input type='hidden' name="controller" value="ip" />
     <input type='hidden' name="action" value="create" />
     <p><input value="SPEICHERN" name="button" type="submit"></p>
+    <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
   </form>
 </div>

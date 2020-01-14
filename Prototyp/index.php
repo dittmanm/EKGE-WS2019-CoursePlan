@@ -2,12 +2,15 @@
   session_start();
   $request = array_merge($_GET, $_POST);
   //print_r($request);
-  
+
   include_once("Controller/ipController.php");
+  include_once("Controller/cpController.php");
+  include_once("Controller/spController.php");
+  //include_once("Controller/mpController.php");
   include_once("Controller/content.php");
   include_once("Controller/function.php");
   include_once("Controller/layout.php");
-  
+
   $layout = new Layout();
   $content = new Content();
   $main = new Main();
@@ -34,7 +37,7 @@
         </div>
         <div id="menu">
           <form class="switchbtn">
-            <button formmethod="post" name="session" value="SS">SoSe</button>
+            <button formmethod="post" name="session" value="SS">SS</button>
             <button formmethod="post" name="session" value="WS">WS</button>
           </form>
           <div class="first-menu"><?php $menu = $layout->getMenu($session); echo $menu; ?></div>

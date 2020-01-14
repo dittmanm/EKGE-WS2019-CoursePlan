@@ -3,27 +3,28 @@ class Layout {
 		
 	public function getWsMenu() {
    	$wi_ba = array(
-			"1. Semester" => "?model=cp&controller=wi_ba&season=1S",
-      "3. Semester" => "?model=cp&controller=wi_ba&season=3S",
-      "5. Semester" => "?model=cp&controller=wi_ba&season=5S"  
+			"1. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=1S",
+      "3. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=3S",
+      "5. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=5S"  
 		);
    	$wi_ma = array(
-			"1. Semester" => "?model=cp&controller=wi_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=wi_ma&season=3S",
-      "5. Semester" => "?model=cp&controller=wi_ma&season=5S"  
+			"1. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=1S",
+      "3. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=3S",
+      "5. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=5S"  
 		);
     $bwl_ba = array(
-			"1. Semester" => "?model=cp&controller=bwl_ba&season=1S",
-      "3. Semester" => "?model=cp&controller=bwl_ba&season=3S",
-      "5. Semester" => "?model=cp&controller=bwl_ba&season=5S"  
+			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=1S",
+      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=3S",
+      "5. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=5S"  
     );
     $bwl_ma = array(
-			"1. Semester" => "?model=cp&controller=bwl_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=bwl_ma&season=3S",
-      "5. Semester" => "?model=cp&controller=bwl_ma&season=5S"  
+			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=1S",
+      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=3S",
+      "5. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=5S"  
     );
     $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip"
+      "Dozentenplanung" => "?model=ip&controller=ip",
+      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
     );
     
     $menu = array(
@@ -38,23 +39,22 @@ class Layout {
 	
   public function getSsMenu() {
    	$wi_ba = array(
-			"2. Semester" => "?model=cp&controller=wi_ba&season=2S",
-      "4. Semester" => "?model=cp&controller=wi_ba&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=2S",
+      "4. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=4S"  
 		);
    	$wi_ma = array(
-			"2. Semester" => "?model=cp&controller=wi_ma&season=2S",
-      "4. Semester" => "?model=cp&controller=wi_ma&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=2S" 
 		);
     $bwl_ba = array(
-			"2. Semester" => "?model=cp&controller=bwl_ba&season=2S",
-      "4. Semester" => "?model=cp&controller=bwl_ba&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=2S",
+      "4. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=4S"  
     );
     $bwl_ma = array(
-			"2. Semester" => "?model=cp&controller=bwl_ma&season=2S",
-      "4. Semester" => "?model=cp&controller=bwl_ma&season=4S"  
+			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=2S"  
     );
     $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip"
+      "Dozentenplanung" => "?model=ip&controller=ip",
+      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
     );
     
     $menu = array(

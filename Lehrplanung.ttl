@@ -238,10 +238,10 @@ cp:reductingHours a owl:DatatypeProperty ;
 ### FACULTY ###
 ###############
 cp:informatik a schema:Faculty ;
-	schema:Name "Informatik".
+	schema:name "Informatik".
 
 cp:wirtschaft a schema:Faculty ;
-	schema:Name "Wirtschaft".
+	schema:name "Wirtschaft".
 
 ################
 ### DOZENTEN ###
@@ -322,27 +322,27 @@ cp:WP a schema:Person ;
 ### STUDYPROGRAM ###
 ####################
 cp:bwl_ba a cp:StudyProgram;
-	schema:Name "BWL Bachelor";
+	schema:name "BWL Bachelor";
 	schema:educationalCredentialAwarded "Bachelor";
 	schema:provider cp:wirtschaft. 
 
 cp:bwl_ma a cp:StudyProgram;
-	schema:Name "BWL Master";
+	schema:name "BWL Master";
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:wirtschaft. 
 
 cp:wi_ba a cp:StudyProgram;
-	schema:Name "Wirtschaftsinformatik Bachelor";
+	schema:name "Wirtschaftsinformatik Bachelor";
 	schema:educationalCredentialAwarded "Bachelor";
 	schema:provider cp:wirtschaft. 
 
 cp:wi_ma a cp:StudyProgram;
-	schema:Name "Wirtschaftsinformatik Master";
+	schema:name "Wirtschaftsinformatik Master";
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:wirtschaft. 
 
 cp:secm_ma a cp:StudyProgram;
-	schema:Name "Securitymanagement Master";
+	schema:name "Securitymanagement Master";
 	schema:educationalCredentialAwarded "Master";
 	schema:provider cp:informatik. 
 
@@ -350,190 +350,400 @@ cp:secm_ma a cp:StudyProgram;
 ### MODULE ####
 ###############
 cp:GrundlagenStatistischerMethoden a cp:Module;
-	schema:Name "Grundlagen statistischer Methoden";
+	schema:name "Grundlagen statistischer Methoden";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
     schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:GrundlagenProzessmodellierung a cp:Module;
-	schema:Name "Grundlagen der Prozessmodellierung";
+	schema:name "Grundlagen der Prozessmodellierung";
 	schema:timeRequired "8";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:RechnungswesenControlling a cp:Module;
-	schema:Name "Rechnungswesen und Controlling";
+	schema:name "Rechnungswesen und Controlling";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:ObjektorientierterSystementwurf a cp:Module;
-	schema:Name "Objektorientierter Systementwurf";
+	schema:name "Objektorientierter Systementwurf";
 	schema:timeRequired "8";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:EnglischWI a cp:Module;
-	schema:Name "Englisch anwenden in der WI";
+	schema:name "Englisch anwenden in der WI";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:DatenbankenModellierungStrukturierung a cp:Module;
-	schema:Name "Datenbanken - Modellierung und Strukturierung";
+	schema:name "Datenbanken - Modellierung und Strukturierung";
 	schema:timeRequired "8";
 	cp:semesterSeason "SoSe";
     schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:Informationsmanagement a cp:Module;
-	schema:Name "Informationsmanagement";
+	schema:name "Informationsmanagement";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:SystemarchitekturIntegration a cp:Module;
-	schema:Name "Systemarchitektur und -integration";
+	schema:name "Systemarchitektur und -integration";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:ManagementOrganisation a cp:Module;
-	schema:Name "Management und Organisation";
+	schema:name "Management und Organisation";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:DVOrientiertesWirtschaftsrecht a cp:Module;
-	schema:Name "DV-orientiertes Wirtschaftsrecht";
+	schema:name "DV-orientiertes Wirtschaftsrecht";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:PredictiveAnalysisBigData a cp:Module;
-	schema:Name "Predictive Analysis and Big Data";
+	schema:name "Predictive Analysis and Big Data";
 	schema:timeRequired "6";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:OracleAssociateJavaProgrammer a cp:Module;
-	schema:Name "Oracle Associate, Java Programmer";
+	schema:name "Oracle Associate, Java Programmer";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:EntwicklungIT-ArchitekturenProjektkontext a cp:Module;
-	schema:Name "Entwicklung komplexer IT-Architekturen im Projektkontext";
+	schema:name "Entwicklung komplexer IT-Architekturen im Projektkontext";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:IntegrationFinanz-Auftragsprozessen a cp:Module;
-	schema:Name "Integration von Finanz- und Auftragsprozessen in ERP-Systemen";
+	schema:name "Integration von Finanz- und Auftragsprozessen in ERP-Systemen";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:GrundlagenNetzwerktechnik a cp:Module;
-	schema:Name "Grundlagen der Netzwerktechnik";
+	schema:name "Grundlagen der Netzwerktechnik";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:wi_ba. 
 
 cp:SecurityManagement a cp:Module;
-	schema:Name "Security Management";
+	schema:name "Security Management";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:ManagementKooperativerProzesse a cp:Module;
-	schema:Name "Management kooperativer Prozesse";
+	schema:name "Management kooperativer Prozesse";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:ImplementierungProzessen a cp:Module;
-	schema:Name "Implementierung von Prozessen";
+	schema:name "Implementierung von Prozessen";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:EnterpriseKnowledgeEngineering a cp:Module;
-	schema:Name "Enterprise Knowledge Engineering";
+	schema:name "Enterprise Knowledge Engineering";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:DesignThinkingI a cp:Module;
-	schema:Name "Design Thinking I";
+	schema:name "Design Thinking I";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:IntegrierteGeschäftsprozesse a cp:Module;
-	schema:Name "Integrierte Geschäftsprozesse mit ERP-Systemen";
+	schema:name "Integrierte Geschäftsprozesse mit ERP-Systemen";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:PredictiveAnalyticsPrivacy a cp:Module;
-	schema:Name "Predictive Analytics and Privacy";
+	schema:name "Predictive Analytics and Privacy";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:GrundlagenMaschinellenLernens a cp:Module;
-	schema:Name "Grundlagen Maschinellen Lernens";
+	schema:name "Grundlagen Maschinellen Lernens";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:wi_ma. 
 
 cp:SystemanalytischeKompetenzen a cp:Module;
-	schema:Name "Systemanalytische Kompetenzen";
+	schema:name "Systemanalytische Kompetenzen";
 	schema:timeRequired "8";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
 cp:EnterpriseRessourceManagementGrundlagen a cp:Module;
-	schema:Name "WIS Enterprise Ressource Management/Grundlagen ERP-Systeme";
+	schema:name "WIS Enterprise Ressource Management/Grundlagen ERP-Systeme";
 	schema:timeRequired "2";
 	cp:semesterSeason "SoSe";
 	schema:startDate "4. Semester";   
 	schema:isPartOf cp:bwl_ba. 
 
 cp:SecureSystemsLifecycleManagement a cp:Module;
-	schema:Name "Secure Systems Lifecycle Management";
+	schema:name "Secure Systems Lifecycle Management";
 	schema:timeRequired "4";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:secm_ma. 
 
 cp:Semesterarbeit_II a cp:Module;
-	schema:Name "Semesterarbeit II";
+	schema:name "Semesterarbeit II";
 	schema:timeRequired "2";
 	cp:semesterSeason "SoSe";
 	schema:startDate "2. Semester";   
 	schema:isPartOf cp:secm_ma. 
+
+cp:Systemanalyse a cp:Module;
+	schema:name "Systemanalyse";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:AlgorithmenundDatenstrukturen a cp:Module;
+	schema:name "Algorithmen und Datenstrukturen";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:GrundlagenderBWL a cp:Module;
+	schema:name "Grundlagen der BWL";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:GrundlagenundWirkungderWirtschaftsinformatik a cp:Module;
+	schema:name "Grundlagen und Wirkung der Wirtschaftsinformatik";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:GrundlagenderWirtschaftsundFinanzmathematik a cp:Module;
+	schema:name "Grundlagen der Wirtschafts- und Finanzmathematik";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:ProjektstudiumundWissenschaftlichesArbeiten a cp:Module;
+	schema:name "Projektstudium und Wissenschaftliches Arbeiten";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:Softwareengineering a cp:Module;
+	schema:name "Softwareengineering";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:ProjektmanagementundsozialeKompetenzen a cp:Module;
+	schema:name "Projektmanagement und soziale Kompetenzen";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:Datenbanken-AnwendungundEntwicklung a cp:Module;
+	schema:name "Datenbanken - Anwendung und Entwicklung";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:UsabilityundSoftware-Ergonomie a cp:Module;
+	schema:name "Usability und Software-Ergonomie";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:BetriebssystemeundNetzwerke a cp:Module;
+	schema:name "Betriebssysteme und Netzwerke";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:GruendungsbezogeneBWL a cp:Module;
+	schema:name "Gründungsbezogene BWL";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:GrundlagenderVWL a cp:Module;
+	schema:name "Grundlagen der VWL";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:DatenschutzundSicherheit a cp:Module;
+	schema:name "Datenschutz und Sicherheit";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:ProduktionLogistikundVertrieb a cp:Module;
+	schema:name "Produktion, Logistik und Vertrieb";
+	schema:timeRequired "7";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:Softwareauswahlundanpassung a cp:Module;
+	schema:name "Softwareauswahl und -anpassung";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:wi_ba. 
+
+cp:Buchfuehrung a cp:Module;
+	schema:name "Buchführung";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Wirtschaftsenglisch a cp:Module;
+	schema:name "Wirtschaftsenglisch";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Wirtschaftsrecht a cp:Module;
+	schema:name "Wirtschaftsrecht";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Volkswirtschaftslehre1 a cp:Module;
+	schema:name "Volkswirtschaftslehre 1";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:GrundlagenunternehmerischenHandelns a cp:Module;
+	schema:name "Grundlagen unternehmerischen Handelns";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:MathematikStatistik1 a cp:Module;
+	schema:name "Mathematik/Statistik 1";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+    schema:startDate "1. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:ControllingundRisikomanagement a cp:Module;
+	schema:name "Controlling und Risikomanagement";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:ProduktionsundMaterialwirtschaft a cp:Module;
+	schema:name "Produktions- und Materialwirtschaft";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+    schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Marketing a cp:Module;
+	schema:name "Marketing";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:FinanzierungundInvestition a cp:Module;
+	schema:name "Finanzierung und Investition";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Projektmanagement a cp:Module;
+	schema:name "Projektmanagement";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:Wirtschaftsinformatik1 a cp:Module;
+	schema:name "Wirtschaftsinformatik 1";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "3. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:StudiumGenerale2 a cp:Module;
+	schema:name "Studium Generale 2";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:bwl_ba. 
+
+cp:GruendungsmanagementundNachfolge a cp:Module;
+	schema:name "Gründungsmanagement und Nachfolge";
+	schema:timeRequired "4";
+	cp:semesterSeason "WiSe";
+   	schema:startDate "5. Semester";   
+	schema:isPartOf cp:bwl_ba. 

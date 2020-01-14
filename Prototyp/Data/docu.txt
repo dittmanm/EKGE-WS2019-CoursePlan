@@ -3,4 +3,7 @@ session => Zur Auswahl von Wintersemester oder Sommersemester
    SS => 2
    0 => nichts ausgewählt -> Automatische Auswahl durch Monat
 
-ip => 
+ip => Instructor Person
+cp => Cours Plan
+sp => Study Program
+mp => Module Plan

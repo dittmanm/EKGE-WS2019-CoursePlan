@@ -1,0 +1,63 @@
+{
+  "head": {
+    "vars": [ "P" , "gname" , "fname" , "hon" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/FS" } ,
+        "gname": { "type": "literal" , "value": "*" } ,
+        "fname": { "type": "literal" , "value": "*" } ,
+        "hon": { "type": "literal" , "value": "*" }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/RF" } ,
+        "gname": { "type": "literal" , "value": "Robert" } ,
+        "fname": { "type": "literal" , "value": "Franz" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/MH" } ,
+        "gname": { "type": "literal" , "value": "Michael" } ,
+        "fname": { "type": "literal" , "value": "Höding" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr.-Ing." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/KJ" } ,
+        "gname": { "type": "literal" , "value": "Kai" } ,
+        "fname": { "type": "literal" , "value": "Jander" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/AJ" } ,
+        "gname": { "type": "literal" , "value": "Andreas" } ,
+        "fname": { "type": "literal" , "value": "Johannsen" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/IK" } ,
+        "gname": { "type": "literal" , "value": "Ivo" } ,
+        "fname": { "type": "literal" , "value": "Keller" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/VM" } ,
+        "gname": { "type": "literal" , "value": "Vera" } ,
+        "fname": { "type": "literal" , "value": "Meister" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/WP" } ,
+        "gname": { "type": "literal" , "value": "Winfried" } ,
+        "fname": { "type": "literal" , "value": "Pfister" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      } ,
+      {
+        "P": { "type": "uri" , "value": "https://bmake.th-brandenburg.de/cp/JS" } ,
+        "gname": { "type": "literal" , "value": "Jochen" } ,
+        "fname": { "type": "literal" , "value": "Scheeg" } ,
+        "hon": { "type": "literal" , "value": "Prof. Dr." }
+      }
+    ]
+  }
+}
