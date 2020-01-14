@@ -1,6 +1,6 @@
 <h2>Einen neuen Lehrbauftragten anlegen</h2>
 <div class="new">
-  <form action="index.php">
+  <form action="index.php" method="POST">
     <p>Name: <input name="familyName" type="text" /></p>
     <p>Vorname: <input name="givenName" type="text" /></p>
     <p>honorificPrefix: <input name="honorificPrefix" type="text" /></p>

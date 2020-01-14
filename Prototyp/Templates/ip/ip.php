@@ -3,12 +3,24 @@
   $main = new Main();
   global $request;
   if($request['action'] === 'create') {
-    if(($request['givenname'] != NULL) && ($request['familyname'] != NULL)) {
-      $res = $main->updateAction($person->insertAction());
-      echo 'RESULT: ';
-      print_r($res);
-    }
+    echo 'create';
+    $res = $main->updateAction($person->insertAction($request));
+  } elseif($request['action'] === 'update') {
+    echo 'update';
+    //print_r($request);
+    echo $request["id"];
+    $delDat = $main->queryAction($person->filterAction($request["id"]));
+    echo 'DELETE DATA: ';
+    print_r($delDat);
+    $res = $main->updateAction($person->deleteAction($delDat));
+    echo 'REQUEST DATA: ';
+    //print_r($request);
+    //$res[] = $main->updateAction($person->updateAction($request));
+  } elseif($request['action'] === 'delete') {
+    echo 'delete';
+    $res = $main->updateAction($person->deleteAction($request));
   }
+  echo 'RESULT: '; print_r($res);
   $list = $main->queryAction($person->listAction());
 ?>
 <h2>Dozenten Planung</h2>

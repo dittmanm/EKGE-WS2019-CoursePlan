@@ -81,55 +81,63 @@ class InstructorPerson {
     return $data;
   }
   
-  public function insertAction() {
-    //echo 'insertAction';
-    global $request;
+  public function insertAction($datArr) {
+    echo 'insertAction';
+    //global $request;
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
       INSERT DATA { 
-        cp:'.$request["givenName"].$request["familyName"].' a schema:Person;
-        schema:givenName "'.$request["givenName"].'" ;
-        schema:familyName "'.$request["familyName"].'" ;
-        schema:honorificPrefix "'.$request["honorificPrefix"].'" ;
-        schema:email "'.$request["email"].'" ;
-        cp:contructualHours "'.$request["contructualHours"].'" ;
-        cp:reductingHours "'.$request["reductingHours"].'" .
+        cp:'.$datArr["givenName"].$datArr["familyName"].' a schema:Person;
+        schema:givenName "'.$datArr["givenName"].'" ;
+        schema:familyName "'.$datArr["familyName"].'" ;
+        schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
+        schema:email "'.$datArr["email"].'" ;
+        cp:contructualHours "'.$datArr["contructualHours"].'" ;
+        cp:reductingHours "'.$datArr["reductingHours"].'" .
       }';
     return $data;
   }
   
-  public function updateAction() {
-    //echo 'updateAction';
-    global $request;
+  public function updateAction($datArr) {
+    echo 'updateAction';
+    //global $request;
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
       INSERT DATA { 
-        cp:'.$request["id"].' a schema:Person;
-        schema:givenName "'.$request["givenName"].'" ;
-        schema:familyName "'.$request["familyName"].'" ;
-        schema:honorificPrefix "'.$request["honorificPrefix"].'" ;
-        schema:email "'.$request["email"].'" ;
-        cp:contructualHours "'.$request["contructualHours"].'" ;
-        cp:reductingHours "'.$request["reductingHours"].'" .
+        cp:'.$datArr["id"].' a schema:Person;
+        schema:givenName "'.$datArr["givenName"].'" ;
+        schema:familyName "'.$datArr["familyName"].'" ;
+        schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
+        schema:email "'.$datArr["email"].'" ;
+        cp:contructualHours "'.$datArr["contructualHours"].'" ;
+        cp:reductingHours "'.$datArr["reductingHours"].'" .
       }';
     return $data;
   }
   
-  public function deleteAction() {
-    //echo 'deleteAction';
-    global $request;
+  public function deleteAction($datArr) {
+    echo 'deleteAction';
+    //global $request;
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      DELETE DATA { cp:'.$request["id"].$request["familyName"].' . }';
+      DELETE DATA { 
+        cp:'.$datArr["id"].' a schema:Person;
+        schema:givenName "'.$datArr["givenName"].'" ;
+        schema:familyName "'.$datArr["familyName"].'" ;
+        schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
+        schema:email "'.$datArr["email"].'" ;
+        cp:contructualHours "'.$datArr["contructualHours"].'" ;
+        cp:reductingHours "'.$datArr["reductingHours"].'" .
+      }';
     return $data;
   }
 }

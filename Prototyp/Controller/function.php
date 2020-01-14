@@ -2,22 +2,22 @@
 class Main {
   protected $prevUrl = 'http://localhost:3030/Test_4_Unip/';
   
-  public function index() {
-    global $request;
-    print_r($request);
-    if ($request['action'] === 'create') {
-      $data = $this->newAction($request['model'],$request);
-    } elseif ($request['action'] === 'update') {
-      $data = $this->updateAction($request['id'],$request['model']);
-    } elseif ($request['action'] === 'delete') {
-      $data = $this->deleteAction($request['id'],$request['model']);
-    } elseif ($request['controller'] === 'edit') {
-      $data = $this->detailAction($request['id'],$request['model']);
-    } else {
-      $data = $this->listAction($request['model']);
-    }
-    return $data;
-  }
+//  public function index() {
+//    global $request;
+//    //print_r($request);
+//    if ($request['action'] === 'create') {
+//      $data = $this->newAction($request['model'],$request);
+//    } elseif ($request['action'] === 'update') {
+//      $data = $this->updateAction($request['id'],$request['model']);
+//    } elseif ($request['action'] === 'delete') {
+//      $data = $this->deleteAction($request['id'],$request['model']);
+//    } elseif ($request['controller'] === 'edit') {
+//      $data = $this->detailAction($request['id'],$request['model']);
+//    } else {
+//      $data = $this->listAction($request['model']);
+//    }
+//    return $data;
+//  }
   
   /** Search for Session **/
   public function checkSession() {
@@ -47,6 +47,7 @@ class Main {
   }
   
   public function queryAction ($data) {
+    echo 'queryAction';
     $url = $this->prevUrl.'query';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-query'],['Accept: application/json'],
@@ -100,20 +101,22 @@ class Main {
   
   //http://localhost:3030/MyDataset/update
   public function updateAction ($data) {
+    echo 'updateAction';
     $url = $this->prevUrl.'update';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],
       'method'  => 'POST',
       'content' => $data
     ));
-    //print_r($options);
+    print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     return $result;
   }
   
   //http://localhost:3030/MyDataset/sparql
-  public function deleteAction ($data) {
+  public function sparqlAction ($data) {
+    //print_r($data);
     $url = $this->prevUrl.'sparql';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],
