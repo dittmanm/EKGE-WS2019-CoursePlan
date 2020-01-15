@@ -9,8 +9,7 @@ class Layout {
 		);
    	$wi_ma = array(
 			"1. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=3S",
-      "5. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=5S"  
+      "3. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=3S"
 		);
     $bwl_ba = array(
 			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=1S",
@@ -19,8 +18,7 @@ class Layout {
     );
     $bwl_ma = array(
 			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=3S",
-      "5. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=5S"  
+      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=3S"  
     );
     $dp = array(
       "Dozentenplanung" => "?model=ip&controller=ip",

@@ -82,8 +82,7 @@ class InstructorPerson {
   }
   
   public function insertAction($datArr) {
-    echo 'insertAction';
-    //global $request;
+    //echo 'insertAction';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -102,8 +101,7 @@ class InstructorPerson {
   }
   
   public function updateAction($datArr) {
-    echo 'updateAction';
-    //global $request;
+    //echo 'updateAction';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -122,8 +120,7 @@ class InstructorPerson {
   }
   
   public function deleteAction($datArr) {
-    echo 'deleteAction';
-    //global $request;
+    //echo 'deleteAction';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

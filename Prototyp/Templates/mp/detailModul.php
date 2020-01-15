@@ -6,7 +6,7 @@
   foreach ($list as $arr) {
     $id = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']);
 ?>
-<h2>Dozent*in: <?php echo $arr['givenName'].' '.$arr['familyName']; ?>  löschen</h2>
+<h2>Lehrbauftragten: <?php echo $arr['givenName'].' '.$arr['familyName']; ?>  löschen</h2>
 <div class="new">
   <form action="index.php" method="POST">
     <p>Name: <?php echo $arr['familyName']; ?>"</p>
