@@ -67,7 +67,7 @@ a {
   margin: 35px 20px;
 }
 #header .headline h1 {
-	background-color: ;
+	/*background-color: ;*/
 	margin-left: 42px;
 	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
 	padding: 5px;
@@ -238,12 +238,8 @@ ul.categories a.activ {
 }
 /*** FOOTER ***/
 #footer {
-  color: white;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  margin-right: 20px;
+  color: black;
+  clear: both;
+  padding: 20px 10px;
   overflow: hidden;
-  position:absolute;
-  bottom: 0;
-  width: 100%;
 }

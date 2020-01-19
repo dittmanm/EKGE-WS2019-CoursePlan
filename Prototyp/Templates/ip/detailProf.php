@@ -11,7 +11,7 @@
   <form action="index.php" method="POST">
     <p>Name: <?php echo $arr['familyName']; ?>"</p>
     <p>Vorname: <?php echo $arr['givenName']; ?>"</p>
-    <p>honorificPrefix: <?php echo $arr['honorificPrefix']; ?>"</p>
+    <p>Titel: <?php echo $arr['honorificPrefix']; ?>"</p>
     <p>E-Mail: <?php echo $arr['email']; ?>"</p>
     <p>Deputatsstunden: <?php echo $arr['contructualHours']; ?>"</p>
     <p>Minderungsstunden: <?php echo $arr['reductingHours']; ?>"</p>

@@ -22,7 +22,7 @@ class Layout {
     );
     $dp = array(
       "Dozentenplanung" => "?model=ip&controller=ip",
-      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
+      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
     );
     
     $menu = array(
@@ -52,7 +52,7 @@ class Layout {
     );
     $dp = array(
       "Dozentenplanung" => "?model=ip&controller=ip",
-      "Modulplanung" => "?model=ip&controller=mp&sp=wi_ba"
+      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
     );
     
     $menu = array(

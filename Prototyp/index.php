@@ -6,7 +6,7 @@
   include_once("Controller/ipController.php");
   include_once("Controller/cpController.php");
   include_once("Controller/spController.php");
-  //include_once("Controller/mpController.php");
+  include_once("Controller/mpController.php");
   include_once("Controller/content.php");
   include_once("Controller/function.php");
   include_once("Controller/layout.php");

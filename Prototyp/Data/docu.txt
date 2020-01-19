@@ -7,3 +7,22 @@ ip => Instructor Person
 cp => Cours Plan
 sp => Study Program
 mp => Module Plan
+
+Controller/layout.php
+    - Aufbau der Menüs
+    - Header logo
+    - Header Name/Hauptname
+
+Controller/content.php
+    - Datei-Abfrage für Inhalts Aufruf
+
+Controller/function.php
+    - Verbindung und Daten abruf vom Fuseki Server
+    - Arbeit/Umgang mit Session zur Auswahl von SoSe oder WiSe
+
+Controller/..Controller.php
+    - Vorbereitung der Datenabfragen
+
+Templates/../
+    - Konkrete Datenabfrage über Controller und Function
+    - Anzeige des Inhalts im Hauptbereich

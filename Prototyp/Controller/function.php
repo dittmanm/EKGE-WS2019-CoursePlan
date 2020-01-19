@@ -1,6 +1,7 @@
 <?php
 class Main {
-  protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan/';
+  //protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan/';
+  protected $prevUrl = 'http://localhost:3030/Test_4_Unip/';
   
 //  public function index() {
 //    global $request;
@@ -54,7 +55,7 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
-    //print_r($options);
+    print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
