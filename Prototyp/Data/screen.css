@@ -23,6 +23,12 @@ ul {
   background-color: #ffffff;
 }
 
+input {
+  float: right;
+  margin-right: 420px;
+  margin-bottom: px;
+}
+
 .left {
   float: left;
 }
@@ -44,7 +50,8 @@ a {
 }
 /*** HEADER ***/
 #header {
-    border-bottom: 1px solid #ffffff;
+  background-image: url("thb.jpg"); 
+  border-bottom: 1px solid #ffffff;
   clear: both;
   overflow: hidden;
 }
@@ -64,12 +71,12 @@ a {
 }
 #header .headline {
   color: #000000;
-  margin: 10px 20px;
+  margin: 35px 20px;
 }
 #header .headline h1 {
 	/*background-color: ;*/
 	margin-left: 42px;
-	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	font-family: Arial, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
 	padding: 5px;
 }
 
@@ -90,8 +97,8 @@ a {
   padding-left: 15px;
   padding-top: 20px;
   height: 460px;
-	
 }
+
 #menu .menu-first {
 
 }
