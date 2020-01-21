@@ -20,7 +20,7 @@ class ModulPlan {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf
+      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
       WHERE { 
         ?id a cp:Module ;
               cp:semesterSeason ?semesterSeason ;
@@ -28,6 +28,7 @@ class ModulPlan {
               schema:isPartOf ?isPartOf ;
               schema:startDate ?startDate ;
               schema:timeRequired ?timeRequired.
+              OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
       } ORDER BY (?name)';
     return $data;
   }
@@ -41,7 +42,7 @@ class ModulPlan {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf
+      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
       WHERE { 
         ?id a cp:Module ;
           cp:semesterSeason ?semesterSeason ;
@@ -49,6 +50,7 @@ class ModulPlan {
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
           schema:timeRequired ?timeRequired.
+          OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
         '.$values.'
       } ORDER BY (?name)';
     return $data;
@@ -57,13 +59,13 @@ class ModulPlan {
   public function filterAction($filter = '') {
     //echo 'filterAction';
     //FILTER ( ?name LIKE "Wirtschaftsinformatik" )
-    $filter = 'FILTER (?isPartOf LIKE '.$filter.')';
+    $filter = 'FILTER (?isPartOf = '.$filter.')';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf
+      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
       WHERE { 
         ?id a cp:Module ;
           cp:semesterSeason ?semesterSeason ;
@@ -71,8 +73,77 @@ class ModulPlan {
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
           schema:timeRequired ?timeRequired.
+          OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
         '.$filter.'
       } ORDER BY (?name)';
+    return $data;
+  }
+  
+  public function insertInstanceAction($datArr) {
+    //echo 'insertInstanceAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr["hCi"].' a cp:Module ;
+        schema:hasCourseInstance cp:'.$datArr["id"].' .
+      }';
+    return $data;
+  }
+  
+  public function insertAction($datArr) {
+    //echo 'insertAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr["id"].' a cp:Module ;
+        cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
+        schema:name "'.$datArr["name"].'" ;
+        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:startDate "'.$datArr["startDate"].'" ;
+        schema:timeRequired "'.$datArr["timeRequired"].'".
+      }';
+    return $data;
+  }
+  
+  public function updateAction($datArr) {
+    //echo 'updateAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA {  
+        cp:'.$datArr["id"].' a cp:Module ;
+        cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
+        schema:name "'.$datArr["name"].'" ;
+        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:startDate "'.$datArr["startDate"].'" ;
+        schema:timeRequired "'.$datArr["timeRequired"].'".
+      }';
+    return $data;
+  }
+  
+  public function deleteAction($datArr) {
+    //echo 'deleteAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      DELETE DATA { 
+        cp:'.$datArr["id"].' a cp:Module ;
+        cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
+        schema:name "'.$datArr["name"].'" ;
+        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:startDate "'.$datArr["startDate"].'" ;
+        schema:timeRequired "'.$datArr["timeRequired"].'".
+      }';
     return $data;
   }
 }

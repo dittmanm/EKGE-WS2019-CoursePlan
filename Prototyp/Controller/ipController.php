@@ -13,6 +13,44 @@ class InstructorPerson {
         "reductingHours" => $request["reductingHours"]);
     return $fielddata;
   }
+  
+//  public function getWorkload($personId) {
+//    
+//  }
+  
+  public function getInstructorHours($personId) {
+   $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?instructor ?courseWorkloadi
+      WHERE {
+        ?hasCourseInstance a schema:CourseInstance ;
+        schema:instructor ?instructor ;
+        schema:courseWorkloadi ?courseWorkloadi .
+        
+        FILTER (?instructor = '.$personId.') .
+      }';
+    return $data; 
+  }
+  
+  public function getContributorHours($personId) {
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?contributor ?courseWorkloadc
+      WHERE {
+        ?hasCourseInstance a schema:CourseInstance ;
+        schema:contributor ?contributor ;
+        schema:courseWorkloadc ?courseWorkloadc .
+        
+        FILTER (?contributor = '.$personId.') .
+      }';
+    return $data;
+  }
 
   public function listAction() {
     //echo 'listAction';
@@ -83,13 +121,17 @@ class InstructorPerson {
   
   public function insertAction($datArr) {
     //echo 'insertAction';
+    $namArr = (str_word_count($datArr["givenName"].' '.$datArr["familyName"], 1));
+    foreach ($namArr as $value) {
+      $word = $word . substr($value, 0, 1);
+    }
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
       INSERT DATA { 
-        cp:'.$datArr["givenName"].$datArr["familyName"].' a schema:Person;
+        cp:'.$word.' a schema:Person;
         schema:givenName "'.$datArr["givenName"].'" ;
         schema:familyName "'.$datArr["familyName"].'" ;
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;

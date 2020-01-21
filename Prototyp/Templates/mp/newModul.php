@@ -1,4 +1,4 @@
-<h2>Neues Modul anlegen</h2>
+<h2>Modul anlegen</h2>
 <div class="new">
   <form action="index.php" method="POST">
     <p>Name: <input name="name" type="text" /></p>

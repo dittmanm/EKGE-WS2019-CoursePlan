@@ -26,3 +26,12 @@ Controller/..Controller.php
 Templates/../
     - Konkrete Datenabfrage über Controller und Function
     - Anzeige des Inhalts im Hauptbereich
+
+FRAGEN/ANREGUNGEN:
+- Kürzel der Dozenten wird über erster Buchstabe Vorname + erster Buchstabe Nachname erstellt.
+    Was bei gleichem Kürzel?
+    Tabellenlösung ok?
+- CoursPlan mit Jahresbetrachtung?
+    Soll eine Auswahl des Jahres möglich sein?
+    Soll diese Auswahl auch die Ansicht ändern können?
+- 

@@ -3,22 +3,19 @@ class Main {
   //protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan/';
   protected $prevUrl = 'http://localhost:3030/Test_4_Unip/';
   
-//  public function index() {
-//    global $request;
-//    //print_r($request);
-//    if ($request['action'] === 'create') {
-//      $data = $this->newAction($request['model'],$request);
-//    } elseif ($request['action'] === 'update') {
-//      $data = $this->updateAction($request['id'],$request['model']);
-//    } elseif ($request['action'] === 'delete') {
-//      $data = $this->deleteAction($request['id'],$request['model']);
-//    } elseif ($request['controller'] === 'edit') {
-//      $data = $this->detailAction($request['id'],$request['model']);
-//    } else {
-//      $data = $this->listAction($request['model']);
-//    }
-//    return $data;
-//  }
+  public function generateKey($name, $length = 10) {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $namArr = (str_word_count($name, 1));
+    $key = '';
+    foreach ($namArr as $value) {
+      $word = $word . substr($value, 0, 1);
+    }
+    if (strlen($word) < $length) {
+      $length = $length - strlen($word);
+      $key = $key . substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+    return $key;
+  }
   
   /** Search for Session **/
   public function checkSession() {
@@ -55,11 +52,12 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
-    print_r($options);
+    //print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
     $xml = simplexml_load_string($result);
+    //print_r($xml);
     $jsonEn = json_encode($xml);
     $jsonDe= json_decode($jsonEn,TRUE);
     $result1 = $jsonDe['results'];

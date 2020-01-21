@@ -1,4 +1,4 @@
-<h2>Neuen Dozent*in anlegen</h2>
+<h2>Dozent*in anlegen</h2>
 <div class="new">
   <form action="index.php" method="POST">
     <p>Name: <input name="familyName" type="text" /></p>

@@ -67,5 +67,53 @@ class StudyProgram {
       } ORDER BY (?name)';
     return $data;
   }
+  
+  public function insertAction($datArr) {
+    //echo 'insertAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr['name'].' a cp:StudyProgram ;
+        schema:educationalCredentialAwarded	"'.$datArr['educationalCredentialAwarded'].'" ;
+        schema:name "'.$datArr['name'].'" ;
+        schema:provider cp:'.$datArr['provider'].'.
+      }';
+    return $data;
+  }
+  
+  public function updateAction($datArr) {
+    //echo 'updateAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr['id'].' a cp:StudyProgram ;
+        schema:educationalCredentialAwarded	"'.$datArr['educationalCredentialAwarded'].'" ;
+        schema:name "'.$datArr['name'].'" ;
+        schema:provider cp:'.$datArr['provider'].'.
+      }';
+    return $data;
+  }
+  
+  public function deleteAction($datArr) {
+    //echo 'deleteAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      DELETE DATA { 
+        cp:'.$datArr['id'].' a cp:StudyProgram ;
+        schema:educationalCredentialAwarded	"'.$datArr['educationalCredentialAwarded'].'" ;
+        schema:name "'.$datArr['name'].'" ;
+        schema:provider cp:'.$datArr['provider'].'.
+      }';
+    return $data;
+  }
 }
 ?>
