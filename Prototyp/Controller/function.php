@@ -1,7 +1,7 @@
 <?php
 class Main {
-  //protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan/';
-  protected $prevUrl = 'http://localhost:3030/Test_4_Unip/';
+  //protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
+  protected $prevUrl = 'http://localhost:3030/Test_5_Unip/';
   
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

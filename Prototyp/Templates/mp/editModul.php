@@ -10,14 +10,14 @@
 <div class="new">
   <form action="index.php" method="POST">
     <p>Name: <input name="name" type="text" /></p>
-    <p>timeRequired: <input name="timeRequired" type="text" /></p>
+    <p>SWS: <input name="timeRequired" type="text" /></p>
     <p>Semester:
       <select name="semesterSeason" size="1">
         <option value="WiSe" <?php echo $ss === 'WiSe' ? 'selected' : ''; ?>>WiSe</option>
         <option value="SoSe" <?php echo $ss === 'SoSe' ? 'selected' : ''; ?>>SoSe</option>
       </select>
     </p>
-    <p>isPartOf:
+    <p>Studiengang:
       <select name="isPartOf" size="1">
         <option value="wi_ba" <?php echo $ipo === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
         <option value="wi_ma" <?php echo $ipo === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
@@ -26,7 +26,7 @@
         <option value="secm_ma" <?php echo $ipo === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
       </select>
     </p>
-    <p>startDate:
+    <p>Findet statt im:
       <select name="startDate" size="1">
         <option value="1. Semester" <?php echo $sd === '1. Semester' ? 'selected' : ''; ?>>1. Semester</option>
         <option value="2. Semester" <?php echo $sd === '2. Semester' ? 'selected' : ''; ?>>2. Semester</option>

@@ -3,7 +3,7 @@ session => Zur Auswahl von Wintersemester oder Sommersemester
    SS => 2
    0 => nichts ausgewählt -> Automatische Auswahl durch Monat
 
-ip => Instructor Person
+ip => Instructor Person => Dozeirende
 cp => Cours Plan
 sp => Study Program
 mp => Module Plan
@@ -34,4 +34,5 @@ FRAGEN/ANREGUNGEN:
 - CoursPlan mit Jahresbetrachtung?
     Soll eine Auswahl des Jahres möglich sein?
     Soll diese Auswahl auch die Ansicht ändern können?
-- 
+- Bei Lehrplanung alle Module des Studiengangs anzeigen?
+    - SemesterSeason kann sonst bei Modulen entfernt werden.

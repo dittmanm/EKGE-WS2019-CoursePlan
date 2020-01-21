@@ -20,6 +20,7 @@
       $res = $main->updateAction($mp->deleteAction($datArr));
     }
   }
+  //sleep(15);
 ?>
 <p><a href="?model=mp&controller=newModul">Neues Modul</a></p>
 <form action="index.php">
@@ -32,7 +33,7 @@
   </select> 
   <input type='hidden' name="model" value="mp" />
   <input type='hidden' name="controller" value="mp" />
-  <p><input value="SPEICHERN" name="button" type="submit"></p>
+  <p><input value="WECHSELN" name="button" type="submit"></p>
 </form>
 <?php
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
@@ -43,13 +44,13 @@
       echo '<h3>'.$i.'. Semester</h3>';
     ?>
     <table>
-      <tr><th>&nbsp;</th><th>Module</th><th>Soll</th></tr>
+      <tr><th>Modul</th><th>SWS</th><th>&nbsp;</th></tr>
       <?php
         foreach($mplist as $arr) {
           echo '<tr>';
-          echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
           echo '<td>'.$arr['name'].'</td>';
           echo '<td>'.$arr['timeRequired'].'</td>';
+          echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
           echo '</tr>';
         } ?>
     </table>

@@ -20,7 +20,7 @@ $main = new Main();
     <p>SWS: <input name="courseWorkloadi" type="text" value="0"/></p>
     <p>Mitwirkende*r:
       <select name="contributor" size="1">
-        <option value="">ohne Unterstützung</option>
+        <option value="cp:">ohne Unterstützung</option>
 <?php
     foreach ($iplist as $Iarr) {
       echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id']).'">';

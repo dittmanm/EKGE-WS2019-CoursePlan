@@ -27,7 +27,7 @@
     <p>SWS: <input name="courseWorkloadi" type="text" value="<?php echo $CParr['courseWorkloadi']; ?>"/></p>
     <p>Mitwirkende*r:
       <select name="contributor" size="1">
-        <option value="">ohne Unterstützung</option>
+        <option value="cp:">ohne Unterstützung</option>
 <?php
     $cId = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $CParr['contributor']);
     foreach ($iplist as $Iarr) {

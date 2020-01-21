@@ -30,13 +30,13 @@
       $res = $main->updateAction($cp->deleteAction($datArr));
     }
   }
-  
+  //sleep(15);
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
 ?>
 <h3><?php echo $text; ?></h3>
 <table>
-  <tr><th>Module</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th><th>&nbsp;</th></tr>
+  <tr><th>Modul</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th><th>&nbsp;</th></tr>
   <?php
   $mplist = $main->queryAction($mp->valuesAction('\''.$text.'\' cp:'.$request['sp']));
   foreach($mplist as $Marr) {
@@ -65,7 +65,7 @@
 </table>
 <h4>Dozenten*innen Auslastung</h4>
 <table>
-  <tr><th>Dozent*in</th><th>Soll</th><th>Redu</th><th>Work</th><th>Diff</th></tr>
+  <tr><th>Dozent*in</th><th>Soll</th><th>Dep</th><th>Work</th><th>Diff</th></tr>
   <?php
   $iplist = $main->queryAction($ip->listAction());
   foreach ($iplist as $Iarr) {

@@ -2,14 +2,14 @@
 <div class="new">
   <form action="index.php" method="POST">
     <p>Name: <input name="name" type="text" /></p>
-    <p>timeRequired: <input name="timeRequired" type="text" /></p>
+    <p>SWS: <input name="timeRequired" type="text" /></p>
     <p>Semester:
       <select name="semesterSeason" size="1">
         <option value="WiSe">WiSe</option>
         <option value="SoSe">SoSe</option>
       </select>
     </p>
-    <p>isPartOf:
+    <p>Studiengang:
       <select name="isPartOf" size="1">
         <option value="wi_ba">WI BA</option>
         <option value="wi_ma">WI MA</option>
@@ -18,7 +18,7 @@
         <option value="secm_ma">Secm MA</option>
       </select>
     </p>
-    <p>startDate:
+    <p>Findet statt im:
       <select name="startDate" size="1">
         <option value="1. Semester">1. Semester</option>
         <option value="2. Semester">2. Semester</option>
