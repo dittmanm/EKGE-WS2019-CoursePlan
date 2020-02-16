@@ -1,7 +1,7 @@
 <?php
 class Main {
-  //protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
-  protected $prevUrl = 'http://localhost:3030/Test_5_Unip/';
+  protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
+  //protected $prevUrl = 'http://localhost:3030/Test_5_Unip/';
   
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -100,14 +100,12 @@ class Main {
   
   //http://localhost:3030/MyDataset/update
   public function updateAction ($data) {
-    //echo 'updateAction';
     $url = $this->prevUrl.'update';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],
       'method'  => 'POST',
       'content' => $data
     ));
-    //print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     return $result;

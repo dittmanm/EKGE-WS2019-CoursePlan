@@ -31,6 +31,8 @@ $main = new Main();
     </p>
     <p>SWS: <input name="courseWorkloadc" type="text" value="0" /></p>
     <input type='hidden' name="hCi" value="<?php echo $request['hCi']; ?>" />
+    <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
+    <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
     <input type='hidden' name="model" value="cp" />
     <input type='hidden' name="controller" value="cp" />
     <input type='hidden' name="action" value="create" />

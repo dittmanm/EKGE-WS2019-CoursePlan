@@ -41,6 +41,8 @@
     </p>
     <p>SWS: <input name="courseWorkloadc" type="text" value="<?php echo $CParr['courseWorkloadc']; ?>" /></p>
     <input type='hidden' name="id" value="<?php echo $id; ?>" />
+    <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
+    <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
     <input type='hidden' name="model" value="cp" />
     <input type='hidden' name="controller" value="cp" />
     <input type='hidden' name="action" value="update" />

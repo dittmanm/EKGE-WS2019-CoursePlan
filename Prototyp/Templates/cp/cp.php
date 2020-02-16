@@ -30,7 +30,15 @@
       $res = $main->updateAction($cp->deleteAction($datArr));
     }
   }
-  //sleep(15);
+?>
+<!--<form action="index.php">
+  <input type='hidden' name="model" value="cp" />
+  <input type='hidden' name="controller" value="cp" />
+  <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
+  <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
+  <p><input value="REFRESH" name="button" type="submit" class="left"></p>
+</form>-->
+<?php
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
 ?>
@@ -54,18 +62,43 @@
         echo '<td>'.$Carr['courseWorkloadi'].'</td>';
         echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['contributor']).'</td>';
         echo '<td>'.$Carr['courseWorkloadc'].'</td>';
-        echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+        echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&sp='.$request['sp'].'&season='.$request['season'].'&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
     } } else {
       echo '<td></td><td></td><td></td><td></td><td></td><td></td>';
-      echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=newInstance&hCi=', $Marr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+      echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=newInstance&sp='.$request['sp'].'&season='.$request['season'].'&hCi=', $Marr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
     }
     echo '</tr>';
   }
   ?>
 </table>
 <h4>Dozenten*innen Auslastung</h4>
-<table>
+<!--<table>
   <tr><th>Dozent*in</th><th>Soll</th><th>Dep</th><th>Work</th><th>Diff</th></tr>
+  <?php
+//  $iplist = $main->queryAction($ip->listAction());
+//  foreach ($iplist as $Iarr) {
+//    $workHours = 0;
+//    $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+//    foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
+//    $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+//    foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
+//    $diffHours = $Iarr['contructualHours']-$Iarr['reductingHours']-$workHours;
+//    echo '<tr>';
+//    echo '<td>'.$Iarr['givenName'].' '.$Iarr['familyName'].'</td>';
+//    echo '<td>'.$Iarr['contructualHours'].'</td>';
+//    echo '<td>'.$Iarr['reductingHours'].'</td>';
+//    echo '<td>'.$workHours.'</td>';
+//    if ($diffHours === 0) { echo '<td bgcolor=green>'.$diffHours.'</td>'; }
+//    elseif ($diffHours < 0) { echo '<td bgcolor=red>'.$diffHours.'</td>'; }
+//    elseif ($diffHours > 0) { echo '<td bgcolor=yellow>'.$diffHours.'</td>'; }
+//    echo '</tr>';
+//  }
+  ?>
+</table>-->
+
+<div id="workload">
+  <div class="block"></div><div class="z0">0</div><div class="z5">5</div><div class="z10">10</div>
+  <div class="z15">15</div><div class="z20">20</div><div class="z25">25</div>
   <?php
   $iplist = $main->queryAction($ip->listAction());
   foreach ($iplist as $Iarr) {
@@ -75,63 +108,14 @@
     $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
     foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
     $diffHours = $Iarr['contructualHours']-$Iarr['reductingHours']-$workHours;
-    echo '<tr>';
-    echo '<td>'.$Iarr['givenName'].' '.$Iarr['familyName'].'</td>';
-    echo '<td>'.$Iarr['contructualHours'].'</td>';
-    echo '<td>'.$Iarr['reductingHours'].'</td>';
-    echo '<td>'.$workHours.'</td>';
-    if ($diffHours === 0) { echo '<td bgcolor=green>'.$diffHours.'</td>'; }
-    elseif ($diffHours < 0) { echo '<td bgcolor=red>'.$diffHours.'</td>'; }
-    elseif ($diffHours > 0) { echo '<td bgcolor=yellow>'.$diffHours.'</td>'; }
-    echo '</tr>';
+    echo '<div class="wp">';
+    echo '<p>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Iarr['id']).'</p>';
+    echo '<div class="c100">';
+    $dep = (100 / $Iarr['contructualHours'] ) * $Iarr['reductingHours'] ;
+    $work = (100 / $Iarr['contructualHours'] ) * $workHours ;
+    echo '<section class="dp" style="width: '.$dep.'%;">'.$Iarr['reductingHours'].'</section>';
+    echo '<section class="vl" style="width: '.$work.'%;">'.$workHours.'</section>';
+    echo '</div></div>';
   }
-  ?>
-</table>
-
-<!--
-<div id="workload">
-  <div class="block"></div><div class="z0">0</div><div class="z5">5</div><div class="z10">10</div>
-  <div class="z15">15</div><div class="z20">20</div><div class="z25">25</div>
-  <div class="wp">
-    <p>AJ</p>
-    <div class="c100">
-      <section class="dp" style="width: 40%;">10</section>
-      <section class="vl" style="width: 20%;">5</section>
-    </div>
-  </div>
-  <div class="wp">
-    <p>VM</p>
-    <div class="c100">
-      <section class="dp" style="width: 20%;">5</section>
-      <section class="vl" style="width: 60%;">15</section>
-    </div>
-  </div>
-  <div class="wp">
-    <p>JS</p>
-    <div class="c100">
-      <section class="dp" style="width: 40%;">10</section>
-      <section class="vl" style="width: 40%;">10</section>
-    </div>
-  </div>
-  <div class="wp">
-    <p>KJ</p>
-    <div class="c100">
-      <section class="dp" style="width: 8%;">2</section>
-      <section class="vl" style="width: 64%;">16</section>
-    </div>
-  </div>
-  <div class="wp">
-    <p>WP</p>
-    <div class="c100">
-      <section class="dp" style="width: 24%;">6</section>
-      <section class="vl" style="width: 16%;">4</section>
-    </div>
-  </div>
-  <div class="wp">
-    <p>MH</p>
-    <div class="c100">
-      <section class="dp" style="width: 60%;">15</section>
-      <section class="vl" style="width: 20%;">5</section>
-    </div>
-  </div>
-</div>-->
+  ?> 
+</div>

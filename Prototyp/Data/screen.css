@@ -25,8 +25,18 @@ ul {
 
 input {
   float: right;
-  margin-right: 420px;
-  margin-bottom: px;
+  margin-right: 380px;
+  margin-bottom: 5px;
+  width: 175px;
+  height: 25px;
+}
+
+select {
+  float: right;
+  margin-right: 380px;
+  margin-bottom: 5px;
+  width: 175px;
+  height: 25px;
 }
 
 .left {
@@ -198,7 +208,7 @@ ul.categories a.activ {
   width: 100%;
 }
 #workload .block {
-  border-right: 3px dotted #000;
+  /*border-right: 3px dotted #000;*/
   bottom: 0;
   position: absolute;
   right: 150px;

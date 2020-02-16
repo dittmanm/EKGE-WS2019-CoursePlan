@@ -131,7 +131,7 @@ class InstructorPerson {
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
       INSERT DATA { 
-        cp:'.$word.' a schema:Person;
+        cp:'.$datArr["id"].' a schema:Person;
         schema:givenName "'.$datArr["givenName"].'" ;
         schema:familyName "'.$datArr["familyName"].'" ;
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
