@@ -1,17 +1,16 @@
-# EKGI-WS2019-CoursePlan
-## Lehrplanung
+# EKGI-WS2019-CoursePlan - Lehrplanung
 Die Anwendung „Lehrplanung“ ist im Rahmen der Lehrveranstaltung „Enterprise Knowledge Graph Implementation" entwickelt worden. Ziel des Projektes ist die Entwicklung einer Anwendung, welche die Dozenten bei der Modulplanung an der Technischen Hochschule Brandenburg unterstützt. Die Anwendung wurde von Grund auf neu entwickelt.
 
 ## Anforderungen die Rahmen dieses Projektes umgesetzt worden sind:
-• Entwicklung eines Wissensschema
-• Umsetzung eines RDF-Schemas mit Beispieldaten
-• Kompaktes klares Design das alle notwendigen Informationen übersichtlich darstellt
-• Auswahl der System-Architektur und Einrichtung der Server
-• Entwicklung der Anwendung mit PHP und SPARQL
-• Implementierung der Anwendung Lehrplanung
-• Interaktive Zuordnung von Lehrveranstaltungen zu Dozenten mit paralleler Statusvisualisierung
-• Ist innerhalb des Universitätsnetzes erreichbar, läuft auf einem internen Server
-• Visualisiert den Planungsstatus von Studiensemestern, Modulen und Dozenten
+- Entwicklung eines Wissensschema
+- Umsetzung eines RDF-Schemas mit Beispieldaten
+- Kompaktes klares Design das alle notwendigen Informationen übersichtlich darstellt
+- Auswahl der System-Architektur und Einrichtung der Server
+- Entwicklung der Anwendung mit PHP und SPARQL
+- Implementierung der Anwendung Lehrplanung
+- Interaktive Zuordnung von Lehrveranstaltungen zu Dozenten mit paralleler Statusvisualisierung
+- Ist innerhalb des Universitätsnetzes erreichbar, läuft auf einem internen Server
+- Visualisiert den Planungsstatus von Studiensemestern, Modulen und Dozenten
 
 ## Design
 Der erste Design Prototyp wurde mit Hilfe der Design Thinking Methode umgesetzt und wurden in einen iterativen Prozess stetig weiterentwickelt.
@@ -22,12 +21,12 @@ Die Grundlage zur Entwicklung unserer Anwendung bildet das Wissensschema, mit de
 
 ## Ergebnis
 ### Am Ende nochmal eine kleine Übersicht mit den Funktionen die im Rahmen des Projektes umgesetzt wurden.
-• Darstellung der unterschiedlichen Sichten des Menüs je nach Sommersemester und Wintersemester
-• Lehrplanung Übersicht aller Dozenten mit Dashboard
-• Interaktive Zuordnung von Lehrveranstaltungen zu Dozenten mit paralleler Statusvisualisierung
-• Visualisiert den Planungsstatus von Studiensemestern, Modulen und Dozenten 
+- Darstellung der unterschiedlichen Sichten des Menüs je nach Sommersemester und Wintersemester
+- Lehrplanung Übersicht aller Dozenten mit Dashboard
+- Interaktive Zuordnung von Lehrveranstaltungen zu Dozenten mit paralleler Statusvisualisierung
+- Visualisiert den Planungsstatus von Studiensemestern, Modulen und Dozenten 
 
 ### Einstellungen
-• Die Möglichkeit neue Professoren anzulegen bearbeiten oder zu löschen
-• Die Möglichkeit neue Module anzulegen editieren und löschen
-• Sicherheitsabfrage ob der Datensatz wirklich gelöscht werden soll
+- Die Möglichkeit neue Professoren anzulegen bearbeiten oder zu löschen
+- Die Möglichkeit neue Module anzulegen editieren und löschen
+- Sicherheitsabfrage ob der Datensatz wirklich gelöscht werden soll
