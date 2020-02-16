@@ -27,6 +27,12 @@ Die Grundlage zur Entwicklung unserer Anwendung bildet das Wissensschema, mit de
 - Visualisiert den Planungsstatus von Studiensemestern, Modulen und Dozenten 
 
 ### Einstellungen
+<<<<<<< HEAD
 - Die Möglichkeit neue Professoren anzulegen bearbeiten oder zu löschen
 - Die Möglichkeit neue Module anzulegen editieren und löschen
 - Sicherheitsabfrage ob der Datensatz wirklich gelöscht werden soll
+=======
+• Die Möglichkeit neue Professoren anzulegen bearbeiten oder zu löschen
+• Die Möglichkeit neue Module anzulegen editieren und löschen
+• Sicherheitsabfrage ob der Datensatz wirklich gelöscht werden soll
+>>>>>>> 04dec57e832b6e2878cf4095f332b8eb5fa29bd1
