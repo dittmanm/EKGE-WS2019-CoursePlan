@@ -1,7 +1,6 @@
 <?php
 class Main {
   protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
-  //protected $prevUrl = 'http://localhost:3030/Test_5_Unip/';
   
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -98,7 +97,7 @@ class Main {
     return $resultArr;
   }
   
-  //http://localhost:3030/MyDataset/update
+  //http://.../FUSEKI-DATASET/update
   public function updateAction ($data) {
     $url = $this->prevUrl.'update';
     $options = array('http' => array(
@@ -111,7 +110,7 @@ class Main {
     return $result;
   }
   
-  //http://localhost:3030/MyDataset/sparql
+  //http://.../FUSEKI-DATASET/sparql
   public function sparqlAction ($data) {
     //print_r($data);
     $url = $this->prevUrl.'sparql';
@@ -135,7 +134,7 @@ class Main {
           "givenName"=>$request['givenName'],
           "honorificPrefix"=>$request['honorificPrefix'],
           "email"=>$request['email'],
-          "contructualHours"=>$request['contructualHours'],
+          "contractualHours"=>$request['contractualHours'],
           "reductingHours"=>$request['reductingHours']
       );
     break;

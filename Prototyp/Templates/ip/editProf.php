@@ -13,7 +13,7 @@
     <p>Vorname: <input name="givenName" type="text" value="<?php echo $arr['givenName']; ?>" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" value="<?php echo $arr['honorificPrefix']; ?>" /></p>
     <p>E-Mail: <input name="email" type="text" value="<?php echo $arr['email']; ?>" /></p>
-    <p>Deputatsstunden: <input name="contructualHours" type="text" value="<?php echo $arr['contructualHours']; ?>" /></p>
+    <p>Deputatsstunden: <input name="contractualHours" type="text" value="<?php echo $arr['contractualHours']; ?>" /></p>
     <p>Minderungsstunden: <input name="reductingHours" type="text" value="<?php echo $arr['reductingHours']; ?>" /></p>
     <input type='hidden' name="id" value="<?php echo $id; ?>" />
     <input type='hidden' name="model" value="ip" />

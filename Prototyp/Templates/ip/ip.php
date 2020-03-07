@@ -32,7 +32,7 @@
     echo '<tr>';
     echo '<td>'.$arr['honorificPrefix'].'</td>';
     echo '<td>'.$arr['givenName'].' '.$arr['familyName'].'</td>';
-    echo '<td>'.$arr['contructualHours'].'</td>';
+    echo '<td>'.$arr['contractualHours'].'</td>';
     echo '<td>'.$arr['reductingHours'].'</td>';
     //echo '<td>'.$arr['email'].'</td>';
     echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';

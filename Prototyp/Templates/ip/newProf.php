@@ -5,7 +5,7 @@
     <p>Vorname: <input name="givenName" type="text" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" /></p>
     <p>E-Mail: <input name="email" type="text" /></p>
-    <p>Deputatsstunden: <input name="contructualHours" type="text" /></p>
+    <p>Deputatsstunden: <input name="contractualHours" type="text" /></p>
     <p>Minderungsstunden: <input name="reductingHours" type="text" /></p>
     <input type='hidden' name="model" value="ip" />
     <input type='hidden' name="controller" value="ip" />
