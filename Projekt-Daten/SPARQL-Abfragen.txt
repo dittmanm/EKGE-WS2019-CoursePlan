@@ -1,0 +1,98 @@
+PREFIX schema: <https://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+SELECT ?id ?name ?isPartOf
+WHERE { 
+	?id a cp:Module ;
+		cp:semesterSeason ?semesterSeason ;
+		schema:Name ?Name ;
+		schema:isPartOf ?isPartOf ;
+		schema:startDate ?startDate ;
+		schema:timeRequired ?timeRequired.
+	#VALUES (?startDate) {('2. Semester')}
+	#VALUES (?isPartOf) {(cp:wi_ba)}
+	VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
+} ORDER BY (?Name)
+
+SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf 
+WHERE {
+	?id a cp:Module ; 
+	cp:semesterSeason ?semesterSeason ; 
+	schema:Name ?name ; 
+	schema:isPartOf ?isPartOf ; 
+	schema:startDate ?startDate ; 
+	schema:timeRequired ?timeRequired. 
+	VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
+} ORDER BY (?name)
+
+SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf 
+WHERE {
+	?id a cp:Module ; 
+	cp:semesterSeason ?semesterSeason ; 
+	schema:Name ?name ; 
+	schema:isPartOf ?isPartOf ; 
+	schema:startDate ?startDate ; 
+	schema:timeRequired ?timeRequired. 
+	VALUES (?id) {(cp:DatenbankenModellierungStrukturierung)} 
+} ORDER BY (?name)
+
+SELECT ?id ?name ?educationalCredentialAwarded ?provider
+WHERE { 
+	?id a cp:StudyProgram ;
+	schema:Name ?name ;
+	schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
+	schema:provider ?provider .
+	FILTER ( ?id = cp:wi_ba )
+} ORDER BY (?name)
+
+SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
+WHERE {
+	?id a cp:Module ; 
+	cp:semesterSeason ?semesterSeason ; 
+	schema:name ?name ; 
+	schema:isPartOf ?isPartOf ; 
+	schema:startDate ?startDate ; 
+	schema:timeRequired ?timeRequired ;
+	OPTIONAL { ?id cp:hasCourseInstance ?hasCourseInstance . }
+	VALUES (?startDate ?isPartOf) {("1. Semester" cp:wi_ba)} 
+} ORDER BY (?name)
+
+SELECT ?id ?instructor ?contributor ?courseWorkloadi ?courseWorkloadc
+WHERE { 
+	?id a cp:CourseInstance ;
+	schema:instructor ?instructor ;
+	schema:contributor ?contributor ;
+	schema:courseWorkloadi ?courseWorkloadi ;
+	schema:courseWorkloadc ?courseWorkloadc .
+} ORDER BY (?id)
+
+SELECT ?pid ?instructor ?courseWorkloadi
+WHERE {
+	?pid a schema:Person .
+	
+	?mid a cp:Module ;
+	cp:hasCourseInstance ?hasCourseInstance . 
+	
+	?hasCourseInstance a cp:CourseInstance ;
+	schema:instructor ?instructor ;
+	schema:courseWorkloadi ?courseWorkloadi .
+    
+	FILTER (?pid = cp:VM).
+	FILTER (?instructor = ?pid).
+}
+
+SELECT ?pid ?contributor ?courseWorkloadc
+WHERE {
+	?pid a schema:Person .
+	
+	?mid a cp:Module ;
+	cp:hasCourseInstance ?hasCourseInstance . 
+	
+	?hasCourseInstance a cp:CourseInstance ;
+	schema:contributor ?contributor ;
+	schema:courseWorkloadc ?courseWorkloadc .
+    
+	FILTER (?pid = cp:VM).
+	FILTER (?contributor = ?pid).
+}

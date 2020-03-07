@@ -1,0 +1,110 @@
+##############
+### ip.php ###
+##############
+<?php
+  $person = new InstructorPerson(); //Klassenaufruf
+  $main = new Main();
+  $list = $main->queryAction($person->listAction()); //Verschachtelung der beiden Klassen mit den entsprechenden Funktionen
+?>
+<h2>Dozent*innen-Planung</h2>
+<table>
+  <tr><th>Titel</th><th>Name</th> <th>Dep.</th><th>Mind.</th><th></th><th></th></tr>
+  <?php foreach($list as $arr) { //Verarbeitung der erhaltenen Ergebnisse in Form eines Arrays
+    $id = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']);
+    echo '<tr>';
+    echo '<td>'.$arr['honorificPrefix'].'</td>';
+    echo '<td>'.$arr['givenName'].' '.$arr['familyName'].'</td>';
+    echo '<td>'.$arr['contructualHours'].'</td>';
+    echo '<td>'.$arr['reductingHours'].'</td>';
+    //echo '<td>'.$arr['email'].'</td>';
+    echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+    echo '<td><a href="?model=ip&controller=detailProf&id='.$id.'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+    echo '</tr>';
+    }
+  ?>
+</table>
+
+########################
+### ipController.php ###
+########################
+<?php
+class InstructorPerson { //Klasse für die Dozent*innen
+  public function listAction() { //SPARQL Script um eine Liste alle Dozent*innen zu erhalten
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contructualHours ?reductingHours
+      WHERE {
+        ?id a schema:Person;
+          schema:givenName ?givenName;
+          schema:familyName ?familyName;
+          schema:honorificPrefix ?honorificPrefix;
+          schema:email ?email;
+          cp:contructualHours ?contructualHours; 
+          cp:reductingHours ?reductingHours.
+      }
+      ORDER BY (?familyName)';
+    return $data;
+  }
+}
+
+####################
+### function.php ###
+####################
+<?php
+class Main {
+  protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/'; //Definition des Pfades zum Fuseki-Server
+  
+  public function queryAction ($data) {
+    $url = $this->prevUrl.'query';
+    $options = array('http' => array(
+      'header'  => ['Content-type: application/sparql-query'],['Accept: application/json'],
+      'method'  => 'POST',
+      'content' => $data //SPARQL Script
+    ));
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context); //HTTP Aufruf
+    if ($result === FALSE) { /* Handle error */ }
+    $xml = simplexml_load_string($result); //Verarbeitung in verschiedenen Schritten um am Ende ein Array mit den Daten zu erhalten
+    $jsonEn = json_encode($xml);
+    $jsonDe= json_decode($jsonEn,TRUE);
+    $result1 = $jsonDe['results'];
+    foreach ($result1['result'] as $key2 => $val2) {
+      if (isset($val2['binding'])) {
+        $resArr = $this->readBinding($val2);
+      } else {
+        $resArr = $this->readAttributes($val2);
+      }
+      $finalArr[] = $resArr;
+    }
+    return $finalArr;
+  }
+  
+  public function readBinding($a) {
+    foreach ($a['binding'] as $key3 => $val3) {
+      foreach ($val3 as $key4 => $val4) {
+        $val = '';
+        if (is_array($val4)) {
+          foreach ($val4 as $key5 => $val5) { $key = $val5; }
+        } else { $val = $val4; }
+        $resultArr[$key] = $val;
+      }
+    }
+    return $resultArr;
+  }
+  
+  public function readAttributes($a) {
+    foreach ($a as $key3 => $val3) {
+      foreach ($val3 as $key4 => $val4) {
+        $val = '';
+        if (is_array($val4)) {
+          foreach ($val4 as $key5 => $val5) { $key = $val5; }
+        } else { $val = $val4; }
+        $resultArr[$key] = $val;
+      }
+    }
+    return $resultArr;
+  }
+}
