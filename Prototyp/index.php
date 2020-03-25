@@ -1,7 +1,6 @@
 <?php
   session_start();
   $request = array_merge($_GET, $_POST);
-  //print_r($request);
 
   include_once("Controller/ipController.php");
   include_once("Controller/cpController.php");

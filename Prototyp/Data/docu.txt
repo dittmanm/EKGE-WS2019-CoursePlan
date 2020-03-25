@@ -36,3 +36,28 @@ FRAGEN/ANREGUNGEN:
     Soll diese Auswahl auch die Ansicht ändern können?
 - Bei Lehrplanung alle Module des Studiengangs anzeigen?
     - SemesterSeason kann sonst bei Modulen entfernt werden.
+
+Dozentenauslastung als Tabellenlösung
+<table>
+  <tr><th>Dozent*in</th><th>Soll</th><th>Dep</th><th>Work</th><th>Diff</th></tr>
+  <?php
+  $iplist = $main->queryAction($ip->listAction());
+  foreach ($iplist as $Iarr) {
+    $workHours = 0;
+    $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+    foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
+    $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+    foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
+    $diffHours = $Iarr['contructualHours']-$Iarr['reductingHours']-$workHours;
+    echo '<tr>';
+    echo '<td>'.$Iarr['givenName'].' '.$Iarr['familyName'].'</td>';
+    echo '<td>'.$Iarr['contructualHours'].'</td>';
+    echo '<td>'.$Iarr['reductingHours'].'</td>';
+    echo '<td>'.$workHours.'</td>';
+    if ($diffHours === 0) { echo '<td bgcolor=green>'.$diffHours.'</td>'; }
+    elseif ($diffHours < 0) { echo '<td bgcolor=red>'.$diffHours.'</td>'; }
+    elseif ($diffHours > 0) { echo '<td bgcolor=yellow>'.$diffHours.'</td>'; }
+    echo '</tr>';
+  }
+  ?>
+</table>

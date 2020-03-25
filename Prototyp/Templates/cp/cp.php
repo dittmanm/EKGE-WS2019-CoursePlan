@@ -14,30 +14,24 @@
   
   if($request['action'] === 'create') {
     $request['id'] = $main->generateKey($request['cHi']);
-    $res = $main->updateAction($cp->insertAction($request));
-    $res = $main->updateAction($mp->insertInstanceAction($request));
+    $main->updateAction($cp->insertAction($request));
+    $main->updateAction($mp->insertInstanceAction($request));
   } elseif($request['action'] === 'update') {
     $delDat = $main->queryAction($cp->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $res = $main->updateAction($cp->deleteAction($datArr));
+      $main->updateAction($cp->deleteAction($datArr));
     }
-    $res[] = $main->updateAction($cp->updateAction($request));
+    $main->updateAction($cp->updateAction($request));
   } elseif($request['action'] === 'delete') {
     $delDat = $main->queryAction($cp->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $res = $main->updateAction($cp->deleteAction($datArr));
+      $main->updateAction($cp->deleteAction($datArr));
     }
   }
 ?>
-<!--<form action="index.php">
-  <input type='hidden' name="model" value="cp" />
-  <input type='hidden' name="controller" value="cp" />
-  <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
-  <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
-  <p><input value="REFRESH" name="button" type="submit" class="left"></p>
-</form>-->
+
 <?php
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
@@ -71,34 +65,11 @@
   }
   ?>
 </table>
-<h4>Dozenten*innen Auslastung</h4>
-<!--<table>
-  <tr><th>Dozent*in</th><th>Soll</th><th>Dep</th><th>Work</th><th>Diff</th></tr>
-  <?php
-//  $iplist = $main->queryAction($ip->listAction());
-//  foreach ($iplist as $Iarr) {
-//    $workHours = 0;
-//    $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
-//    foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
-//    $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
-//    foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
-//    $diffHours = $Iarr['contructualHours']-$Iarr['reductingHours']-$workHours;
-//    echo '<tr>';
-//    echo '<td>'.$Iarr['givenName'].' '.$Iarr['familyName'].'</td>';
-//    echo '<td>'.$Iarr['contructualHours'].'</td>';
-//    echo '<td>'.$Iarr['reductingHours'].'</td>';
-//    echo '<td>'.$workHours.'</td>';
-//    if ($diffHours === 0) { echo '<td bgcolor=green>'.$diffHours.'</td>'; }
-//    elseif ($diffHours < 0) { echo '<td bgcolor=red>'.$diffHours.'</td>'; }
-//    elseif ($diffHours > 0) { echo '<td bgcolor=yellow>'.$diffHours.'</td>'; }
-//    echo '</tr>';
-//  }
-  ?>
-</table>-->
 
+<h4>Dozenten*innen Auslastung</h4>
 <div id="workload">
-  <div class="block"></div><div class="z0">0</div><div class="z5">5</div><div class="z10">10</div>
-  <div class="z15">15</div><div class="z20">20</div><div class="z25">25</div>
+  <div class="block"></div><div class="z0">0%</div><div class="z25">25%</div><div class="z50">50%</div>
+  <div class="z75">75%</div><div class="z100">100%</div><div class="z125">125%</div>
   <?php
   $iplist = $main->queryAction($ip->listAction());
   foreach ($iplist as $Iarr) {
@@ -107,12 +78,12 @@
     foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
     $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
     foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
-    $diffHours = $Iarr['contructualHours']-$Iarr['reductingHours']-$workHours;
+    $diffHours = $Iarr['contractualHours']-$Iarr['reductingHours']-$workHours;
     echo '<div class="wp">';
     echo '<p>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Iarr['id']).'</p>';
     echo '<div class="c100">';
-    $dep = (100 / $Iarr['contructualHours'] ) * $Iarr['reductingHours'] ;
-    $work = (100 / $Iarr['contructualHours'] ) * $workHours ;
+    $dep = (100 / $Iarr['contractualHours'] ) * $Iarr['reductingHours'] *0.75 ;
+    $work = (100 / $Iarr['contractualHours'] ) * $workHours *0.75 ;
     echo '<section class="dp" style="width: '.$dep.'%;">'.$Iarr['reductingHours'].'</section>';
     echo '<section class="vl" style="width: '.$work.'%;">'.$workHours.'</section>';
     echo '</div></div>';

@@ -58,6 +58,20 @@ a {
 .select {
   width: 500px;
 }
+h1, h2, h3 {
+  font-family: Arial, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+  font-size: 2em;
+  margin: 0px;
+  margin-bottom: 10px;
+  padding: 0px;
+}
+h2 {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.1em;
+}
+
 /*** HEADER ***/
 #header {
   background-image: url("thb.jpg"); 
@@ -81,12 +95,11 @@ a {
 }
 #header .headline {
   color: #000000;
-  margin: 35px 20px;
+  margin: 10px 20px;
 }
 #header .headline h1 {
-	/*background-color: ;*/
+  margin-bottom: 0px;
 	margin-left: 42px;
-	font-family: Arial, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
 	padding: 5px;
 }
 
@@ -109,9 +122,9 @@ a {
   height: 460px;
 }
 
-#menu .menu-first {
+/*#menu .menu-first {
 
-}
+}*/
 #menu ul.menu {
   overflow: hidden;
   padding: 0px;
@@ -208,24 +221,24 @@ ul.categories a.activ {
   width: 100%;
 }
 #workload .block {
-  /*border-right: 3px dotted #000;*/
+  border-right: 3px dotted #000;
   bottom: 0;
   position: absolute;
-  right: 150px;
+  right: 170px;
   top: 0;
 }
-#workload .z0, .z5, .z10, .z15, .z20, .z25 {
+#workload .z0, .z25, .z50, .z75, .z100, .z125 {
     bottom: 0;
     position: absolute;
     text-align: center;
-    width: 35px;
+    /*width: 35px;*/
 }
-#workload .z0 { left: calc(00% + 16px) }
-#workload .z5 { left: calc(20% + 6px); }
-#workload .z10 { left: calc(40% - 0px); }
-#workload .z15 { left: calc(60% - 6px); }
-#workload .z20 { left: calc(80% - 12px); }
-#workload .z25 { left: calc(100% - 26px); }
+#workload .z0   { left: calc(02% + 15px); }
+#workload .z25  { left: calc(20% + 10px); }
+#workload .z50  { left: calc(38% + 10px); }
+#workload .z75  { left: calc(56% + 08px); }
+#workload .z100 { left: calc(73% + 05px); }
+#workload .z125 { left: calc(90% + 10px); }
 #workload .wp {
   clear: both;
   overflow: hidden;

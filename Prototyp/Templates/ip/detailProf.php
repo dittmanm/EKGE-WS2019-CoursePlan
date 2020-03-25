@@ -9,6 +9,7 @@
 <h2>Dozent*in löschen</h2>
 <div class="new">
   <form action="index.php" method="POST">
+    <p>Kürzel: <?php echo $id; ?></p>
     <p>Name: <?php echo $arr['familyName']; ?></p>
     <p>Vorname: <?php echo $arr['givenName']; ?></p>
     <p>Titel: <?php echo $arr['honorificPrefix']; ?></p>

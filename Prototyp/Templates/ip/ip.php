@@ -2,18 +2,16 @@
   $person = new InstructorPerson();
   $main = new Main();
   global $request;
+
   if($request['action'] === 'create') {
-    $namArr = (str_word_count($request["givenName"].' '.$request["familyName"], 1));
-    foreach ($namArr as $value) { $word = $word . substr($value, 0, 1); }
-    $request['id'] = $word;
-    $res = $main->updateAction($person->insertAction($request));
+    $main->updateAction($person->insertAction($request));
   } elseif($request['action'] === 'update') {
     $delDat = $main->queryAction($person->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
       $res = $main->updateAction($person->deleteAction($datArr));
     }
-    $res[] = $main->updateAction($person->updateAction($request));
+    $main->updateAction($person->updateAction($request));
   } elseif($request['action'] === 'delete') {
     $delDat = $main->queryAction($person->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
@@ -21,7 +19,7 @@
       $res = $main->updateAction($person->deleteAction($datArr));
     }
   }
-  //sleep(15);
+  
   $list = $main->queryAction($person->listAction());
 ?>
 <h2>Dozent*innen-Planung</h2>

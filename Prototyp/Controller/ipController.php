@@ -14,10 +14,6 @@ class InstructorPerson {
     return $fielddata;
   }
   
-//  public function getWorkload($personId) {
-//    
-//  }
-  
   public function getInstructorHours($personId) {
    $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -179,5 +175,24 @@ class InstructorPerson {
       }';
     return $data;
   }
+
+  public function checkIdAction($filter = '') {
+    //echo 'filterAction';
+    $filter = 'FILTER (?id = '.$filter.')';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?id ?givenName ?familyName
+      WHERE {
+        ?id a schema:Person;
+          schema:givenName ?givenName;
+          schema:familyName ?familyName.
+          '.$filter.'
+      }';
+    return $data;
+  }
+
 }
 ?>

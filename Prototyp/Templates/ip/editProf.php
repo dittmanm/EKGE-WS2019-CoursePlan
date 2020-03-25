@@ -9,13 +9,13 @@
 <h2>Dozent*in: <?php echo $arr['givenName'].' '.$arr['familyName']; ?>  bearbeiten</h2>
 <div class="new">
   <form action="index.php" method="POST">
+    <p>Kürzel: <input name="id" type="text" value="<?php echo $id; ?>"/></p>
     <p>Name: <input name="familyName" type="text" value="<?php echo $arr['familyName']; ?>"/></p>
     <p>Vorname: <input name="givenName" type="text" value="<?php echo $arr['givenName']; ?>" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" value="<?php echo $arr['honorificPrefix']; ?>" /></p>
     <p>E-Mail: <input name="email" type="text" value="<?php echo $arr['email']; ?>" /></p>
     <p>Deputatsstunden: <input name="contractualHours" type="text" value="<?php echo $arr['contractualHours']; ?>" /></p>
     <p>Minderungsstunden: <input name="reductingHours" type="text" value="<?php echo $arr['reductingHours']; ?>" /></p>
-    <input type='hidden' name="id" value="<?php echo $id; ?>" />
     <input type='hidden' name="model" value="ip" />
     <input type='hidden' name="controller" value="ip" />
     <input type='hidden' name="action" value="update" />

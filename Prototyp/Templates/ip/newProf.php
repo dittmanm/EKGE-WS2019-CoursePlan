@@ -1,6 +1,7 @@
 <h2>Dozent*in anlegen</h2>
 <div class="new">
   <form action="index.php" method="POST">
+    <p>Kürzel: <input name="id" type="text" /></p>
     <p>Name: <input name="familyName" type="text" /></p>
     <p>Vorname: <input name="givenName" type="text" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" /></p>
