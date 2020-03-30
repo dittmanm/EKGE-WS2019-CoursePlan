@@ -14,11 +14,11 @@
     <p>SWS: <?php echo $arr['timeRequired']; ?></p>
     <p>Semester: <?php echo $arr['semesterSeason']; ?></p>
     <?php
-    $ipo = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['isPartOf']);
-    $splsit = $main->queryAction($sp->filterAction($ipo));
-    foreach($splsit as $sparr) { $ipo = $sparr['name']; }
+    $ipo = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['isPartOf']);
+    $splsit = $main->queryAction($sp->filterAction('cp:'.$ipo));
+    foreach($splsit as $sparr) { $ipoName = $sparr['name']; }
     ?>
-    <p>Studiengang: <?php echo $ipo; ?></p>
+    <p>Studiengang: <?php echo $ipoName; ?></p>
     <!--<p>Studiengang: <?php echo $arr['isPartOf']; ?></p>-->
     <p>Findet statt im: <?php echo $arr['startDate']; ?></p>
     <input type='hidden' name="id" value="<?php echo $id; ?>" />

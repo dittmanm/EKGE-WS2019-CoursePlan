@@ -1,3 +1,6 @@
+<?php
+  global $request;
+?>
 <h2>Modul anlegen</h2>
 <div class="new">
   <form action="index.php" method="POST">
@@ -10,12 +13,13 @@
       </select>
     </p>
     <p>Studiengang:
+    <?php $ipo = $request['sp']; ?>
       <select name="isPartOf" size="1">
-        <option value="wi_ba">WI BA</option>
-        <option value="wi_ma">WI MA</option>
-        <option value="bwl_ba">BWL BA</option>
-        <option value="bwl_ma">BWL MA</option>
-        <option value="secm_ma">Secm MA</option>
+        <option value="wi_ba" <?php echo $ipo === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
+        <option value="wi_ma" <?php echo $ipo === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
+        <option value="bwl_ba" <?php echo $ipo === 'bwl_ba' ? 'selected' : ''; ?>>BWL BA</option>
+        <option value="bwl_ma" <?php echo $ipo === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
+        <option value="secm_ma" <?php echo $ipo === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
       </select>
     </p>
     <p>Findet statt im:
@@ -30,7 +34,7 @@
     <input type='hidden' name="model" value="mp" />
     <input type='hidden' name="controller" value="mp" />
     <input type='hidden' name="action" value="create" />
-    <input type='hidden' name="sp" value="<?php echo $ipo; ?>" />
+    <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
     <p><input value="SPEICHERN" name="button" type="submit"></p>
     <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
   </form>
