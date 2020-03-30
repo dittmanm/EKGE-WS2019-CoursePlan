@@ -1,23 +1,25 @@
 <?php
   global $request;
-  $person = new ModulPlan();
+  $mp = new ModulPlan();
   $main = new Main();
-  $list = $main->queryAction($person->filterAction($request["id"]));
+  $list = $main->queryAction($mp->detailAction($request["id"]));
   foreach ($list as $arr) {
     $id = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']);
 ?>
-<h2>Modul: <?php echo $arr['Name']; ?>  bearbeiten</h2>
+<h2>Modul: <?php echo $arr['name']; ?>  bearbeiten</h2>
 <div class="new">
   <form action="index.php" method="POST">
-    <p>Name: <input name="name" type="text" /></p>
-    <p>SWS: <input name="timeRequired" type="text" /></p>
+    <p>Name: <input name="name" type="text" value="<?php echo $arr['name']; ?>" /></p>
+    <p>SWS: <input name="timeRequired" type="text" value="<?php echo $arr['timeRequired']; ?>" /></p>
     <p>Semester:
+    <?php $ss = $arr['semesterSeason']; ?>
       <select name="semesterSeason" size="1">
         <option value="WiSe" <?php echo $ss === 'WiSe' ? 'selected' : ''; ?>>WiSe</option>
         <option value="SoSe" <?php echo $ss === 'SoSe' ? 'selected' : ''; ?>>SoSe</option>
       </select>
     </p>
     <p>Studiengang:
+    <?php $ipo = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['isPartOf']); ?>
       <select name="isPartOf" size="1">
         <option value="wi_ba" <?php echo $ipo === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
         <option value="wi_ma" <?php echo $ipo === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
@@ -27,6 +29,7 @@
       </select>
     </p>
     <p>Findet statt im:
+    <?php $sd = $arr['startDate']; ?>
       <select name="startDate" size="1">
         <option value="1. Semester" <?php echo $sd === '1. Semester' ? 'selected' : ''; ?>>1. Semester</option>
         <option value="2. Semester" <?php echo $sd === '2. Semester' ? 'selected' : ''; ?>>2. Semester</option>
@@ -39,6 +42,7 @@
     <input type='hidden' name="model" value="mp" />
     <input type='hidden' name="controller" value="mp" />
     <input type='hidden' name="action" value="update" />
+    <input type='hidden' name="sp" value="<?php echo $ipo; ?>" />
     <p><input value="SPEICHERN" name="button" type="submit"></p>
     <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
   </form>

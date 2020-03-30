@@ -78,6 +78,28 @@ class ModulPlan {
       } ORDER BY (?name)';
     return $data;
   }
+
+  public function detailAction($id) {
+    //echo 'detailAction';
+    $filter = 'FILTER (?id = '.$id.')';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
+      WHERE { 
+        ?id a cp:Module ;
+          cp:semesterSeason ?semesterSeason ;
+          schema:name ?name ;
+          schema:isPartOf ?isPartOf ;
+          schema:startDate ?startDate ;
+          schema:timeRequired ?timeRequired.
+          #OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
+        '.$filter.'
+      } ORDER BY (?name)';
+    return $data;
+  }
   
   public function insertInstanceAction($datArr) {
     //echo 'insertInstanceAction';
@@ -104,7 +126,7 @@ class ModulPlan {
         cp:'.$datArr["id"].' a cp:Module ;
         cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
         schema:name "'.$datArr["name"].'" ;
-        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:isPartOf cp:'.$datArr["isPartOf"].' ;
         schema:startDate "'.$datArr["startDate"].'" ;
         schema:timeRequired "'.$datArr["timeRequired"].'".
       }';
@@ -122,7 +144,7 @@ class ModulPlan {
         cp:'.$datArr["id"].' a cp:Module ;
         cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
         schema:name "'.$datArr["name"].'" ;
-        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:isPartOf cp:'.$datArr["isPartOf"].' ;
         schema:startDate "'.$datArr["startDate"].'" ;
         schema:timeRequired "'.$datArr["timeRequired"].'".
       }';
@@ -140,7 +162,7 @@ class ModulPlan {
         cp:'.$datArr["id"].' a cp:Module ;
         cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
         schema:name "'.$datArr["name"].'" ;
-        schema:isPartOf "'.$datArr["isPartOf"].'" ;
+        schema:isPartOf cp:'.$datArr["isPartOf"].' ;
         schema:startDate "'.$datArr["startDate"].'" ;
         schema:timeRequired "'.$datArr["timeRequired"].'".
       }';

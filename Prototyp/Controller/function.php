@@ -21,23 +21,22 @@ class Main {
     global $request;
     if(isset($request['session'])) {
       if($request['session'] === 'WS') {
-        $_SESSION['name'] = 'WS';
+        $_SESSION['season'] = 'WS';
       } elseif($request['session'] === 'SS') {
-        $_SESSION['name'] = 'SS';
+        $_SESSION['season'] = 'SS';
       } else { session_unset(); }
     }
   }
 	
   /**
    * Check the created Session
-   * WS => 1
-   * SS => 2
-   * 0 => nichts ausgewählt
+   * season: WS => 1 | SS => 2 | 0 => nichts ausgewählt
+   * year: kann ausgeählt werden um die vergangenen Jahre auszuwerten
    */
   public function getSession() {
-    if(isset($_SESSION['name'])) {
-      if($_SESSION['name'] === 'WS') { $result = 1; }
-      elseif($_SESSION['name'] === 'SS') { $result = 2; }
+    if(isset($_SESSION['season'])) {
+      if($_SESSION['season'] === 'WS') { $result = 1; }
+      elseif($_SESSION['season'] === 'SS') { $result = 2; }
       else { $result = 0; }
     } else { $result = 0; }
 		return $result;
@@ -51,7 +50,7 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
-    //print_r($options);
+    print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { /* Handle error */ }
@@ -105,6 +104,7 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
+    print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     return $result;
@@ -119,7 +119,7 @@ class Main {
       'method'  => 'POST',
       'content' => $data
     ));
-    //print_r($options);
+    print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     return $result;

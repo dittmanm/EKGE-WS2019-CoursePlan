@@ -5,25 +5,23 @@
   $main = new Main();
   if($request['action'] === 'create') {
     $request['id'] = $main->generateKey($request['name']);
-    $res = $main->updateAction($mp->insertAction($request));
+    $main->updateAction($mp->insertAction($request));
   } elseif($request['action'] === 'update') {
     $delDat = $main->queryAction($mp->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $res = $main->updateAction($mp->deleteAction($datArr));
+      $main->updateAction($mp->deleteAction($datArr));
     }
-    $res[] = $main->updateAction($mp->updateAction($request));
+    $main->updateAction($mp->updateAction($request));
   } elseif($request['action'] === 'delete') {
     $delDat = $main->queryAction($mp->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $res = $main->updateAction($mp->deleteAction($datArr));
+      $main->updateAction($mp->deleteAction($datArr));
     }
   }
-  //sleep(15);
 ?>
-<p><a href="?model=mp&controller=newModul">Neues Modul</a></p>
-<form action="index.php">
+<form action="index.php" class="modulPlan">
   <select name="sp" size="1">
     <option value="wi_ba" <?php echo $request['sp'] === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
     <option value="wi_ma" <?php echo $request['sp'] === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
@@ -35,6 +33,7 @@
   <input type='hidden' name="controller" value="mp" />
   <p><input value="WECHSELN" name="button" type="submit"></p>
 </form>
+<p><a href="?model=mp&controller=newModul">Neues Modul</a></p>
 <?php
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
@@ -55,4 +54,3 @@
         } ?>
     </table>
   <?php }}
-  

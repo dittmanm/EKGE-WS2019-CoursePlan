@@ -13,10 +13,6 @@ class CoursPlan {
     return $fielddata;
   }
   
-//  public function getWorkload($personId) {
-//    
-//  }
-  
   public function listAction() {
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -57,7 +53,6 @@ class CoursPlan {
   
   public function filterAction($filter = '') {
     //echo 'filterAction';
-    //FILTER ( ?name LIKE "Wirtschaftsinformatik" )
     $filter = 'FILTER (?id = '.$filter.')';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

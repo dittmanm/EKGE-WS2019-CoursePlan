@@ -42,22 +42,28 @@ select {
 .left {
   float: left;
 }
+
 .right {
   float: right;
 }
+
 a {
   color: #1e90ff;
   text-decoration: none;
 }
+
 .success {
   color: #008000;
 }
+
 .error {
   color: #FF0000;
 }
+
 .select {
   width: 500px;
 }
+
 h1, h2, h3 {
   font-family: Arial, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
   font-size: 2em;
@@ -65,9 +71,11 @@ h1, h2, h3 {
   margin-bottom: 10px;
   padding: 0px;
 }
+
 h2 {
   font-size: 1.6em;
 }
+
 h3 {
   font-size: 1.1em;
 }
@@ -79,24 +87,29 @@ h3 {
   clear: both;
   overflow: hidden;
 }
+
 #header .logo {
   margin-top: 30px;
   margin-left: 20px;
   width: 200px;
 }
+
 #header .login-menu {
 	margin: 0px;
 	overflow: hidden;
 	padding: 0px;
 }
+
 #header .login-menu li {
 	float: right;
 	margin: 10px;
 }
+
 #header .headline {
   color: #000000;
   margin: 10px 20px;
 }
+
 #header .headline h1 {
   margin-bottom: 0px;
 	margin-left: 42px;
@@ -108,6 +121,7 @@ h3 {
   clear: both;
   overflow: hidden;
 }
+
 /*** MENU ***/
 #menu {
   background-color: #CC082f;
@@ -130,12 +144,14 @@ h3 {
   padding: 0px;
   margin: 0px;
 }
+
 #menu ul.menu li {
   color: #ffffff;
   float: left;
   padding: 0px;
   margin: 10px 20px;
 }
+
 #menu ul.submenu {
   overflow: hidden;
   color: #ffffff;
@@ -143,11 +159,13 @@ h3 {
   margin: 0px;
   margin-left: 15px;
 }
+
 #menu ul.submenu li {
   float: none;
   padding: 0px;
   margin: 0px;
 }
+
 #menu ul.menu a {
   color: #EDEDED;
 }
@@ -161,25 +179,29 @@ h3 {
   margin-top: 20px;
 }
 
-
 /*** MAIN ***/
 #content {
   overflow: hidden;
 }
+
 #content .section {
   padding: 0px 20px;
   margin-left: 30px;
 }
+
 .search {
   margin-top: 10px;
 }
+
 .list {
   overflow: hidden;
 }
+
 .book {
   border-top: 1px solid #ccc;
   overflow: hidden;
 }
+
 ul.categories {
   border-bottom: 1px solid #BEBEBE;
   clear: both;
@@ -190,9 +212,11 @@ ul.categories {
   padding: 0px 10px;
   width: 780px;
 }
+
 ul.categories li {
   float: left;
 }
+
 ul.categories li a {
   border: 1px solid #BEBEBE;
   display: block;
@@ -200,17 +224,27 @@ ul.categories li a {
   margin-bottom: -1px;
   text-decoration: none;
 }
+
 ul.categories a.activ {
   border: 1px solid #000;
   /* border-bottom: 1px solid #fff; */
   margin-bottom: -1px;
 }
+
+.modulPlan {
+  clear: both;
+  overflow: hidden;
+  float: left;
+  width: 100%;
+}
+
 /*** TABLE ***/
 .section table, th, td {
   border: 1px solid #BEBEBE;
   border-collapse: collapse;
   text-align: center;
 }
+
 /*** WORKLOAD ***/
 #workload {
   clear: both;
@@ -220,6 +254,7 @@ ul.categories a.activ {
   position: relative;
   width: 100%;
 }
+
 #workload .block {
   border-right: 3px dotted #000;
   bottom: 0;
@@ -227,30 +262,35 @@ ul.categories a.activ {
   right: 170px;
   top: 0;
 }
+
 #workload .z0, .z25, .z50, .z75, .z100, .z125 {
     bottom: 0;
     position: absolute;
     text-align: center;
     /*width: 35px;*/
 }
+
 #workload .z0   { left: calc(02% + 15px); }
 #workload .z25  { left: calc(20% + 10px); }
 #workload .z50  { left: calc(38% + 10px); }
 #workload .z75  { left: calc(56% + 08px); }
 #workload .z100 { left: calc(73% + 05px); }
 #workload .z125 { left: calc(90% + 10px); }
+
 #workload .wp {
   clear: both;
   overflow: hidden;
   text-align: center;
   width: 100%;
 }
+
 #workload .wp p {
   float: left;
   margin: 0px;
   padding: 4px 0px;
   width: 33px;
 }
+
 #workload .c100 {
   border: 1px solid;
   float: left;
@@ -258,14 +298,17 @@ ul.categories a.activ {
   padding: 3px 0px;
   width: calc(100% - 35px);
 }
+
 #workload .dp {
   background: #ffa500;
   float: left;
 }
+
 #workload .vl{
   background: #32CD32;
   float: left;
 }
+
 /*** FOOTER ***/
 #footer {
   color: black;
