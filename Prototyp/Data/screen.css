@@ -234,8 +234,12 @@ ul.categories a.activ {
 .modulPlan {
   clear: both;
   overflow: hidden;
-  float: left;
   width: 100%;
+}
+
+.modulPlan select, .modulPlan input {
+  float: left;
+  margin-right: 10px;
 }
 
 /*** TABLE ***/

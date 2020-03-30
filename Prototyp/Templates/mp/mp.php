@@ -6,19 +6,22 @@
   if($request['action'] === 'create') {
     $request['id'] = $main->generateKey($request['name']);
     $main->updateAction($mp->insertAction($request));
+    echo 'HELLO create';
   } elseif($request['action'] === 'update') {
-    $delDat = $main->queryAction($mp->filterAction('cp:'.$request['id']));
+    $delDat = $main->queryAction($mp->detailAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
       $main->updateAction($mp->deleteAction($datArr));
     }
     $main->updateAction($mp->updateAction($request));
+    echo 'HELLO update';
   } elseif($request['action'] === 'delete') {
-    $delDat = $main->queryAction($mp->filterAction('cp:'.$request['id']));
+    $delDat = $main->queryAction($mp->detailAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
       $main->updateAction($mp->deleteAction($datArr));
     }
+    echo 'HELLO delete';
   }
 ?>
 <form action="index.php" class="modulPlan">
@@ -31,11 +34,13 @@
   </select> 
   <input type='hidden' name="model" value="mp" />
   <input type='hidden' name="controller" value="mp" />
-  <p><input value="WECHSELN" name="button" type="submit"></p>
+  <input value="WECHSELN" name="button" type="submit">
 </form>
 <p><a href="?model=mp&controller=newModul">Neues Modul</a></p>
 <?php
+  echo 'HELLO list';
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
+  print_r($splsit);
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
   for($i=1; $i < 6; $i++) {
     $mplist = $main->queryAction($mp->valuesAction('\''.$i.'. Semester\' cp:'.$request['sp']));
@@ -43,13 +48,14 @@
       echo '<h3>'.$i.'. Semester</h3>';
     ?>
     <table>
-      <tr><th>Modul</th><th>SWS</th><th>&nbsp;</th></tr>
+      <tr><th>Modul</th><th>SWS</th><th>&nbsp;</th><th>&nbsp;</th></tr>
       <?php
         foreach($mplist as $arr) {
           echo '<tr>';
           echo '<td>'.$arr['name'].'</td>';
           echo '<td>'.$arr['timeRequired'].'</td>';
           echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+          echo '<td><a href="?model=mp&controller=detailModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
           echo '</tr>';
         } ?>
     </table>

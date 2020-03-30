@@ -30,6 +30,7 @@
     <input type='hidden' name="model" value="mp" />
     <input type='hidden' name="controller" value="mp" />
     <input type='hidden' name="action" value="create" />
+    <input type='hidden' name="sp" value="<?php echo $ipo; ?>" />
     <p><input value="SPEICHERN" name="button" type="submit"></p>
     <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
   </form>

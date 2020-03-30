@@ -58,7 +58,7 @@ class ModulPlan {
   
   public function filterAction($filter = '') {
     //echo 'filterAction';
-    //FILTER ( ?name LIKE "Wirtschaftsinformatik" )
+    //FILTER ( ?isPartOf = cp:wi_ba )
     $filter = 'FILTER (?isPartOf = '.$filter.')';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -153,6 +153,7 @@ class ModulPlan {
   
   public function deleteAction($datArr) {
     //echo 'deleteAction';
+    $ipo = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['isPartOf']);
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -162,7 +163,7 @@ class ModulPlan {
         cp:'.$datArr["id"].' a cp:Module ;
         cp:semesterSeason "'.$datArr["semesterSeason"].'" ;
         schema:name "'.$datArr["name"].'" ;
-        schema:isPartOf cp:'.$datArr["isPartOf"].' ;
+        schema:isPartOf '.$ipo.' ;
         schema:startDate "'.$datArr["startDate"].'" ;
         schema:timeRequired "'.$datArr["timeRequired"].'".
       }';
