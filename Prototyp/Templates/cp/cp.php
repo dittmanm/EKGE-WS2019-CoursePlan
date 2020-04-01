@@ -73,15 +73,15 @@
   <?php
   $iplist = $main->queryAction($ip->listAction());
   foreach ($iplist as $Iarr) {
+    echo '<div class="wp">';
+    echo '<p>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Iarr['id']).'</p>';
+    echo '<div class="c100">';
     $workHours = 0;
     $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
     foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
     $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
     foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
     $diffHours = $Iarr['contractualHours']-$Iarr['reductingHours']-$workHours;
-    echo '<div class="wp">';
-    echo '<p>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Iarr['id']).'</p>';
-    echo '<div class="c100">';
     $dep = (100 / $Iarr['contractualHours'] ) * $Iarr['reductingHours'] *0.75 ;
     $work = (100 / $Iarr['contractualHours'] ) * $workHours *0.75 ;
     echo '<section class="dp" style="width: '.$dep.'%;">'.$Iarr['reductingHours'].'</section>';

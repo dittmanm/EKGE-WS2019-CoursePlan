@@ -6,7 +6,6 @@
   if($request['action'] === 'create') {
     $request['id'] = $main->generateKey($request['name']);
     $main->updateAction($mp->insertAction($request));
-    //echo 'HELLO create';
   } elseif($request['action'] === 'update') {
     $delDat = $main->queryAction($mp->detailAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
@@ -14,14 +13,12 @@
       $main->updateAction($mp->deleteAction($datArr));
     }
     $main->updateAction($mp->updateAction($request));
-    //echo 'HELLO update';
   } elseif($request['action'] === 'delete') {
     $delDat = $main->queryAction($mp->detailAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
       $main->updateAction($mp->deleteAction($datArr));
     }
-    //echo 'HELLO delete';
   }
 ?>
 <form action="index.php" class="modulPlan">
@@ -38,10 +35,7 @@
 </form>
 <?php
   echo '<p><a href="?model=mp&controller=newModul&sp='.$request['sp'].'">Neues Modul</a></p>';
-  echo ($request['sp']);
-  print_r($request);
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
-  //print_r($splsit);
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
   for($i=1; $i < 6; $i++) {
     $mplist = $main->queryAction($mp->valuesAction('\''.$i.'. Semester\' cp:'.$request['sp']));
