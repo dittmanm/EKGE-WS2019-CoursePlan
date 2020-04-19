@@ -1,5 +1,17 @@
 <?php
 class InstructorPerson {
+  /**
+   * 0 => Noch kein Eintrag vorhanden
+   * 1 => ID schon vergeben
+   */
+  function checkId($id = '') {
+    $main = new Main();
+    $ans = $main->queryAction($this->checkIdAction($id));
+    if (gettype($ans) === 'integer') { $result = 0; } 
+    else { $result = 1; }
+    return $result;
+  }
+
   protected $result;
     public function getFielddata () {
       global $request;

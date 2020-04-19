@@ -1,9 +1,9 @@
 <h2>Dozent*in anlegen</h2>
 <div class="new">
   <form action="index.php" method="POST">
-    <p>Kürzel: <input name="id" type="text" /></p>
-    <p>Name: <input name="familyName" type="text" /></p>
-    <p>Vorname: <input name="givenName" type="text" /></p>
+    <p>Name: <input id="fn" name="familyName" type="text" /></p>
+    <p>Vorname: <input id="gn" name="givenName" type="text" /></p>
+    <p>Kürzel: <input id="id" name="id" type="text" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" /></p>
     <p>E-Mail: <input name="email" type="text" /></p>
     <p>Deputatsstunden: <input name="contractualHours" type="text" /></p>
@@ -15,3 +15,5 @@
     <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
   </form>
 </div>
+<script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="Data/ip.js" type="text/javascript"></script>

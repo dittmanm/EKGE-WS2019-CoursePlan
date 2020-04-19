@@ -82,7 +82,7 @@ h3 {
 
 /*** HEADER ***/
 #header {
-  background-image: url("thb.jpg"); 
+  /*background-image: url("../images/thb.jpg"); */
   border-bottom: 1px solid #ffffff;
   clear: both;
   overflow: hidden;
@@ -174,9 +174,27 @@ h3 {
   color: #FFB91A;
 }
 
-#switchbtn {
-  margin-left: 20px;
-  margin-top: 20px;
+form.switchbtn, form.switchYear, form.switchYear select {
+  clear: both;
+  display: inline-block;
+  /* float: left; */
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+form.switchbtn {
+  width: auto;
+}
+
+form.switchbtn button {
+  height: 25px;
+  margin-right: 5px;
+  width: 40px;
+}
+
+form.switchYear, form.switchYear select {
+  width: 55px;
 }
 
 /*** MAIN ***/

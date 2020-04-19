@@ -35,13 +35,24 @@
             <a href="index.php">
               <?php $logo = $layout->getLogo(); echo $logo; ?></div>
             </a>
-          <div class="login-menu right"><?php //$loginmenu = $layout->getLoginMenu($session); //echo $loginmenu; ?></div>
+          <div class="login-menu right"><?php 
+          //$loginmenu = $layout->getLoginMenu($session); //echo $loginmenu; ?></div>
           <div class="headline left"><h1><?php $name = $layout->getName(); echo $name; ?></h1></div>
         </div>
         <div id="menu">
           <form class="switchbtn">
             <button formmethod="post" name="session" value="SS">SS</button>
             <button formmethod="post" name="session" value="WS">WS</button>
+          </form>
+          <form class="switchYear">
+            <select name="session_year" size="1">
+            <?php
+                for ($i = 0; $i <= 4; $i++) {
+                  $YearDate = date('Y')-$i;
+                  echo '<option value="'.$YearDate.'">'.$YearDate.'</option>';
+                }
+              ?>
+            </select> 
           </form>
           <div class="first-menu"><?php $menu = $layout->getMenu($session); echo $menu; ?></div>
         </div>
@@ -55,7 +66,8 @@
         </div>
         <div id="footer">Developed by Coursplan-Group</div>
       </div>
-      <!--<script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>-->
-      <!--<script src="Data/app.js" type="text/javascript"></script>-->
+      <script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>
+      <script src="Data/app.js" type="text/javascript"></script>
+      <!--<script src="Data/ip.js" type="text/javascript"></script>-->
     </body>
 </html>

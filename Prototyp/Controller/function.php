@@ -53,19 +53,25 @@ class Main {
     //print_r($options);
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { /* Handle error */ }
+    if ($result === FALSE) 
+      { echo '<p class=""error>Es ist beim Aufruf des Fuseki Servers ein Fehler aufgetreten. (Class: main)</p>'; }
     $xml = simplexml_load_string($result);
     //print_r($xml);
     $jsonEn = json_encode($xml);
     $jsonDe= json_decode($jsonEn,TRUE);
     $result1 = $jsonDe['results'];
-    foreach ($result1['result'] as $key2 => $val2) {
-      if (isset($val2['binding'])) {
-        $resArr = $this->readBinding($val2);
-      } else {
-        $resArr = $this->readAttributes($val2);
+    //print_r($result1);
+    if (!empty($result1)) {
+      foreach ($result1['result'] as $key2 => $val2) {
+        if (isset($val2['binding'])) {
+          $resArr = $this->readBinding($val2);
+        } else {
+          $resArr = $this->readAttributes($val2);
+        }
+        $finalArr[] = $resArr;
       }
-      $finalArr[] = $resArr;
+    } else {
+      $finalArr = 0;
     }
     return $finalArr;
   }
