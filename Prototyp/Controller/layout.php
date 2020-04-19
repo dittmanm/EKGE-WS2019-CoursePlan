@@ -72,13 +72,12 @@ class Layout {
    * 0 => Automatische Auswahl durch Monat
    * @return string
    */
-  public function getMenu($session) {
-		if($session === 1) {
+  public function getMenu($s_season) {
+		if($s_season === 1) {
 			$menu = $this->getWsMenu();
-		} elseif($session === 2) {
+		} elseif($s_season === 2) {
 			$menu = $this->getSsMenu();
 		} else {
-      //$datum = date("n");
       if((date("n") > 3) AND (date("n") < 10)) { $menu = $this->getWsMenu(); }
       else { $menu = $this->getSsMenu(); }
 		}

@@ -16,29 +16,47 @@ class Main {
     return $key;
   }
   
-  /** Search for Session **/
-  public function checkSession() {
+  /**
+   * Search for Session
+   * and create a Session
+   */
+  public function checkSession($s_name) {
     global $request;
-    if(isset($request['session'])) {
-      if($request['session'] === 'WS') {
-        $_SESSION['season'] = 'WS';
-      } elseif($request['session'] === 'SS') {
-        $_SESSION['season'] = 'SS';
-      } else { session_unset(); }
+    $result = 0;
+    switch ($s_name) {
+      case 's_season':
+        if ( isset($request['s_season']) ) {
+          $_SESSION['s_season'] = $request['s_season'];
+        } break;
+        case 's_year':
+          $result = $request['s_year'];
+          if ( isset($request['s_year']) ) {
+            $_SESSION['s_year'] = $request['s_year'];
+          } break;
+      default: session_unset();
     }
   }
 	
   /**
    * Check the created Session
-   * season: WS => 1 | SS => 2 | 0 => nichts ausgewählt
+   * 0 => nichts ausgewählt
+   * season: WS => 1 | SS => 2
    * year: kann ausgeählt werden um die vergangenen Jahre auszuwerten
    */
-  public function getSession() {
-    if(isset($_SESSION['season'])) {
-      if($_SESSION['season'] === 'WS') { $result = 1; }
-      elseif($_SESSION['season'] === 'SS') { $result = 2; }
-      else { $result = 0; }
-    } else { $result = 0; }
+  public function getSession($s_name) {
+    $result = 0;
+    switch ($s_name) {
+      case 's_season':
+        if(isset($_SESSION['s_season'])) {
+          if($_SESSION['s_season'] === 'WS') { $result = 1; }
+          elseif($_SESSION['s_season'] === 'SS') { $result = 2; }
+        } break;
+      case 's_year':
+        if(isset($_SESSION['s_year'])) {
+          $result = $_SESSION['s_year'];
+        } break;
+      default: $result = 0;
+    }
 		return $result;
   }
   
@@ -54,7 +72,7 @@ class Main {
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) 
-      { echo '<p class=""error>Es ist beim Aufruf des Fuseki Servers ein Fehler aufgetreten. (Class: main)</p>'; }
+      { echo '<p class=""error>Es ist beim Aufruf des Fuseki Servers ein Fehler aufgetreten. (Class:main)</p>'; }
     $xml = simplexml_load_string($result);
     //print_r($xml);
     $jsonEn = json_encode($xml);

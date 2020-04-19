@@ -174,7 +174,7 @@ h3 {
   color: #FFB91A;
 }
 
-form.switchbtn, form.switchYear, form.switchYear select {
+form.switchBtn, form.switchYear, form.switchYear select {
   clear: both;
   display: inline-block;
   /* float: left; */
@@ -183,11 +183,11 @@ form.switchbtn, form.switchYear, form.switchYear select {
   padding: 0px;
 }
 
-form.switchbtn {
+form.switcBbtn {
   width: auto;
 }
 
-form.switchbtn button {
+form.switchBtn button {
   height: 25px;
   margin-right: 5px;
   width: 40px;

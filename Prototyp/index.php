@@ -13,8 +13,8 @@
   $layout = new Layout();
   $content = new Content();
   $main = new Main();
-  $main->checkSession();
-	$session = $main->getSession();
+  $main->checkSession('s_season');
+	$s_season = $main->getSession('s_season');
 
   error_reporting(0);
 ?>
@@ -40,12 +40,12 @@
           <div class="headline left"><h1><?php $name = $layout->getName(); echo $name; ?></h1></div>
         </div>
         <div id="menu">
-          <form class="switchbtn">
-            <button formmethod="post" name="session" value="SS">SS</button>
-            <button formmethod="post" name="session" value="WS">WS</button>
+          <form class="switchBtn">
+            <button formmethod="post" name="s_season" value="SS">SS</button>
+            <button formmethod="post" name="s_season" value="WS">WS</button>
           </form>
           <form class="switchYear">
-            <select name="session_year" size="1">
+            <select id="s_year" name="s_year" size="1">
             <?php
                 for ($i = 0; $i <= 4; $i++) {
                   $YearDate = date('Y')-$i;
@@ -54,7 +54,7 @@
               ?>
             </select> 
           </form>
-          <div class="first-menu"><?php $menu = $layout->getMenu($session); echo $menu; ?></div>
+          <div class="first-menu"><?php $menu = $layout->getMenu($s_season); echo $menu; ?></div>
         </div>
         <div id="content">
           <div class="section">
@@ -68,6 +68,5 @@
       </div>
       <script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>
       <script src="Data/app.js" type="text/javascript"></script>
-      <!--<script src="Data/ip.js" type="text/javascript"></script>-->
     </body>
 </html>
