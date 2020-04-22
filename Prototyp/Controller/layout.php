@@ -1,6 +1,38 @@
 <?php
 class Layout {
-		
+
+	public function getNormalMenu($s_season) {
+    global $request;
+    //studyprograms
+    include_once("function.php");
+    include_once("spController.php");
+    include_once("mpController.php");
+    $main = new Main();
+    $stp = new StudyProgram();
+    $mp = new ModulPlan();
+    $sps = $main->queryAction($stp->getStudyPrograms());
+    if ($s_season === 1) {$sseason = 'WS';}
+     else {$sseason = 'SS';}
+    foreach($sps as $datArr) {
+      //startdates
+      $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['id']);
+      $sd = $main->queryAction($mp->getStartdates('"'.$sseason.'" '.$datArr['id']));
+      unset($resArr);
+      foreach ($sd as $subArr) {
+        $sp = str_replace('cp:', '', $datArr['id']);
+        $season = substr($subArr['startDate'], 0, 1).substr($subArr['startDate'], 2, 1);
+        $resArr[$subArr['startDate']] = "?model=cp&controller=cp&sp=".$sp."&season=".$season;
+      }
+      $menu[$datArr['name']] = $resArr;
+    }
+    $settings = array(
+      "Dozentenplanung" => "?model=ip&controller=ip",
+      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
+    );
+    $menu['Einstellungen'] = $settings;
+    return $menu;
+  }
+
 	public function getWsMenu() {
    	$wi_ba = array(
 			"1. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=1S",
@@ -73,14 +105,9 @@ class Layout {
    * @return string
    */
   public function getMenu($s_season) {
-		if($s_season === 1) {
-			$menu = $this->getWsMenu();
-		} elseif($s_season === 2) {
-			$menu = $this->getSsMenu();
-		} else {
-      if((date("n") > 3) AND (date("n") < 10)) { $menu = $this->getWsMenu(); }
-      else { $menu = $this->getSsMenu(); }
-		}
+    // if($s_season === 1) {$this->getWsMenu();} 
+    //elseif($s_season === 2) {$this->getSsMenu();
+    $menu = $this->getNormalMenu($s_season);
 		$data = '';
     $data.= '<ul class="menu">';
     foreach ($menu as $key => $attribute) {

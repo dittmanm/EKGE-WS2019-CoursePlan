@@ -115,5 +115,22 @@ class StudyProgram {
       }';
     return $data;
   }
+
+  public function getStudyPrograms($provider='cp:wirtschaft') {
+    $filter = 'FILTER (?provider = '.$provider.')';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+    
+      SELECT ?id ?name ?provider
+      WHERE { 
+        ?id a cp:StudyProgram ;
+        schema:name ?name ;
+        schema:provider ?provider .
+        '.$filter.'
+      } ORDER BY (?Name)';
+    return $data;
+  }
 }
 ?>

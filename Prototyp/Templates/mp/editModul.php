@@ -14,8 +14,8 @@
     <p>Semester:
     <?php $ss = $arr['semesterSeason']; ?>
       <select name="semesterSeason" size="1">
-        <option value="WiSe" <?php echo $ss === 'WiSe' ? 'selected' : ''; ?>>WiSe</option>
-        <option value="SoSe" <?php echo $ss === 'SoSe' ? 'selected' : ''; ?>>SoSe</option>
+        <option value="WS" <?php echo $ss === 'WS' ? 'selected' : ''; ?>>WiSe</option>
+        <option value="SS" <?php echo $ss === 'SS' ? 'selected' : ''; ?>>SoSe</option>
       </select>
     </p>
     <p>Studiengang:

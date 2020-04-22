@@ -169,5 +169,25 @@ class ModulPlan {
       }';
     return $data;
   }
+  public function getStartdates($values='') {
+    //VALUES (?semesterSeason ?isPartOf) {('WS' cp:wi_ba)}
+    $values = 'VALUES (?semesterSeason ?isPartOf) {('.$values.')}';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+      
+      SELECT ?startDate ?semesterSeason
+        WHERE { 
+          ?id a cp:Module ;
+          cp:semesterSeason ?semesterSeason ;
+          schema:isPartOf ?isPartOf ;
+          schema:startDate ?startDate .
+          '.$values.'
+        }
+      GROUP BY ?startDate ?semesterSeason
+      ORDER BY (?startDate) ';
+    return $data;
+  }
 }
 ?>

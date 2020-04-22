@@ -8,8 +8,8 @@
     <p>SWS: <input name="timeRequired" type="text" /></p>
     <p>Semester:
       <select name="semesterSeason" size="1">
-        <option value="WiSe">WiSe</option>
-        <option value="SoSe">SoSe</option>
+        <option value="WS">WiSe</option>
+        <option value="SS">SoSe</option>
       </select>
     </p>
     <p>Studiengang:
