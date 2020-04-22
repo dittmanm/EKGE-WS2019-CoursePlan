@@ -10,6 +10,7 @@
 <div class="new">
   <form action="index.php" method="POST">
     <p>Kürzel: <input id="id" name="id" type="text" value="<?php echo $id; ?>"/></p>
+    <p id="idhint" class="error" style="display:none">Das Kürzel ist schon vergeben. Bitte wählen Sie ein anderes.</p>
     <p>Name: <input id="fn" name="familyName" type="text" value="<?php echo $arr['familyName']; ?>"/></p>
     <p>Vorname: <input id="gn" name="givenName" type="text" value="<?php echo $arr['givenName']; ?>" /></p>
     <p>Titel: <input name="honorificPrefix" type="text" value="<?php echo $arr['honorificPrefix']; ?>" /></p>

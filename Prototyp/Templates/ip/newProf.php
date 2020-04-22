@@ -4,6 +4,7 @@
     <p>Name: <input id="fn" name="familyName" type="text" /></p>
     <p>Vorname: <input id="gn" name="givenName" type="text" /></p>
     <p>Kürzel: <input id="id" name="id" type="text" /></p>
+    <p id="idhint" class="error" style="display:none">Das Kürzel ist schon vergeben. Bitte wählen Sie ein anderes.</p>
     <p>Titel: <input name="honorificPrefix" type="text" /></p>
     <p>E-Mail: <input name="email" type="text" /></p>
     <p>Deputatsstunden: <input name="contractualHours" type="text" /></p>

@@ -32,71 +32,7 @@ class Layout {
     $menu['Einstellungen'] = $settings;
     return $menu;
   }
-
-	public function getWsMenu() {
-   	$wi_ba = array(
-			"1. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=3S",
-      "5. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=5S"  
-		);
-   	$wi_ma = array(
-			"1. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=3S"
-		);
-    $bwl_ba = array(
-			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=3S",
-      "5. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=5S"  
-    );
-    $bwl_ma = array(
-			"1. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=1S",
-      "3. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=3S"  
-    );
-    $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip",
-      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
-    );
-    
-    $menu = array(
-			"WI Bachelor" => $wi_ba,
-			"WI Master" => $wi_ma,
-      "BWL Bachelor" => $bwl_ba,
-      "BWL Master" => $bwl_ma,
-      "Einstellungen" => $dp
-		);
-    return $menu;
-  }
-	
-  public function getSsMenu() {
-   	$wi_ba = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=2S",
-      "4. Semester" => "?model=cp&controller=cp&sp=wi_ba&season=4S"  
-		);
-   	$wi_ma = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=wi_ma&season=2S" 
-		);
-    $bwl_ba = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=2S",
-      "4. Semester" => "?model=cp&controller=cp&sp=bwl_ba&season=4S"  
-    );
-    $bwl_ma = array(
-			"2. Semester" => "?model=cp&controller=cp&sp=bwl_ma&season=2S"  
-    );
-    $dp = array(
-      "Dozentenplanung" => "?model=ip&controller=ip",
-      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
-    );
-    
-    $menu = array(
-			"WI Bachelor" => $wi_ba,
-			"WI Master" => $wi_ma,
-      "BWL Bachelor" => $bwl_ba,
-      "BWL Master" => $bwl_ma,
-      "Einstellungen" => $dp
-		);
-    return $menu;
-  }
-  
+ 
   /**
    * Create Menu for all Users
    * WS => 1
@@ -105,8 +41,6 @@ class Layout {
    * @return string
    */
   public function getMenu($s_season) {
-    // if($s_season === 1) {$this->getWsMenu();} 
-    //elseif($s_season === 2) {$this->getSsMenu();
     $menu = $this->getNormalMenu($s_season);
 		$data = '';
     $data.= '<ul class="menu">';
@@ -120,6 +54,7 @@ class Layout {
     $data.= '</ul>';
     return $data;
   }
+
   /**
    * Create Menu for Login
    * @return string
@@ -135,6 +70,7 @@ class Layout {
     
 		return $data;
   }
+
   /**
    * Get Logo to display in the content
    * @return string
@@ -143,6 +79,7 @@ class Layout {
     $data = '<img src="images/THB_Logo.svg">';
     return $data;
   }
+
   /**
    * Get fav.ico to display in the head
    * @return string
@@ -151,6 +88,7 @@ class Layout {
     $data = '<img src="images/logo.ico">';
     return $data;
   }
+
   /**
    * Title Information
    * @return string
@@ -159,6 +97,7 @@ class Layout {
     $data = "Course Planung";
     return $data;
   }
+
   /**
    * Firtst Headline
    * @return string
@@ -167,5 +106,6 @@ class Layout {
     $data = "Lehrplanung";
     return $data;
   }
+  
 }
 ?>

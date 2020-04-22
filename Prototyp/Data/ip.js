@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var defaultText = 'TEST';
+    var defaultText = '';
     $("#fn").blur(function(){
         if($(this).val()==""){
             $(this).val(defaultText);
@@ -22,9 +22,17 @@ $(document).ready(function(){
             type: "GET",
             url: 'Controller/apiController.php?iPid='+iPid,
             success: function(data) {
-                if (data == 0) { $("#id").css("border", "2px solid green"); }
-                 else if (data == 1) { $("#id").css("border", "2px solid red"); }
-                 else if (data == 2) { console.log("zwei") }
+                if (data == 0) {
+                    $("#id").css("border", "2px solid green");
+                    //$("idhint").removeClass('activ');
+                    document.getElementById('idhint').style.display='none';
+                    //$("#idhint").hide();
+                } else if (data == 1) { 
+                    $("#id").css("border", "2px solid red");
+                    //$("#idhint").addClass("activ");
+                    document.getElementById('idhint').style.display='block';
+                    //$("#idhint").show();
+                } else if (data == 2) { console.log("zwei") }
             }
         });
     });
