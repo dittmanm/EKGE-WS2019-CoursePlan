@@ -13,6 +13,13 @@ if ( isset( $_GET['iPid'] ) ) {
     $main->checkSession('s_year');
     $result = $main->getSession('s_year');
     echo $result;
+} elseif ( isset( $_GET['sp'] ) ) {
+    session_start();
+    $request = array_merge($_GET, $_POST);
+    include_once("function.php");
+    $main = new Main();
+    
+    echo $result;
 } else {
     $result = 99;
     echo $result;

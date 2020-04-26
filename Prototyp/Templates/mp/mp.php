@@ -22,16 +22,16 @@
   }
 ?>
 <form action="index.php" class="modulPlan">
-  <select name="sp" size="1">
+  <select id="sp" name="sp" size="1">
     <option value="wi_ba" <?php echo $request['sp'] === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
     <option value="wi_ma" <?php echo $request['sp'] === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
     <option value="bwl_ba" <?php echo $request['sp'] === 'bwl_ba' ? 'selected' : ''; ?>>BWL BA</option>
     <option value="bwl_ma" <?php echo $request['sp'] === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
     <option value="secm_ma" <?php echo $request['sp'] === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
   </select> 
-  <input type='hidden' name="model" value="mp" />
-  <input type='hidden' name="controller" value="mp" />
-  <input value="WECHSELN" name="button" type="submit">
+  <!--<input type='hidden' name="model" value="mp" />-->
+  <!--<input type='hidden' name="controller" value="mp" />-->
+  <!--<input value="WECHSELN" name="button" type="submit">-->
 </form>
 <?php
   echo '<p><a href="?model=mp&controller=newModul&sp='.$request['sp'].'">Neues Modul</a></p>';
