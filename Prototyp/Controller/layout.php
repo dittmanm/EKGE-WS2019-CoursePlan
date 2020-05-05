@@ -20,7 +20,8 @@ class Layout {
       unset($resArr);
       foreach ($sd as $subArr) {
         $sp = str_replace('cp:', '', $datArr['id']);
-        $season = substr($subArr['startDate'], 0, 1).substr($subArr['startDate'], 2, 1);
+        //$season = substr($subArr['startDate'], 0, 1).substr($subArr['startDate'], 3, 1);
+        $season = substr($subArr['startDate'], 0, 1);
         $resArr[$subArr['startDate']] = "?model=cp&controller=cp&sp=".$sp."&season=".$season;
       }
       $menu[$datArr['name']] = $resArr;
@@ -60,7 +61,14 @@ class Layout {
    * @return string
    */
   public function getLoginMenu($session=0) {
-    $menu = array("Einstellungen" => "?model=settings&controller=settings");
+    if ($session == 0) {
+      $menu = array("Login" => "?model=login&controller=login");
+    } elseif ($session == 1) {
+      $menu = array("Logout" => "?model=login&controller=logout");
+      //$menu = array("Neuen Benutzer anlegen" => "?model=login&controller=register");
+    } else {
+      $menu = array("" => "");
+    }
 		$data = '';
 		$data.= '<ul class="login-menu">';
     foreach ($menu as $key => $value) {

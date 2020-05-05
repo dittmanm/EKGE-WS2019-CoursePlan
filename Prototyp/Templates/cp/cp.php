@@ -1,16 +1,17 @@
 <?php
   global $request;
-  if ($request['season'] === '1S') {$text = '1. Semester';}
-  elseif ($request['season'] === '2S') {$text = '2. Semester';}
-  elseif ($request['season'] === '3S') {$text = '3. Semester';}
-  elseif ($request['season'] === '4S') {$text = '4. Semester';}
-  elseif ($request['season'] === '5S') {$text = '5. Semester';}
+  if ($request['season'] === '1') {$text = '1. Semester';}
+  elseif ($request['season'] === '2') {$text = '2. Semester';}
+  elseif ($request['season'] === '3') {$text = '3. Semester';}
+  elseif ($request['season'] === '4') {$text = '4. Semester';}
+  elseif ($request['season'] === '5') {$text = '5. Semester';}
   
   $cp = new CoursPlan();
   $sp = new StudyProgram();
   $mp = new ModulPlan();
   $ip = new InstructorPerson();
   $main = new Main();
+  $s_year = $main->getSession('s_year');
   
   if($request['action'] === 'create') {
     $request['id'] = $main->generateKey($request['cHi']);
@@ -40,24 +41,27 @@
 <table>
   <tr><th>Modul</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th><th>&nbsp;</th></tr>
   <?php
-  $mplist = $main->queryAction($mp->valuesAction('\''.$text.'\' cp:'.$request['sp']));
+  $mplist = $main->queryAction($mp->valuesAction('\''.$text.'\' cp:'.$request['sp'], $s_year));
+  //print_r($mplist);
   foreach($mplist as $Marr) {
     echo '<tr>';
     echo '<td>'.$Marr['name'].'</td>';
     echo '<td>'.$Marr['timeRequired'].'</td>';
     if (isset($Marr['hasCourseInstance'])) {
       $cplist = $main->queryAction($cp->filterAction(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Marr['hasCourseInstance'])));
+      //print_r($cplist);
       foreach ($cplist as $Carr) {
-        $ist = $Carr['courseWorkloadi']+$Carr['courseWorkloadc'];
-        $diff = $Marr['timeRequired']-$Carr['courseWorkloadi']-$Carr['courseWorkloadc'];
-        echo '<td>'.$ist.'</td>';
-        echo '<td>'.$diff.'</td>';
-        echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['instructor']).'</td>';
-        echo '<td>'.$Carr['courseWorkloadi'].'</td>';
-        echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['contributor']).'</td>';
-        echo '<td>'.$Carr['courseWorkloadc'].'</td>';
-        echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&sp='.$request['sp'].'&season='.$request['season'].'&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
-    } } else {
+          $ist = $Carr['courseWorkloadi']+$Carr['courseWorkloadc'];
+          $diff = $Marr['timeRequired']-$Carr['courseWorkloadi']-$Carr['courseWorkloadc'];
+          echo '<td>'.$ist.'</td>';
+          echo '<td>'.$diff.'</td>';
+          echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['instructor']).'</td>';
+          echo '<td>'.$Carr['courseWorkloadi'].'</td>';
+          echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['contributor']).'</td>';
+          echo '<td>'.$Carr['courseWorkloadc'].'</td>';
+          echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&sp='.$request['sp'].'&season='.$request['season'].'&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+      }
+    } else {
       echo '<td></td><td></td><td></td><td></td><td></td><td></td>';
       echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=newInstance&sp='.$request['sp'].'&season='.$request['season'].'&hCi=', $Marr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
     }
@@ -77,9 +81,9 @@
     echo '<p>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Iarr['id']).'</p>';
     echo '<div class="c100">';
     $workHours = 0;
-    $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+    $datCH = $main->queryAction($ip->getContributorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id']), $s_year));
     foreach ($datCH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadc']; }
-    $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id'])));
+    $datIH = $main->queryAction($ip->getInstructorHours(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Iarr['id']), $s_year));
     foreach ($datIH as $ipVal) { $workHours = $workHours + $ipVal['courseWorkloadi']; }
     $diffHours = $Iarr['contractualHours']-$Iarr['reductingHours']-$workHours;
     $dep = (100 / $Iarr['contractualHours'] ) * $Iarr['reductingHours'] *0.75 ;

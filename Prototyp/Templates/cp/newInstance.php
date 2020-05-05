@@ -2,6 +2,7 @@
 global $request;
 $ip = new InstructorPerson();
 $main = new Main();
+$s_year = $main->getSession('s_year');
 ?>
 <h2>Modul-Instanz anlegen </h2>
 <div class="new">
@@ -33,6 +34,7 @@ $main = new Main();
     <input type='hidden' name="hCi" value="<?php echo $request['hCi']; ?>" />
     <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
     <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
+    <input type='hidden' name="startDate" value="<?php echo $s_year; ?>" />
     <input type='hidden' name="model" value="cp" />
     <input type='hidden' name="controller" value="cp" />
     <input type='hidden' name="action" value="create" />

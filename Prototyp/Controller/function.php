@@ -1,7 +1,18 @@
 <?php
 class Main {
-  protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan3/';
+  protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
   
+  function __construct() {
+    global $request;
+    if (isset($request['action'])) {
+      if($request['action'] === 'login') {
+          $request['output'] = $this->manageLoginSession($request['username'], $request['password']);
+      } elseif ($request['action'] === 'logout') {
+          $request['output'] = $this->manageLoginSession('', '');
+      }
+    }
+  }
+
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $namArr = (str_word_count($name, 1));
@@ -17,8 +28,35 @@ class Main {
   }
   
   /**
+	 * Create Login
+   * 
+	 */
+	public function manageLoginSession($username, $password) {
+    global $request;
+    $un = 'CoursePlan';
+    $pw = '20adMin20';
+		if ($username === $un && $password === $pw) {
+      $request['s_login'] = 1;
+      $_SESSION['s_username'] = $username;
+			$this->checkSession('s_login');
+			$result = 'Login erfolgreich.';
+		} elseif ($username === $un && $password !== $pw) {
+			$result = 'Login fehlgeschlagen. Bitte Passwort überprüfen.';
+		} elseif ($username !== $un && $password === $pw) {
+			$result = 'Login fehlgeschlagen. Bitte Benutzername überprüfen.';
+		} else {
+      $request['s_login'] = 0;
+      $_SESSION['s_username'] = null;
+			$this->checkSession('s_login');
+			$result = 'Logout erfolgreich.';
+    }
+		return $result;
+	}
+
+  /**
    * Search for Session
-   * and create a Session
+   * create a Session
+   * delete a Session
    */
   public function checkSession($s_name) {
     global $request;
@@ -26,12 +64,18 @@ class Main {
     switch ($s_name) {
       case 's_season':
         if ( isset($request['s_season']) ) {
+          $result = $request['s_season'];
           $_SESSION['s_season'] = $request['s_season'];
         } break;
         case 's_year':
-          $result = $request['s_year'];
           if ( isset($request['s_year']) ) {
+            $result = $request['s_year'];
             $_SESSION['s_year'] = $request['s_year'];
+          } break;
+        case 's_login':
+          if ( isset($request['s_login']) ) {
+            $result = $request['s_login'];
+            $_SESSION['s_login'] = $request['s_login'];
           } break;
       default: session_unset();
     }
@@ -39,9 +83,9 @@ class Main {
 	
   /**
    * Check the created Session
-   * 0 => nichts ausgewählt
    * season: WS => 1 | SS => 2
-   * year: kann ausgeählt werden um die vergangenen Jahre auszuwerten
+   * year: kann ausgeählt werden um die vergangenen Jahre(Semester) auszuwerten
+   * login: logout => 0 | login => 1
    */
   public function getSession($s_name) {
     $result = 0;
@@ -52,9 +96,11 @@ class Main {
           elseif($_SESSION['s_season'] === 'SS') { $result = 2; }
         } break;
       case 's_year':
-        if(isset($_SESSION['s_year'])) {
-          $result = $_SESSION['s_year'];
-        } break;
+        if(isset($_SESSION['s_year'])) { $result = $_SESSION['s_year']; }
+      break;
+      case 's_login':
+        if(isset($_SESSION['s_login'])) { $result = $_SESSION['s_login']; }
+      break;
       default: $result = 0;
     }
 		return $result;

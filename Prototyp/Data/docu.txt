@@ -61,3 +61,11 @@ Dozentenauslastung als Tabellenlösung
   }
   ?>
 </table>
+
+
+Passwort Verschlüsselung
+$hash = password_hash('passwort');
+if(password_verify('passwort',$hash))
+{
+    echo "passt!";
+}

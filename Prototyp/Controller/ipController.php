@@ -26,37 +26,39 @@ class InstructorPerson {
     return $fielddata;
   }
   
-  public function getInstructorHours($personId) {
+  public function getInstructorHours($personId, $year) {
    $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?instructor ?courseWorkloadi
+      SELECT ?instructor ?courseWorkloadi ?startDate
       WHERE {
         ?hasCourseInstance a schema:CourseInstance ;
         schema:instructor ?instructor ;
-        schema:courseWorkloadi ?courseWorkloadi .
-        
-        FILTER (?instructor = '.$personId.') .
+        schema:courseWorkloadi ?courseWorkloadi ;
+        schema:startDate ?startDate .
+        VALUES (?instructor ?startDate) {('.$personId.' \''.$year.'\')} .
       }';
+      //echo $data;
     return $data; 
   }
   
-  public function getContributorHours($personId) {
+  public function getContributorHours($personId, $year) {
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?contributor ?courseWorkloadc
+      SELECT ?contributor ?courseWorkloadc ?startDate
       WHERE {
         ?hasCourseInstance a schema:CourseInstance ;
         schema:contributor ?contributor ;
-        schema:courseWorkloadc ?courseWorkloadc .
-        
-        FILTER (?contributor = '.$personId.') .
+        schema:courseWorkloadc ?courseWorkloadc ;
+        schema:startDate ?startDate .
+        VALUES (?contributor ?startDate) {('.$personId.' \''.$year.'\')} .
       }';
+      //echo $data;
     return $data;
   }
 

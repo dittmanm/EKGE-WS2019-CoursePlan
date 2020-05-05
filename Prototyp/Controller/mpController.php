@@ -33,7 +33,7 @@ class ModulPlan {
     return $data;
   }
   
-  public function valuesAction($values = '') {
+  public function valuesAction($values = '', $year) {
     //echo 'valuesAction';
     //VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
     $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
@@ -42,7 +42,7 @@ class ModulPlan {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance
+      SELECT ?id ?semesterSeason ?name ?startDate ?timeRequired ?isPartOf ?hasCourseInstance ?iStartDate
       WHERE { 
         ?id a cp:Module ;
           cp:semesterSeason ?semesterSeason ;
@@ -50,9 +50,15 @@ class ModulPlan {
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
           schema:timeRequired ?timeRequired.
-          OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
+          OPTIONAL { 
+            ?id schema:hasCourseInstance ?hasCourseInstance .
+            ?hasCourseInstance a schema:CourseInstance ;
+          	  schema:startDate ?iStartDate .
+    		    FILTER (?iStartDate = \''.$year.'\')
+          }
         '.$values.'
       } ORDER BY (?name)';
+      //echo $data;
     return $data;
   }
   

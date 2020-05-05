@@ -5,8 +5,8 @@ $(document).ready(function(){
           type: "GET",
           url: 'Controller/apiController.php?s_year='+sYear,
           success: function(data) {
+            window.location.reload(false);
             $("#s_year").css("border", "2px solid green");
-            //console.log(data);
           }
       });
   });

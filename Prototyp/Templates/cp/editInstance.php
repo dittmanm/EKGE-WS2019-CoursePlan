@@ -43,6 +43,7 @@
     <input type='hidden' name="id" value="<?php echo $id; ?>" />
     <input type='hidden' name="sp" value="<?php echo $request['sp']; ?>" />
     <input type='hidden' name="season" value="<?php echo $request['season']; ?>" />
+    <input type='hidden' name="startDate" value="<?php echo $CParr['startDate']; ?>" />
     <input type='hidden' name="model" value="cp" />
     <input type='hidden' name="controller" value="cp" />
     <input type='hidden' name="action" value="update" />
