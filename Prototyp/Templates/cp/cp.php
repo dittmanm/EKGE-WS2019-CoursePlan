@@ -14,7 +14,7 @@
   $s_year = $main->getSession('s_year');
   
   if($request['action'] === 'create') {
-    $request['id'] = $main->generateKey($request['cHi']);
+    $request['id'] = $main->generateKey($request['hCi']);
     $main->updateAction($cp->insertAction($request));
     $main->updateAction($mp->insertInstanceAction($request));
   } elseif($request['action'] === 'update') {
@@ -31,6 +31,7 @@
       $main->updateAction($cp->deleteAction($datArr));
     }
   }
+  $_POST['action'] = '';
 ?>
 
 <?php
@@ -42,14 +43,12 @@
   <tr><th>Modul</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th><th>&nbsp;</th></tr>
   <?php
   $mplist = $main->queryAction($mp->valuesAction('\''.$text.'\' cp:'.$request['sp'], $s_year));
-  //print_r($mplist);
   foreach($mplist as $Marr) {
     echo '<tr>';
     echo '<td>'.$Marr['name'].'</td>';
     echo '<td>'.$Marr['timeRequired'].'</td>';
     if (isset($Marr['hasCourseInstance'])) {
       $cplist = $main->queryAction($cp->filterAction(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $Marr['hasCourseInstance'])));
-      //print_r($cplist);
       foreach ($cplist as $Carr) {
           $ist = $Carr['courseWorkloadi']+$Carr['courseWorkloadc'];
           $diff = $Marr['timeRequired']-$Carr['courseWorkloadi']-$Carr['courseWorkloadc'];

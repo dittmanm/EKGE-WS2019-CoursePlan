@@ -11,14 +11,16 @@ if ( isset( $_GET['iPid'] ) ) {
     include_once("function.php");
     $main = new Main();
     $main->checkSession('s_year');
-    $result = $main->getSession('s_year');
-    echo $result;
+    //$result = $main->getSession('s_year');
+    print_r($request);
+    //$result = '?model='.$request['model'].'&controller='.$request['controller'].'&sp='.$request['sp'].'&season='.$request['season'];
+    //echo $result;
 } elseif ( isset( $_GET['sp'] ) ) {
     session_start();
     $request = array_merge($_GET, $_POST);
     include_once("function.php");
     $main = new Main();
-    
+
     echo $result;
 } else {
     $result = 99;

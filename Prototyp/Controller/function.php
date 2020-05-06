@@ -15,7 +15,7 @@ class Main {
 
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    $namArr = (str_word_count($name, 1));
+    $namArr = (str_word_count($name, 5));
     $key = '';
     foreach ($namArr as $value) {
       $word = $word . substr($value, 0, 1);
@@ -23,6 +23,8 @@ class Main {
     if (strlen($word) < $length) {
       $length = $length - strlen($word);
       $key = $key . substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    } else {
+      $key = $word;
     }
     return $key;
   }

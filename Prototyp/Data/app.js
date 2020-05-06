@@ -5,7 +5,9 @@ $(document).ready(function(){
           type: "GET",
           url: 'Controller/apiController.php?s_year='+sYear,
           success: function(data) {
-            window.location.reload(false);
+            console.log(data);
+            //window.location.reload(false);
+            //window.location.href = "index.php"+data;
             $("#s_year").css("border", "2px solid green");
           }
       });
@@ -14,7 +16,6 @@ $(document).ready(function(){
   $("#sp").change(function() {
     var sp = $(this).val() ;
     window.location.href = "index.php?model=mp&controller=mp&sp="+sp;
-    //window.location.reload(false);
     $("#sp").css("border", "2px solid green");
   });
 

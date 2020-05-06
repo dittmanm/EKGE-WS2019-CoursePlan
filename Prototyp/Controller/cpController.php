@@ -110,6 +110,24 @@ class CoursPlan {
       }';
     return $data;
   }
+
+  public function addNewInt($datArr) {
+    //echo 'updateAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr["id"].' a schema:CourseInstance;
+        schema:instructor '.$datArr["instructor"].' ;
+        schema:contributor '.$datArr["contributor"].' ;	
+        schema:courseWorkloadi "'.$datArr["courseWorkloadi"].'" ;
+        schema:courseWorkloadc "'.$datArr["courseWorkloadc"].'" ;
+        schema:startDate "'.$datArr["startDate"].'" .
+      }';
+    return $data;
+  }
   
   public function deleteAction($datArr) {
     //echo 'deleteAction';
