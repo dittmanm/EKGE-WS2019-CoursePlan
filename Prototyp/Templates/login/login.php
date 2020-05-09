@@ -1,14 +1,14 @@
 <?php
   global $request;
 
-  // if (isset($request['action'])) {
-  //   if($request['action'] === 'login') {
-  //       $request['output'] = $this->manageLoginSession($request['username'], $request['password']);
-  //   } elseif ($request['action'] === 'logout') {
-  //       $request['output'] = $this->manageLoginSession('', '');
-  //   }
-  // }
-  
+  if (isset($request['action'])) {
+    if($request['action'] === 'create') {
+      $main = new Main();
+      $main->createUser($request['username'], $request['password']);
+      $request['output'] = 'Anlegen eines neuen Benutzers erfolgreich.';
+    }
+  }
+
   if (isset($request['output'])) {
     $data = $request['output'];
   } else {

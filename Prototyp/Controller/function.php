@@ -1,6 +1,7 @@
 <?php
 class Main {
   protected $prevUrl = 'http://fbw-sgmwi.th-brandenburg.de:3030/CoursPlan2/';
+  protected $userDat = 'accessControl.txt';
   
   function __construct() {
     global $request;
@@ -41,15 +42,18 @@ class Main {
       $_SESSION['s_username'] = $username;
 			$this->checkSession('s_login');
 			$result = 'Login erfolgreich.';
-		} elseif ($username === $un && $password !== $pw) {
-			$result = 'Login fehlgeschlagen. Bitte Passwort überprüfen.';
-		} elseif ($username !== $un && $password === $pw) {
-			$result = 'Login fehlgeschlagen. Bitte Benutzername überprüfen.';
-		} else {
-      $request['s_login'] = 0;
+		} elseif ($username === '' && $password === '') {
+			$request['s_login'] = 0;
       $_SESSION['s_username'] = null;
 			$this->checkSession('s_login');
-			$result = 'Logout erfolgreich.';
+      $result = 'Logout erfolgreich.';
+		} else {
+      if ($this->checkUser($username, $password) == 1) {
+        $request['s_login'] = 1;
+        $_SESSION['s_username'] = $username;
+        $this->checkSession('s_login');
+        $result = 'Login erfolgreich.';
+      } else {$result = 'Login fehlgeschlagen. Bitte Benutzername und Passwort überprüfen.';}
     }
 		return $result;
 	}
@@ -105,6 +109,24 @@ class Main {
       default: $result = 0;
     }
 		return $result;
+  }
+
+  public function createUser($userName, $password) {
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $text = $userName.':::'.$hash."\n";
+    $handler = fopen($this->userDat , 'a+');
+    fwrite($handler , $text);
+    fclose($handler);
+  }
+
+  public function checkUser($userName, $password) {
+    $result = 0;
+    $filArr = file($this->userDat);
+    foreach ($filArr as $useDat) {
+      $pw = explode(':::', $useDat);
+      if(password_verify($password, trim($pw[1]))) { $result = 1; }
+    }
+    return $result;
   }
   
   public function queryAction ($data) {

@@ -28,7 +28,7 @@
     <option value="bwl_ba" <?php echo $request['sp'] === 'bwl_ba' ? 'selected' : ''; ?>>BWL BA</option>
     <option value="bwl_ma" <?php echo $request['sp'] === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
     <option value="secm_ma" <?php echo $request['sp'] === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
-  </select> 
+  </select>
 </form>
 <?php
   if ($request['s_login'] == 1) {
@@ -37,7 +37,7 @@
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
   for($i=1; $i < 6; $i++) {
-    $mplist = $main->queryAction($mp->valuesAction('\''.$i.'. Semester\' cp:'.$request['sp']));
+    $mplist = $main->queryAction($mp->valuesAction('\''.$i.'. Semester\' cp:'.$request['sp'], $request['s_year']));
     if(isset($mplist)) {
       echo '<h3>'.$i.'. Semester</h3>';
     ?>
@@ -51,7 +51,7 @@
           if ($request['s_login'] == 1) {
             echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
             echo '<td><a href="?model=mp&controller=detailModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
-          }  else { echo '<td></td>'; }
+          }  else { echo '<td></td><td></td>'; }
           echo '</tr>';
         } ?>
     </table>
