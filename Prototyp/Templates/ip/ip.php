@@ -33,10 +33,16 @@
     echo '<td>'.$arr['contractualHours'].'</td>';
     echo '<td>'.$arr['reductingHours'].'</td>';
     //echo '<td>'.$arr['email'].'</td>';
-    echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';
-    echo '<td><a href="?model=ip&controller=detailProf&id='.$id.'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+    if ($request['s_login'] == 1) {
+      echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+      echo '<td><a href="?model=ip&controller=detailProf&id='.$id.'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+    } else { echo '<td></td><td></td>'; }
     echo '</tr>';
     }
   ?>
 </table>
-<p><a href="?model=ip&controller=newProf">Neuer Dozent*in</a></p>
+<?php 
+  if ($request['s_login'] == 1) {
+    echo '<p><a href="?model=ip&controller=newProf">Neuer Dozent*in</a></p>';
+  }
+?>

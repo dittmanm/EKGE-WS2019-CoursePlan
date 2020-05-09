@@ -14,9 +14,9 @@
   $content = new Content();
   $main = new Main();
   $main->checkSession('s_season');
-  $s_year = $main->getSession('s_year');
-  $s_login = $main->getSession('s_login');
-  $s_season = $main->getSession('s_season');
+  $request['s_year'] = $main->getSession('s_year');
+  $request['s_login'] = $main->getSession('s_login');
+  $request['s_season'] = $main->getSession('s_season');
 
   error_reporting(0);
 ?>
@@ -37,7 +37,7 @@
             <a href="index.php">
               <?php $logo = $layout->getLogo(); echo $logo; ?></div>
             </a>
-          <div class="login-menu right"><?php $loginmenu = $layout->getLoginMenu($s_login); echo $loginmenu; ?></div>
+          <div class="login-menu right"><?php $loginmenu = $layout->getLoginMenu($request['s_login']); echo $loginmenu; ?></div>
           <div class="headline left"><h1><?php $name = $layout->getName(); echo $name; ?></h1></div>
         </div>
         <div id="menu">
@@ -51,13 +51,13 @@
                 for ($i = 0; $i <= 4; $i++) {
                   $YearDate = date('Y')-$i;
                   echo '<option value="'.$YearDate.'" ';
-                  echo $s_year == $YearDate ? 'selected' : '';
+                  echo $request['s_year'] == $YearDate ? 'selected' : '';
                   echo '>'.$YearDate.'</option>';
                 }
               ?>
             </select> 
           </form>
-          <div class="first-menu"><?php $menu = $layout->getMenu($s_season); echo $menu; ?></div>
+          <div class="first-menu"><?php $menu = $layout->getMenu($request['s_season']); echo $menu; ?></div>
         </div>
         <div id="content">
           <div class="section">

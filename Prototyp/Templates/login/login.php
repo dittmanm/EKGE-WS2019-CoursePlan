@@ -1,5 +1,14 @@
 <?php
   global $request;
+
+  // if (isset($request['action'])) {
+  //   if($request['action'] === 'login') {
+  //       $request['output'] = $this->manageLoginSession($request['username'], $request['password']);
+  //   } elseif ($request['action'] === 'logout') {
+  //       $request['output'] = $this->manageLoginSession('', '');
+  //   }
+  // }
+  
   if (isset($request['output'])) {
     $data = $request['output'];
   } else {

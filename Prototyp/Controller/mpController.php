@@ -120,6 +120,20 @@ class ModulPlan {
       }';
     return $data;
   }
+
+  public function deleteInstanceAction($datArr) {
+    echo 'deleteInstanceAction';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      DELETE DATA { 
+        cp:'.$datArr["hCi"].' a cp:Module ;
+        schema:hasCourseInstance cp:'.$datArr["id"].' .
+      }';
+    return $data;
+  }
   
   public function insertAction($datArr) {
     //echo 'insertAction';
@@ -175,6 +189,7 @@ class ModulPlan {
       }';
     return $data;
   }
+
   public function getStartdates($values='') {
     //VALUES (?semesterSeason ?isPartOf) {('WS' cp:wi_ba)}
     $values = 'VALUES (?semesterSeason ?isPartOf) {('.$values.')}';

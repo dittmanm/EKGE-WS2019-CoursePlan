@@ -34,8 +34,8 @@ class CoursPlan {
   
   public function valuesAction($values = '') {
     //echo 'valuesAction';
-    //VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
-    $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
+    //VALUES (?startDate) {('2019')}
+    $values = 'VALUES (?startDate) {('.$values.')}';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -112,7 +112,7 @@ class CoursPlan {
   }
 
   public function addNewInt($datArr) {
-    //echo 'updateAction';
+    //echo 'addNewInt';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

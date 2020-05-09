@@ -58,11 +58,15 @@
           echo '<td>'.$Carr['courseWorkloadi'].'</td>';
           echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $Carr['contributor']).'</td>';
           echo '<td>'.$Carr['courseWorkloadc'].'</td>';
-          echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&sp='.$request['sp'].'&season='.$request['season'].'&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+          if ($request['s_login'] == 1) {
+            echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=editInstance&sp='.$request['sp'].'&season='.$request['season'].'&id=', $Carr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+          } else { echo '<td></td>'; }
       }
     } else {
       echo '<td></td><td></td><td></td><td></td><td></td><td></td>';
-      echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=newInstance&sp='.$request['sp'].'&season='.$request['season'].'&hCi=', $Marr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+      if ($request['s_login'] == 1) {
+        echo '<td><a href="'.str_replace('https://bmake.th-brandenburg.de/cp/', '?model=cp&controller=newInstance&sp='.$request['sp'].'&season='.$request['season'].'&hCi=', $Marr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+      } else { echo '<td></td>'; }
     }
     echo '</tr>';
   }

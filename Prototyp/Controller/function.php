@@ -31,7 +31,6 @@ class Main {
   
   /**
 	 * Create Login
-   * 
 	 */
 	public function manageLoginSession($username, $password) {
     global $request;

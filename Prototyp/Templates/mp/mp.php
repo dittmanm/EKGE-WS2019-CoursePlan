@@ -29,12 +29,11 @@
     <option value="bwl_ma" <?php echo $request['sp'] === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
     <option value="secm_ma" <?php echo $request['sp'] === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
   </select> 
-  <!--<input type='hidden' name="model" value="mp" />-->
-  <!--<input type='hidden' name="controller" value="mp" />-->
-  <!--<input value="WECHSELN" name="button" type="submit">-->
 </form>
 <?php
-  echo '<p><a href="?model=mp&controller=newModul&sp='.$request['sp'].'">Neues Modul</a></p>';
+  if ($request['s_login'] == 1) {
+    echo '<p><a href="?model=mp&controller=newModul&sp='.$request['sp'].'">Neues Modul</a></p>';
+  }
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
   for($i=1; $i < 6; $i++) {
@@ -49,8 +48,10 @@
           echo '<tr>';
           echo '<td>'.$arr['name'].'</td>';
           echo '<td>'.$arr['timeRequired'].'</td>';
-          echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
-          echo '<td><a href="?model=mp&controller=detailModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+          if ($request['s_login'] == 1) {
+            echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
+            echo '<td><a href="?model=mp&controller=detailModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
+          }  else { echo '<td></td>'; }
           echo '</tr>';
         } ?>
     </table>
