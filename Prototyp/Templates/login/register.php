@@ -10,7 +10,7 @@ if ($request['s_login'] == 1) {
       <input type='hidden' name="model" value="login" />
       <input type='hidden' name="controller" value="login" />
       <input type='hidden' name="action" value="create" />
-      <p><input value="SPEICHERN" name="button" type="submit"></p>
+      <p><input value="SPEICHERN" type="submit"></p>
     </form>
   </div>
 <?php 

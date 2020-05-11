@@ -44,8 +44,8 @@
       <input type='hidden' name="controller" value="mp" />
       <input type='hidden' name="action" value="update" />
       <input type='hidden' name="sp" value="<?php echo $ipo; ?>" />
-      <p><input value="SPEICHERN" name="button" type="submit"></p>
-      <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
+      <p><input value="SPEICHERN" type="submit"></p>
+      <p><input value="ZURÜCKSETZEN" type="reset"></p>
     </form>
   </div>
 <?php }

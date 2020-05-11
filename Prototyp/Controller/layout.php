@@ -3,7 +3,6 @@ class Layout {
 
 	public function getNormalMenu($s_season) {
     global $request;
-    //studyprograms
     include_once("function.php");
     include_once("spController.php");
     include_once("mpController.php");
@@ -30,12 +29,14 @@ class Layout {
       $settings = array(
         "Dozentenplanung" => "?model=ip&controller=ip",
         "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
+        "Studiengänge" => "?model=mp&controller=mp&sp=wi_ba",
         "Neuen Benutzer anlegen" => "?model=login&controller=register"
       );
     } else {
       $settings = array(
         "Dozentenplanung" => "?model=ip&controller=ip",
-        "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
+        "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
+        "Studiengänge" => "?model=mp&controller=mp&sp=wi_ba"
       );
     }
     

@@ -21,7 +21,7 @@
       <input type='hidden' name="model" value="ip" />
       <input type='hidden' name="controller" value="ip" />
       <input type='hidden' name="action" value="update" />
-      <p><input value="SPEICHERN" name="button" type="submit"></p>
+      <p><input value="SPEICHERN" type="submit"></p>
     </form>
   </div>
   <script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>

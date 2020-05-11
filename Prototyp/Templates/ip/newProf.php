@@ -16,8 +16,8 @@ if ($request['s_login'] == 1) {
       <input type='hidden' name="model" value="ip" />
       <input type='hidden' name="controller" value="ip" />
       <input type='hidden' name="action" value="create" />
-      <p><input value="SPEICHERN" name="button" type="submit"></p>
-      <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
+      <p><input value="SPEICHERN" type="submit"></p>
+      <p><input value="ZURÜCKSETZEN" type="reset"></p>
     </form>
   </div>
   <script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>

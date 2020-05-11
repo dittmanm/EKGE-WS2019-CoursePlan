@@ -27,7 +27,7 @@
       <input type='hidden' name="controller" value="mp" />
       <input type='hidden' name="action" value="delete" />
       <input type='hidden' name="sp" value="<?php echo $ipo; ?>" />
-      <p><input value="BESTÄTIGEN" name="button" type="submit"></p>
+      <p><input value="BESTÄTIGEN" type="submit"></p>
     </form>
   </div>
 <?php }

@@ -48,8 +48,8 @@
       <input type='hidden' name="model" value="cp" />
       <input type='hidden' name="controller" value="cp" />
       <input type='hidden' name="action" value="update" />
-      <p><input value="SPEICHERN" name="button" type="submit"></p>
-      <p><input value="ZURÜCKSETZEN" name="button" type="reset"></p>
+      <p><input value="SPEICHERN" type="submit"></p>
+      <p><input value="ZURÜCKSETZEN" type="reset"></p>
     </form>
   </div>
   <?php }

@@ -21,7 +21,7 @@
       <input type='hidden' name="model" value="ip" />
       <input type='hidden' name="controller" value="ip" />
       <input type='hidden' name="action" value="delete" />
-      <p><input value="BESTÄTIGEN" name="button" type="submit"></p>
+      <p><input value="BESTÄTIGEN" type="submit"></p>
     </form>
   </div>
 <?php }
