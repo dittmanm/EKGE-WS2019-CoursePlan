@@ -26,10 +26,19 @@ class Layout {
       }
       $menu[$datArr['name']] = $resArr;
     }
-    $settings = array(
-      "Dozentenplanung" => "?model=ip&controller=ip",
-      "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
-    );
+    if ($request['s_login'] == 1) {
+      $settings = array(
+        "Dozentenplanung" => "?model=ip&controller=ip",
+        "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
+        "Neuen Benutzer anlegen" => "?model=login&controller=register"
+      );
+    } else {
+      $settings = array(
+        "Dozentenplanung" => "?model=ip&controller=ip",
+        "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba"
+      );
+    }
+    
     $menu['Einstellungen'] = $settings;
     return $menu;
   }
