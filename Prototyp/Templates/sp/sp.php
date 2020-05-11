@@ -44,4 +44,3 @@
           echo '</tr>';
         } ?>
     </table>
-  <?php }}
