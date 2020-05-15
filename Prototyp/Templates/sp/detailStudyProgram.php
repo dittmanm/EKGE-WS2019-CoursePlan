@@ -1,9 +1,10 @@
 <?php
   global $request;
+
   if ($request['s_login'] == 1) {
     $sp = new StudyProgram();
     $main = new Main();
-    $list = $main->queryAction($sp->detailAction($request["id"]));
+    $list = $main->queryAction($sp->filterAction($request["id"]));
     foreach ($list as $arr) {
   ?>
   <h2>Studiengang: <?php echo $arr['name']; ?>  löschen</h2>
@@ -12,7 +13,7 @@
       <p>Name: <?php echo $arr['name']; ?></p>
       <p>Abschluss: <?php echo $arr['educationalCredentialAwarded']; ?></p>
       <?php 
-      $pr = $arr['provider']; 
+      $pr = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['provider']); 
       if ($pr === 'wirtschaft') { echo '<p>Fachbereich: Wirtschaft</p>'; }
       elseif ($pr === 'informatik') { echo '<p>Fachbereich: Informatik</p>'; }
       ?>

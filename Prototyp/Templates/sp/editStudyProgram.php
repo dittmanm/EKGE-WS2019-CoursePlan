@@ -3,7 +3,7 @@
   if ($request['s_login'] == 1) {
     $sp = new StudyProgram();
     $main = new Main();
-    $list = $main->queryAction($sp->detailAction($request["id"]));
+    $list = $main->queryAction($sp->filterAction($request["id"]));
     foreach ($list as $arr) {
   ?>
   <h2>Studiengang: <?php echo $arr['name']; ?>  bearbeiten</h2>
@@ -17,7 +17,7 @@
           <option value="Master" <?php echo $eca === 'Master' ? 'selected' : ''; ?>>Master</option>
         </select>
       </p>
-      <?php $pr = $arr['provider']; ?>
+      <?php $pr = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['provider']); ?>
       <p>Fachbereich:
         <select name="provider" size="1">
           <option value="wirtschaft" <?php echo $pr === 'wirtschaft' ? 'selected' : ''; ?>>Wirtschaft</option>

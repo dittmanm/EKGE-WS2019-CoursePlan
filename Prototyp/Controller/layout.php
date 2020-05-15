@@ -29,14 +29,14 @@ class Layout {
       $settings = array(
         "Dozentenplanung" => "?model=ip&controller=ip",
         "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
-        "Studiengänge" => "?model=mp&controller=mp&sp=wi_ba",
+        "Studiengänge" => "?model=sp&controller=sp",
         "Neuen Benutzer anlegen" => "?model=login&controller=register"
       );
     } else {
       $settings = array(
         "Dozentenplanung" => "?model=ip&controller=ip",
         "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
-        "Studiengänge" => "?model=mp&controller=mp&sp=wi_ba"
+        "Studiengänge" => "?model=sp&controller=sp"
       );
     }
     

@@ -131,6 +131,7 @@ class Main {
   
   public function queryAction ($data) {
     //echo 'queryAction';
+    //echo $data;
     $url = $this->prevUrl.'query';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-query'],['Accept: application/json'],

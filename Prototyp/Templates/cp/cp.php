@@ -35,8 +35,8 @@
 ?>
 
 <?php
-  $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
-  foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
+  $splist = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
+  foreach($splist as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
 ?>
 <h3><?php echo $text; ?></h3>
 <table>
