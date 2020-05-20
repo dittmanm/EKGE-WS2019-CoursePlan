@@ -64,7 +64,7 @@
             <?php $mainContent = $content->display($request); echo $mainContent; ?>
           </div>
         </div>
-        <div id="footer">Developed by Coursplan-Group</div>
+        <div id="footer">Developed by Courseplan Group</div>
       </div>
       <script src="Data/jquery-1.11.1.min.js" type="text/javascript"></script>
       <script src="Data/app.js" type="text/javascript"></script>

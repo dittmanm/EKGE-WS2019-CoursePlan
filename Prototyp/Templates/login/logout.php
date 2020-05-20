@@ -1,4 +1,4 @@
-<h2>Logout</h2>
+<h2>Wollen Sie sich wirklich abmelden?</h2>
 <div class="logout form">
   <form method="POST">
     <input type='hidden' name="model" value="login" />

@@ -1,21 +1,18 @@
 <?php
   global $request;
 
-  if (isset($request['action'])) {
-    if($request['action'] === 'create') {
-      $main = new Main();
-      $main->createUser($request['username'], $request['password']);
-      $request['output'] = 'Anlegen eines neuen Benutzers erfolgreich.';
-    }
-  }
-
   if (isset($request['output'])) {
     $data = $request['output'];
   } else {
-    $data = 'Bitte geben Sie Ihr Benutzername und Passwort ein.';
+    $data = 'Bitte geben Sie Benutzername und Passwort ein.';
   }
+  ?>
+  <h2>Login</h2>
+  <?php
+  if ($request['s_login'] == 1) {
+    echo '<p>Planen Sie die Ressourcen für das neue Semester - legen Sie Dozenten, Module und Studiengänge an. Verwalten Sie die Zugänge zur Lehrplanung.';
+  } else {
 ?>
-<h2>Login</h2>
 <div class="login form">
 	<p><?php echo $data; ?></p>
   <form method="POST">
@@ -27,3 +24,4 @@
     <p><input value="ANMELDEN" type="submit"></p>
   </form>
 </div>
+<?php } ?>
