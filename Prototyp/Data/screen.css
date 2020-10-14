@@ -134,7 +134,7 @@ h3 {
   padding-bottom: 20px;
   padding-left: 15px;
   padding-top: 20px;
-  height: 460px;
+  /*height: 460px;*/
 }
 
 /*#menu .menu-first {
@@ -200,12 +200,28 @@ form.switchYear, form.switchYear select {
 
 /*** MAIN ***/
 #content {
+  height: 100%;
   overflow: hidden;
+  position: relative;
+  /*z-index: 2;*/
+}
+
+#content img {
+  height: auto;
+  opacity: 0.2;
+  margin: 0px 20px;
+  position: absolute;
+  width: 748px;
+  z-index: 1;
 }
 
 #content .section {
+  height: 100%;
   padding: 0px 20px;
+  position: absolute;
   margin-left: 30px;
+  width: auto;
+  z-index: 2;
 }
 
 .search {

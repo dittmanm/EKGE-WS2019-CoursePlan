@@ -43,6 +43,6 @@
 </table>
 <?php 
   if ($request['s_login'] == 1) {
-    echo '<p><a href="?model=ip&controller=newProf">Neuer Dozent*in</a></p>';
+    echo '<p><a href="?model=ip&controller=newProf">Neue/r Dozent*in</a></p>';
   }
 ?>

@@ -60,6 +60,7 @@
           <div class="first-menu"><?php $menu = $layout->getMenu($request['s_season']); echo $menu; ?></div>
         </div>
         <div id="content">
+          <img src="images/THB_WWZ.png" />
           <div class="section">
             <?php $mainContent = $content->display($request); echo $mainContent; ?>
           </div>
