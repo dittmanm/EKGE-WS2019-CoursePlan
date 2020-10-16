@@ -24,7 +24,7 @@
 ?>
 <h2>Dozent*innen-Planung</h2>
 <table>
-  <tr><th>Titel</th><th>Name</th> <th>Dep.</th><th>Mind.</th><th></th><th></th></tr>
+  <tr><th>Titel</th><th>Name</th> <th>Dep.</th><th>Mind.</th></tr>
   <?php foreach($list as $arr) {
     $id = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']);
     echo '<tr>';

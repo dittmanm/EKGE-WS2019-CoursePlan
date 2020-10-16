@@ -40,7 +40,7 @@
 ?>
 <h3><?php echo $text; ?></h3>
 <table>
-  <tr><th>Modul</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th><th>&nbsp;</th></tr>
+  <tr><th>Modul</th><th>Soll</th><th>Ist</th><th>Diff</th><th>Dozent*in</th><th>SWS</th><th>Mitwirkende</th><th>SWS</th></tr>
   <?php
   $mplist = $main->queryAction($mp->valuesAction('\''.$text.'\' cp:'.$request['sp'], $s_year));
   foreach($mplist as $Marr) {

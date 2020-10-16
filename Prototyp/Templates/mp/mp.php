@@ -42,7 +42,7 @@
       echo '<h3>'.$i.'. Semester</h3>';
     ?>
     <table>
-      <tr><th>Modul</th><th>SWS</th><th>&nbsp;</th><th>&nbsp;</th></tr>
+      <tr><th>Modul</th><th>SWS</th></tr>
       <?php
         foreach($mplist as $arr) {
           echo '<tr>';
