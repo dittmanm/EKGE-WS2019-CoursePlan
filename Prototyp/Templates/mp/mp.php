@@ -51,7 +51,7 @@
           if ($request['s_login'] == 1) {
             echo '<td><a href="?model=mp&controller=editModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
             echo '<td><a href="?model=mp&controller=detailModul&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
-          }  else { echo '<td></td><td></td>'; }
+          }
           echo '</tr>';
         } ?>
     </table>

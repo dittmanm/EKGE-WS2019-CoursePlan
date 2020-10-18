@@ -6,6 +6,7 @@
   include_once("Controller/cpController.php");
   include_once("Controller/spController.php");
   include_once("Controller/mpController.php");
+  include_once("Controller/collegeController.php");
   include_once("Controller/content.php");
   include_once("Controller/function.php");
   include_once("Controller/layout.php");
@@ -60,7 +61,7 @@
           <div class="first-menu"><?php $menu = $layout->getMenu($request['s_season']); echo $menu; ?></div>
         </div>
         <div id="content">
-          <img class="img" src="images/THB_WWZ.png" />
+          <!-- <img class="img" src="images/THB_WWZ.png" /> -->
           <div class="section">
             <?php $mainContent = $content->display($request); echo $mainContent; ?>
           </div>

@@ -29,7 +29,7 @@
 ?>
 <h2>Verwaltung der Studiengänge</h2>
 <table>
-  <tr><th>Studiengang</th><th>Fachbereich</th><th>&nbsp;</th><th>&nbsp;</th></tr>
+  <tr><th>Studiengang</th><th>Fachbereich</th></tr>
   <?php
     foreach($splist as $arr) {
       echo '<tr>';
@@ -40,7 +40,7 @@
       if ($request['s_login'] == 1) {
         echo '<td><a href="?model=sp&controller=editStudyProgram&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
         echo '<td><a href="?model=sp&controller=detailStudyProgram&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';
-      }  else { echo '<td></td><td></td>'; }
+      }
       echo '</tr>';
     } ?>
 </table>

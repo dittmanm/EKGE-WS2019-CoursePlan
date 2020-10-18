@@ -19,7 +19,6 @@ class Layout {
       unset($resArr);
       foreach ($sd as $subArr) {
         $sp = str_replace('cp:', '', $datArr['id']);
-        //$season = substr($subArr['startDate'], 0, 1).substr($subArr['startDate'], 3, 1);
         $season = substr($subArr['startDate'], 0, 1);
         $resArr[$subArr['startDate']] = "?model=cp&controller=cp&sp=".$sp."&season=".$season;
       }
@@ -30,6 +29,7 @@ class Layout {
         "Dozentenplanung" => "?model=ip&controller=ip",
         "Modulplanung" => "?model=mp&controller=mp&sp=wi_ba",
         "Studiengänge" => "?model=sp&controller=sp",
+        "Kollegien" => "?model=college&controller=college",
         "Neuen Benutzer anlegen" => "?model=login&controller=register"
       );
     } else {
@@ -75,7 +75,6 @@ class Layout {
       $menu = array("Login" => "?model=login&controller=login");
     } elseif ($session == 1) {
       $menu = array("Logout" => "?model=login&controller=logout");
-      //$menu = array("Neuen Benutzer anlegen" => "?model=login&controller=register");
     } else {
       $menu = array("" => "");
     }
