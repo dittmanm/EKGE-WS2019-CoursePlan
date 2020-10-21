@@ -1,6 +1,8 @@
 <?php
 global $request;
 if ($request['s_login'] == 1) {
+  $ct = new College();
+  $main = new Main();
 ?>
   <h2>Dozent*in anlegen</h2>
   <div class="new">
@@ -13,6 +15,14 @@ if ($request['s_login'] == 1) {
       <p>E-Mail: <input name="email" type="text" /></p>
       <p>Deputatsstunden: <input name="contractualHours" type="text" /></p>
       <p>Minderungsstunden: <input name="reductingHours" type="text" /></p>
+      <?php
+        $ctlist = $main->queryAction($ct->listAction());
+        echo '<p>Kollegium: <select class="profSelect" name="memberOf[]" size="'.count($ctlist).'" multiple>';
+        foreach ($ctlist as $CTarr) {
+          echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $CTarr['id']).'" >'.$CTarr['name'].'</option>';
+        }
+        echo '</select></p>';
+      ?>
       <input type='hidden' name="model" value="ip" />
       <input type='hidden' name="controller" value="ip" />
       <input type='hidden' name="action" value="create" />

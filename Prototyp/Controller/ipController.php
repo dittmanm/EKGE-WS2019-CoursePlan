@@ -69,15 +69,16 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
       WHERE {
         ?id a schema:Person;
-          schema:givenName ?givenName;
-          schema:familyName ?familyName;
-          schema:honorificPrefix ?honorificPrefix;
-          schema:email ?email;
-          cp:contractualHours ?contractualHours; 
-          cp:reductingHours ?reductingHours.
+          schema:givenName ?givenName ;
+          schema:familyName ?familyName ;
+          schema:honorificPrefix ?honorificPrefix ;
+          schema:email ?email ;
+          cp:contractualHours ?contractualHours ; 
+          cp:reductingHours ?reductingHours .
+          OPTIONAL { ?id schema:memberOf ?memberOf . }
       }
       ORDER BY (?familyName)';
     return $data;
@@ -91,7 +92,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName;
@@ -100,6 +101,7 @@ class InstructorPerson {
           schema:email ?email;
           cp:contractualHours ?contractualHours; 
           cp:reductingHours ?reductingHours.
+          OPTIONAL { ?id schema:memberOf ?memberOf . }
           '.$values.'
       }
       ORDER BY (?familyName)';
@@ -114,7 +116,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName;
@@ -123,6 +125,7 @@ class InstructorPerson {
           schema:email ?email;
           cp:contractualHours ?contractualHours; 
           cp:reductingHours ?reductingHours.
+          OPTIONAL { ?id schema:memberOf ?memberOf . }
           '.$filter.'
       }
       ORDER BY (?familyName)';
@@ -131,10 +134,8 @@ class InstructorPerson {
   
   public function insertAction($datArr) {
     //echo 'insertAction';
-    $namArr = (str_word_count($datArr["givenName"].' '.$datArr["familyName"], 1));
-    foreach ($namArr as $value) {
-      $word = $word . substr($value, 0, 1);
-    }
+    $datArr['memberOf'] = implode(", ", $datArr['memberOf']);
+    $datArr['memberOf'] = str_replace('"', '', $datArr['memberOf']);
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -147,13 +148,16 @@ class InstructorPerson {
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
-        cp:reductingHours "'.$datArr["reductingHours"].'" .
+        cp:reductingHours "'.$datArr["reductingHours"].'" ;
+        schema:memberOf "'.$datArr["memberOf"].'" .
       }';
     return $data;
   }
   
   public function updateAction($datArr) {
     //echo 'updateAction';
+    $datArr['memberOf'] = implode(", ", $datArr['memberOf']);
+    $datArr['memberOf'] = str_replace('"', '', $datArr['memberOf']);
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -166,8 +170,10 @@ class InstructorPerson {
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
-        cp:reductingHours "'.$datArr["reductingHours"].'" .
+        cp:reductingHours "'.$datArr["reductingHours"].'" ;
+        schema:memberOf "'.$datArr["memberOf"].'" .
       }';
+      print_r($data);
     return $data;
   }
   
@@ -185,7 +191,8 @@ class InstructorPerson {
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
-        cp:reductingHours "'.$datArr["reductingHours"].'" .
+        cp:reductingHours "'.$datArr["reductingHours"].'" ;
+        schema:memberOf "'.$datArr["memberOf"].'" .
       }';
     return $data;
   }
@@ -205,6 +212,52 @@ class InstructorPerson {
           schema:familyName ?familyName.
           '.$filter.'
       }';
+    return $data;
+  }
+
+  public function addMemberOf($idIp, $idMo) {
+    //echo 'addMemberOf';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      INSERT DATA { 
+        cp:'.$datArr["id"].' a schema:Person;
+        schema:memberOf "'.$datArr["memberOf"].'" .
+      }';
+    return $data;
+  }
+
+  public function deleteMemberOf ($idIp, $idMo) {
+    //echo 'deleteMemberOf';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      DELETE DATA { 
+        cp:'.$datArr["id"].' a schema:Person;
+        schema:memberOf "'.$datArr["memberOf"].'" .
+      }';
+    return $data;
+  }
+
+  public function listMemberOf($idIp) {
+    //echo 'listMemberOf';
+    $filter = 'FILTER (?id = '.$idIp.')';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?id ?memberOf
+      WHERE {
+        ?id a schema:Person;
+        schema:memberOf ?memberOf . 
+        '.$filter.'
+      }
+      ORDER BY (?familyName)';
     return $data;
   }
 

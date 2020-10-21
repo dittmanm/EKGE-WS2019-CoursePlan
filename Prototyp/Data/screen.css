@@ -39,6 +39,10 @@ select {
   height: 25px;
 }
 
+.profSelect {
+  height: auto;
+}
+
 .left {
   float: left;
 }

@@ -24,19 +24,12 @@ $(document).ready(function(){
             success: function(data) {
                 if (data == 0) {
                     $("#id").css("border", "2px solid green");
-                    //$("idhint").removeClass('activ');
                     document.getElementById('idhint').style.display='none';
-                    //$("#idhint").hide();
                 } else if (data == 1) { 
                     $("#id").css("border", "2px solid red");
-                    //$("#idhint").addClass("activ");
                     document.getElementById('idhint').style.display='block';
-                    //$("#idhint").show();
                 } else if (data == 2) { console.log("zwei") }
             }
         });
     });
-
-    
-
 });

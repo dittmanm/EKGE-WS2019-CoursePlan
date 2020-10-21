@@ -37,7 +37,7 @@
   $splsit = $main->queryAction($sp->filterAction('cp:'.$request['sp']));
   foreach($splsit as $arr) { echo '<h2>'.$arr['name'].'</h2>'; }
   for($i=1; $i < 6; $i++) {
-    $mplist = $main->queryAction($mp->valuesAction('\''.$i.'. Semester\' cp:'.$request['sp'], $request['s_year']));
+    $mplist = $main->queryAction($mp->valuesActionNew('\''.$i.'. Semester\' cp:'.$request['sp'], $request['s_year']));
     if(isset($mplist)) {
       echo '<h3>'.$i.'. Semester</h3>';
     ?>

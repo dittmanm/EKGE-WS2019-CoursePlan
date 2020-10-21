@@ -35,7 +35,6 @@ class ModulPlan {
   
   public function valuesAction($values = '', $year) {
     //echo 'valuesAction';
-    //VALUES (?startDate ?isPartOf) {('2. Semester' cp:wi_ba)}
     $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
     $data = 'PREFIX schema: <https://schema.org/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -62,6 +61,27 @@ class ModulPlan {
     return $data;
   }
   
+  public function valuesActionNew($values = '', $year) {
+    //echo 'valuesAction';
+    $values = 'VALUES (?startDate ?isPartOf) {('.$values.')}';
+    $data = 'PREFIX schema: <https://schema.org/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
+
+      SELECT ?id ?name ?startDate ?timeRequired ?isPartOf
+      WHERE { 
+        ?id a cp:Module ;
+          schema:name ?name ;
+          schema:isPartOf ?isPartOf ;
+          schema:startDate ?startDate ;
+          schema:timeRequired ?timeRequired.
+        '.$values.'
+      } ORDER BY (?name)';
+      //echo $data;
+    return $data;
+  }
+
   public function filterAction($filter = '') {
     //echo 'filterAction';
     //FILTER ( ?isPartOf = cp:wi_ba )
@@ -78,7 +98,7 @@ class ModulPlan {
           schema:name ?name ;
           schema:isPartOf ?isPartOf ;
           schema:startDate ?startDate ;
-          schema:timeRequired ?timeRequired.
+          schema:timeRequired ?timeRequired .
           OPTIONAL { ?id schema:hasCourseInstance ?hasCourseInstance . }
         '.$filter.'
       } ORDER BY (?name)';
@@ -207,7 +227,7 @@ class ModulPlan {
           '.$values.'
         }
       GROUP BY ?startDate ?semesterSeason
-      ORDER BY (?startDate) ';
+      ORDER BY (?startDate)';
     return $data;
   }
 }

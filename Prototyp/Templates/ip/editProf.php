@@ -2,6 +2,7 @@
   global $request;
   if ($request['s_login'] == 1) {
     $person = new InstructorPerson();
+    $ct = new College();
     $main = new Main();
     $list = $main->queryAction($person->filterAction('cp:'.$request["id"]));
     foreach ($list as $arr) {
@@ -18,6 +19,18 @@
       <p>E-Mail: <input name="email" type="text" value="<?php echo $arr['email']; ?>" /></p>
       <p>Deputatsstunden: <input name="contractualHours" type="text" value="<?php echo $arr['contractualHours']; ?>" /></p>
       <p>Minderungsstunden: <input name="reductingHours" type="text" value="<?php echo $arr['reductingHours']; ?>" /></p>
+      <?php
+        $mId = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['memberOf']);
+        $ctlist = $main->queryAction($ct->listAction());
+        echo '<p>Kollegium: <select class="profSelect" name="memberOf[]" size="'.count($ctlist).'" multiple>';
+        foreach ($ctlist as $CTarr) {
+          $cId = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $CTarr['id']);
+              echo '<option value="'.$cId.'" ';
+              echo $mId === $cId ? 'selected >' : '>';
+              echo $CTarr['name'].'</option>';
+        }
+        echo '</select></p>';
+      ?>
       <input type='hidden' name="model" value="ip" />
       <input type='hidden' name="controller" value="ip" />
       <input type='hidden' name="action" value="update" />
