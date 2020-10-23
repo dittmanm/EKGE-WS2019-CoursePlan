@@ -19,12 +19,14 @@ class StudyProgram {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?name ?educationalCredentialAwarded ?provider
+      SELECT ?id ?name ?educationalCredentialAwarded ?provider ?pname
       WHERE { 
         ?id a cp:StudyProgram ;
         schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
+  		?provider a schema:Faculty ;
+        schema:name ?pname
       } ORDER BY (?name)';
     return $data;
   }
@@ -38,12 +40,14 @@ class StudyProgram {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?name ?educationalCredentialAwarded ?provider
+      SELECT ?id ?name ?educationalCredentialAwarded ?provider ?pname
       WHERE { 
         ?id a cp:StudyProgram ;
         schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
+        ?provider a schema:Faculty ;
+        schema:name ?pname
         '.$values.'
       } ORDER BY (?Name)';
     return $data;
@@ -57,12 +61,14 @@ class StudyProgram {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?name ?educationalCredentialAwarded ?provider
+      SELECT ?id ?name ?educationalCredentialAwarded ?provider ?pname
       WHERE { 
         ?id a cp:StudyProgram ;
         schema:name ?name ;
         schema:educationalCredentialAwarded ?educationalCredentialAwarded ;
         schema:provider ?provider .
+        ?provider a schema:Faculty ;
+        schema:name ?pname
         '.$filter.'
       } ORDER BY (?name)';
     return $data;

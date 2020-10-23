@@ -1,6 +1,6 @@
 <?php
   $person = new InstructorPerson();
-  $ct = new College();
+  //$ct = new College();
   $main = new Main();
   global $request;
 
@@ -34,10 +34,14 @@
     echo '<td>'.$arr['givenName'].' '.$arr['familyName'].'</td>';
     echo '<td>'.$arr['contractualHours'].'</td>';
     echo '<td>'.$arr['reductingHours'].'</td>';
-    if (isset($arr['memberOf']) && $arr['memberOf'] != '' ) {
-      $ctlist = $main->queryAction($ct->filterAction(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['memberOf'])));
-      foreach ($ctlist as $Marr) { echo '<td>'.$Marr['name'].'</td>'; }
-    } else echo '<td></td>';
+    $molist = $main->queryAction($person->listPersonMemberOf('cp:'.$id));
+    echo '<td>';
+    $i = 0;
+    foreach ($molist as $Marr) { 
+      if ($i > 0) {echo ', ';} else {$i = 1;}
+      echo $Marr['name']; 
+    }
+    echo '</td>';
     if ($request['s_login'] == 1) {
       echo '<td><a href="?model=ip&controller=editProf&id='.$id.'"><img src="images/edit-icon.png" width="15px" /></a></td>';
       echo '<td><a href="?model=ip&controller=detailProf&id='.$id.'"><img src="images/dele-icon.png" width="15px" /></a></td>';

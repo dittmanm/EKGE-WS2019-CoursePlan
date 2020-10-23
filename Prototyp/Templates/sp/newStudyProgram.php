@@ -1,6 +1,8 @@
 <?php
   global $request;
   if ($request['s_login'] == 1) {
+    $ct = new College();
+    $main = new Main();
 ?>
   <h2>Studiengang anlegen</h2>
   <div class="new">
@@ -14,8 +16,12 @@
       </p>
       <p>Fachbereich:
         <select name="provider" size="1">
-          <option value="wirtschaft">Wirtschaft</option>
-          <option value="informatik">Informatik</option>
+          <?php
+            $ctlist = $main->queryAction($ct->listAction());
+            foreach ($ctlist as $arr) {
+              echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'" >'.$arr['name'].'</option>';
+            }
+          ?>
         </select>
       </p>
       <input type='hidden' name="model" value="sp" />

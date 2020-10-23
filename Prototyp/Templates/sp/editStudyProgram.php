@@ -2,6 +2,7 @@
   global $request;
   if ($request['s_login'] == 1) {
     $sp = new StudyProgram();
+    $ct = new College();
     $main = new Main();
     $list = $main->queryAction($sp->filterAction($request["id"]));
     foreach ($list as $arr) {
@@ -16,14 +17,18 @@
           <option value="Bachelor" <?php echo $eca === 'Bachelor' ? 'selected' : ''; ?>>Bachelor</option>
           <option value="Master" <?php echo $eca === 'Master' ? 'selected' : ''; ?>>Master</option>
         </select>
-      </p>
-      <?php $pr = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['provider']); ?>
-      <p>Fachbereich:
-        <select name="provider" size="1">
-          <option value="wirtschaft" <?php echo $pr === 'wirtschaft' ? 'selected' : ''; ?>>Wirtschaft</option>
-          <option value="informatik" <?php echo $pr === 'informatik' ? 'selected' : ''; ?>>Informatik</option>
-        </select>
-      </p>
+      </p> 
+      <p>Fachbereich: <select name="provider" size="1">
+        <?php
+          $pr = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['provider']);
+          $ctlist = $main->queryAction($ct->listAction());
+          foreach ($ctlist as $datArr) {
+            echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['id']).'"';
+            echo $pr == str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['id']) ? 'selected >' : '>';
+            echo $datArr['name'].'</option>';
+          }
+        ?>
+      </select></p>
       <input type='hidden' name="id" value="<?php echo str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']); ?>" />
       <input type='hidden' name="model" value="sp" />
       <input type='hidden' name="controller" value="sp" />

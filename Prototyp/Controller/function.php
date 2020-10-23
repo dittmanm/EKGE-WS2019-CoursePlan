@@ -192,6 +192,7 @@ class Main {
   
   //http://.../FUSEKI-DATASET/update
   public function updateAction ($data) {
+    //print_r($data);
     $url = $this->prevUrl.'update';
     $options = array('http' => array(
       'header'  => ['Content-type: application/sparql-update'],['Accept: application/json'],

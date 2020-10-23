@@ -69,7 +69,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName ;
@@ -78,7 +78,6 @@ class InstructorPerson {
           schema:email ?email ;
           cp:contractualHours ?contractualHours ; 
           cp:reductingHours ?reductingHours .
-          OPTIONAL { ?id schema:memberOf ?memberOf . }
       }
       ORDER BY (?familyName)';
     return $data;
@@ -92,7 +91,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName;
@@ -101,7 +100,6 @@ class InstructorPerson {
           schema:email ?email;
           cp:contractualHours ?contractualHours; 
           cp:reductingHours ?reductingHours.
-          OPTIONAL { ?id schema:memberOf ?memberOf . }
           '.$values.'
       }
       ORDER BY (?familyName)';
@@ -116,7 +114,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours ?memberOf
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName;
@@ -125,7 +123,6 @@ class InstructorPerson {
           schema:email ?email;
           cp:contractualHours ?contractualHours; 
           cp:reductingHours ?reductingHours.
-          OPTIONAL { ?id schema:memberOf ?memberOf . }
           '.$filter.'
       }
       ORDER BY (?familyName)';
@@ -149,7 +146,7 @@ class InstructorPerson {
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
         cp:reductingHours "'.$datArr["reductingHours"].'" ;
-        schema:memberOf "'.$datArr["memberOf"].'" .
+        schema:memberOf '.$datArr["memberOf"].' .
       }';
     return $data;
   }
@@ -171,7 +168,7 @@ class InstructorPerson {
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
         cp:reductingHours "'.$datArr["reductingHours"].'" ;
-        schema:memberOf "'.$datArr["memberOf"].'" .
+        schema:memberOf '.$datArr["memberOf"].' .
       }';
       print_r($data);
     return $data;
@@ -192,7 +189,7 @@ class InstructorPerson {
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
         cp:reductingHours "'.$datArr["reductingHours"].'" ;
-        schema:memberOf "'.$datArr["memberOf"].'" .
+        schema:memberOf '.$datArr["memberOf"].' .
       }';
     return $data;
   }
@@ -243,7 +240,7 @@ class InstructorPerson {
     return $data;
   }
 
-  public function listMemberOf($idIp) {
+  public function listPersonMemberOf($idIp) {
     //echo 'listMemberOf';
     $filter = 'FILTER (?id = '.$idIp.')';
     $data = 'PREFIX schema: <https://schema.org/>
@@ -251,10 +248,12 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?memberOf
+      SELECT ?id ?memberOf ?name
       WHERE {
         ?id a schema:Person;
-        schema:memberOf ?memberOf . 
+        schema:memberOf ?memberOf .
+  		?memberOf a schema:Faculty ;
+        schema:name ?name
         '.$filter.'
       }
       ORDER BY (?familyName)';

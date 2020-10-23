@@ -23,7 +23,7 @@
     }
   }
   if ($request['s_login'] == 1) {
-    echo '<p><a href="?model=sp&controller=newStudyProgram&provider='.$request['provider'].'">Neuer Studiengang</a></p>';
+    echo '<p><a href="?model=sp&controller=newStudyProgram">Neuer Studiengang</a></p>';
   }
   $splist = $main->queryAction($sp->listAction());
 ?>
@@ -34,9 +34,7 @@
     foreach($splist as $arr) {
       echo '<tr>';
       echo '<td>'.$arr['name'].'</td>';
-      $pr = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['provider']);
-      if ($pr === 'wirtschaft') { echo '<td>Fachbereich: Wirtschaft</td>'; }
-      elseif ($pr === 'informatik') { echo '<td>Fachbereich: Informatik</td>'; }
+      echo '<td>'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['pname']).'</td>';
       if ($request['s_login'] == 1) {
         echo '<td><a href="?model=sp&controller=editStudyProgram&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/edit-icon.png" width="15px" /></a></td>';
         echo '<td><a href="?model=sp&controller=detailStudyProgram&id='.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'"><img src="images/dele-icon.png" width="15px" /></a></td>';

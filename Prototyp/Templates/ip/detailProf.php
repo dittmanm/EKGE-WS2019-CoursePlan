@@ -20,9 +20,11 @@
       <p>Minderungsstunden: <?php echo $arr['reductingHours']; ?></p>
       <p>Kollegium: 
       <?php
-        if (isset($arr['memberOf'])) {
-          $ctlist = $main->queryAction($ct->filterAction(str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['memberOf'])));
-          foreach ($ctlist as $Marr) { echo $Marr['name']; }
+        $molist = $main->queryAction($person->listPersonMemberOf('cp:'.$id));
+        $i = 0;
+        foreach ($molist as $Marr) { 
+          if ($i > 0) {echo ', ';} else {$i = 1;}
+          echo $Marr['name']; 
         }
         ?>
       </p>
