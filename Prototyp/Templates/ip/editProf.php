@@ -20,14 +20,15 @@
       <p>Deputatsstunden: <input name="contractualHours" type="text" value="<?php echo $arr['contractualHours']; ?>" /></p>
       <p>Minderungsstunden: <input name="reductingHours" type="text" value="<?php echo $arr['reductingHours']; ?>" /></p>
       <?php
-        $mId = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['memberOf']);
+        $molist = $main->queryAction($person->listPersonMemberOf('cp:'.$id));
+        foreach ($molist as $MOarr) { $molistNew[] = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $MOarr['memberOf']); }
         $ctlist = $main->queryAction($ct->listAction());
         echo '<p>Kollegium: <select class="profSelect" name="memberOf[]" size="'.count($ctlist).'" multiple>';
         foreach ($ctlist as $CTarr) {
           $cId = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $CTarr['id']);
-              echo '<option value="'.$cId.'" ';
-              echo $mId === $cId ? 'selected >' : '>';
-              echo $CTarr['name'].'</option>';
+          echo '<option value="'.$cId.'" ';
+          echo in_array($cId, $molistNew) ? 'selected >' : '>';
+          echo $CTarr['name'].'</option>';
         }
         echo '</select></p>';
       ?>

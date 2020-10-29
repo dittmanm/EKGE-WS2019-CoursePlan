@@ -2,6 +2,7 @@
   global $request;
   if ($request['s_login'] == 1) {
     $mp = new ModulPlan();
+    $sp = new StudyProgram();
     $main = new Main();
     $list = $main->queryAction($mp->detailAction($request["id"]));
     foreach ($list as $arr) {
@@ -22,11 +23,15 @@
       <p>Studiengang:
       <?php $ipo = str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['isPartOf']); ?>
         <select name="isPartOf" size="1">
-          <option value="wi_ba" <?php echo $ipo === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
-          <option value="wi_ma" <?php echo $ipo === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
-          <option value="bwl_ba" <?php echo $ipo === 'bwl_ba' ? 'selected' : ''; ?>>BWL BA</option>
-          <option value="bwl_ma" <?php echo $ipo === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
-          <option value="secm_ma" <?php echo $ipo === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
+          <?php 
+          $sps = $main->queryAction($sp->getStudyPrograms());
+          foreach ($sps as $SParr) {
+            $spId = str_replace('https://bmake.th-brandenburg.de/cp/', '', $SParr['id']);
+            echo '<option value="'.$spId.'" ';
+            echo $request['sp'] === $spId ? 'selected' : '';
+            echo '>'.$SParr['name'].'</option>';
+          }
+          ?>
         </select>
       </p>
       <p>Findet statt im:

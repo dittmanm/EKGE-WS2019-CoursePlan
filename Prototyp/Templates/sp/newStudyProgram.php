@@ -14,7 +14,7 @@
           <option value="Master">Master</option>
         </select>
       </p>
-      <p>Fachbereich:
+      <p>Kollegium:
         <select name="provider" size="1">
           <?php
             $ctlist = $main->queryAction($ct->listAction());

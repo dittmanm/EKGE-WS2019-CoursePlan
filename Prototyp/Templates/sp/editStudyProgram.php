@@ -18,7 +18,7 @@
           <option value="Master" <?php echo $eca === 'Master' ? 'selected' : ''; ?>>Master</option>
         </select>
       </p> 
-      <p>Fachbereich: <select name="provider" size="1">
+      <p>Kollegium: <select name="provider" size="1">
         <?php
           $pr = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['provider']);
           $ctlist = $main->queryAction($ct->listAction());

@@ -29,7 +29,7 @@
 ?>
 <h2>Verwaltung der Studiengänge</h2>
 <table>
-  <tr><th>Studiengang</th><th>Fachbereich</th></tr>
+  <tr><th>Studiengang</th><th>Kollegium</th></tr>
   <?php
     foreach($splist as $arr) {
       echo '<tr>';

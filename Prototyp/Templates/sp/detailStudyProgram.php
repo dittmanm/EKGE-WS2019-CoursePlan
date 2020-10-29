@@ -12,7 +12,7 @@
     <form action="index.php" method="POST">
       <p>Name: <?php echo $arr['name']; ?></p>
       <p>Abschluss: <?php echo $arr['educationalCredentialAwarded']; ?></p>
-      <p>Fachbereich: <?php echo $arr['pname']; ?></p>
+      <p>Kollegium: <?php echo $arr['pname']; ?></p>
       <input type='hidden' name="id" value="<?php echo str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']); ?>" />
       <input type='hidden' name="model" value="sp" />
       <input type='hidden' name="controller" value="sp" />

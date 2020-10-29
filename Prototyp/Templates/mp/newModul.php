@@ -1,6 +1,8 @@
 <?php
   global $request;
   if ($request['s_login'] == 1) {
+    $sp = new StudyProgram();
+    $main = new Main();
 ?>
   <h2>Modul anlegen</h2>
   <div class="new">
@@ -15,12 +17,13 @@
       </p>
       <p>Studiengang:
       <?php $ipo = $request['sp']; ?>
-        <select name="isPartOf" size="1">
-          <option value="wi_ba" <?php echo $ipo === 'wi_ba' ? 'selected' : ''; ?>>WI BA</option>
-          <option value="wi_ma" <?php echo $ipo === 'wi_ma' ? 'selected' : ''; ?>>WI MA</option>
-          <option value="bwl_ba" <?php echo $ipo === 'bwl_ba' ? 'selected' : ''; ?>>BWL BA</option>
-          <option value="bwl_ma" <?php echo $ipo === 'bwl_ma' ? 'selected' : ''; ?>>BWL MA</option>
-          <option value="secm_ma" <?php echo $ipo === 'secm_ma' ? 'selected' : ''; ?>>Secm MA</option>
+      <select name="isPartOf" size="1">
+          <?php 
+          $sps = $main->queryAction($sp->getStudyPrograms());
+          foreach ($sps as $SParr) {
+            echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $SParr['id']).'" >'.$SParr['name'].'</option>';
+          }
+          ?>
         </select>
       </p>
       <p>Findet statt im:

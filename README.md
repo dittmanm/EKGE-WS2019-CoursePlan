@@ -1,5 +1,5 @@
 # EKGI-WS2019-CoursePlan - Lehrplanung
-Die Anwendung „Lehrplanung“ ist im Rahmen der Lehrveranstaltung „Enterprise Knowledge Graph Implementation" entwickelt worden. Ziel des Projektes ist die Entwicklung einer Anwendung, welche die Dozenten bei der Modulplanung an der Technischen Hochschule Brandenburg unterstützt. Die Anwendung wurde von Grund auf neu entwickelt.
+Die Anwendung „Lehrplanung“ ist im Rahmen der Lehrveranstaltung „Enterprise Knowledge Graph Implementation" entwickelt worden. Ziel des Projektes ist die Entwicklung einer Anwendung, welche die Dozenten bei der Modulplanung an der Technischen Hochschule Brandenburg unterstützt. Die Anwendung wurde von Grund auf neu entwickelt. 
 
 ## Anforderungen die Rahmen dieses Projektes umgesetzt worden sind:
 - Entwicklung eines Wissensschema

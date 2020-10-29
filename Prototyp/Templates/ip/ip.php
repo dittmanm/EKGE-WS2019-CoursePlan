@@ -7,12 +7,18 @@
   if($request['action'] === 'create') {
     $main->updateAction($person->insertAction($request));
   } elseif($request['action'] === 'update') {
+    $delMoDat = $main->queryAction($person->listPersonMemberOf('cp:'.$request['id']));
     $delDat = $main->queryAction($person->filterAction('cp:'.$request['id']));
+    //print_r($delMoDat);
+    foreach($delMoDat as $MOarr) {
+      //print_r($MOarr);
+      $res = $main->updateAction($person->deleteMemberOf($request['id'], str_replace('https://bmake.th-brandenburg.de/cp/', '', $MOarr['memberOf'])));
+    }
     foreach($delDat as $datArr) {
       $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $res = $main->updateAction($person->deleteAction($datArr));
+      //$res = $main->updateAction($person->deleteAction($datArr));
     }
-    $main->updateAction($person->updateAction($request));
+    //$main->updateAction($person->updateAction($request));
   } elseif($request['action'] === 'delete') {
     $delDat = $main->queryAction($person->filterAction('cp:'.$request['id']));
     foreach($delDat as $datArr) {
