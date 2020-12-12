@@ -23,7 +23,7 @@
           $pr = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['provider']);
           $ctlist = $main->queryAction($ct->listAction());
           foreach ($ctlist as $datArr) {
-            echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['id']).'"';
+            echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']).'"';
             echo $pr == str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $datArr['id']) ? 'selected >' : '>';
             echo $datArr['name'].'</option>';
           }

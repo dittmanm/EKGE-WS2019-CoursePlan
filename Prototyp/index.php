@@ -50,13 +50,18 @@
             <select id="s_year" name="s_year" size="1">
             <?php
                 for ($i = 0; $i <= 4; $i++) {
-                  $YearDate = date('Y')-$i;
+                  $YearDate = date('Y')-$i+1;
                   echo '<option value="'.$YearDate.'" ';
                   echo $request['s_year'] == $YearDate ? 'selected' : '';
                   echo '>'.$YearDate.'</option>';
                 }
               ?>
             </select> 
+          </form>
+          <form class="switchCollege">
+            <select id="s_college" name="s_college" size="1">
+
+            </select>
           </form>
           <div class="first-menu"><?php $menu = $layout->getMenu($request['s_season']); echo $menu; ?></div>
         </div>

@@ -15,6 +15,7 @@ if ($request['s_login'] == 1) {
       <p>E-Mail: <input name="email" type="text" /></p>
       <p>Deputatsstunden: <input name="contractualHours" type="text" /></p>
       <p>Minderungsstunden: <input name="reductingHours" type="text" /></p>
+      <p class="hint">Für eine Mehrfach-Auswahl bei den Kollegien halten Sie bitte die "Strg" Taste bei gleichzeitigem Anklicken der gewünschten Listeneinträge.</p>
       <?php
         $ctlist = $main->queryAction($ct->listAction());
         echo '<p>Kollegium: <select class="profSelect" name="memberOf[]" size="'.count($ctlist).'" multiple>';

@@ -16,7 +16,7 @@ class Main {
 
   public function generateKey($name, $length = 10) {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    $namArr = (str_word_count($name, 5));
+    $namArr = (str_word_count($name));
     $key = '';
     foreach ($namArr as $value) {
       $word = $word . substr($value, 0, 1);
@@ -27,6 +27,7 @@ class Main {
     } else {
       $key = $word;
     }
+    $key = str_replace(' ', '', $key);
     return $key;
   }
   

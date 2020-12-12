@@ -1,25 +1,8 @@
 <?php
   global $request;
-  //print_r($request);
   $ct = new College();
   $main = new Main();
-  if($request['action'] === 'create') {
-    $request['id'] = $main->generateKey($request['name']);
-    $main->updateAction($ct->insertAction($request));
-  } elseif($request['action'] === 'update') {
-    $delDat = $main->queryAction($ct->filterAction('cp:'.$request['id']));
-    foreach($delDat as $datArr) {
-      $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $main->updateAction($ct->deleteAction($datArr));
-    }
-    $main->updateAction($ct->updateAction($request));
-  } elseif($request['action'] === 'delete') {
-    $delDat = $main->queryAction($ct->filterAction('cp:'.$request['id']));
-    foreach($delDat as $datArr) {
-      $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
-      $main->updateAction($ct->deleteAction($datArr));
-    }
-  }
+  $res = $ct->checkAction($request);
   if ($request['s_login'] == 1) {
     echo '<p><a href="?model=college&controller=newCollege">Neues Kollegium</a></p>';
   }

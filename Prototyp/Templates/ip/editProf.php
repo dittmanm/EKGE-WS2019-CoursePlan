@@ -19,6 +19,7 @@
       <p>E-Mail: <input name="email" type="text" value="<?php echo $arr['email']; ?>" /></p>
       <p>Deputatsstunden: <input name="contractualHours" type="text" value="<?php echo $arr['contractualHours']; ?>" /></p>
       <p>Minderungsstunden: <input name="reductingHours" type="text" value="<?php echo $arr['reductingHours']; ?>" /></p>
+      <p class="hint">Für eine Mehrfach-Auswahl bei den Kollegien halten Sie bitte die "Strg" Taste bei gleichzeitigem Anklicken der gewünschten Listeneinträge.</p>
       <?php
         $molist = $main->queryAction($person->listPersonMemberOf('cp:'.$id));
         foreach ($molist as $MOarr) { $molistNew[] = str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $MOarr['memberOf']); }

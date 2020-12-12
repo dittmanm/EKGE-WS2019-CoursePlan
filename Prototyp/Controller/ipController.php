@@ -40,7 +40,6 @@ class InstructorPerson {
         schema:startDate ?startDate .
         VALUES (?instructor ?startDate) {('.$personId.' \''.$year.'\')} .
       }';
-      //echo $data;
     return $data; 
   }
   
@@ -58,7 +57,6 @@ class InstructorPerson {
         schema:startDate ?startDate .
         VALUES (?contributor ?startDate) {('.$personId.' \''.$year.'\')} .
       }';
-      //echo $data;
     return $data;
   }
 
@@ -114,7 +112,7 @@ class InstructorPerson {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
-      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours #?memberOf
+      SELECT ?id ?givenName ?familyName ?honorificPrefix ?email ?contractualHours ?reductingHours
       WHERE {
         ?id a schema:Person;
           schema:givenName ?givenName;
@@ -123,7 +121,6 @@ class InstructorPerson {
           schema:email ?email;
           cp:contractualHours ?contractualHours; 
           cp:reductingHours ?reductingHours.
-          #OPTIONAL(schema:memberOf  ?memberOf.)
           '.$filter.'
       }
       ORDER BY (?familyName)';
@@ -171,7 +168,6 @@ class InstructorPerson {
         cp:reductingHours "'.$datArr["reductingHours"].'" ;
         schema:memberOf '.$datArr["memberOf"].' .
       }';
-      //print_r($data);
     return $data;
   }
   
@@ -189,8 +185,8 @@ class InstructorPerson {
         schema:honorificPrefix "'.$datArr["honorificPrefix"].'" ;
         schema:email "'.$datArr["email"].'" ;
         cp:contractualHours "'.$datArr["contractualHours"].'" ;
-        cp:reductingHours "'.$datArr["reductingHours"].'" .
-        #schema:memberOf '.$datArr["memberOf"].' .
+        cp:reductingHours "'.$datArr["reductingHours"].'" ;
+        schema:memberOf '.$datArr["memberOf"].' .
       }';
     return $data;
   }
@@ -236,7 +232,7 @@ class InstructorPerson {
 
       DELETE DATA { 
         cp:'.$idIp.' a schema:Person;
-        schema:memberOf "cp:'.$idMo.'" .
+        schema:memberOf cp:'.$idMo.' .
       }';
       print_r($data);
     return $data;

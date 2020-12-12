@@ -19,7 +19,7 @@
           <?php
             $ctlist = $main->queryAction($ct->listAction());
             foreach ($ctlist as $arr) {
-              echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', 'cp:', $arr['id']).'" >'.$arr['name'].'</option>';
+              echo '<option value="'.str_replace('https://bmake.th-brandenburg.de/cp/', '', $arr['id']).'" >'.$arr['name'].'</option>';
             }
           ?>
         </select>

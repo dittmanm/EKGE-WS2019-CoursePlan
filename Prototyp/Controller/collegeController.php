@@ -2,12 +2,25 @@
 class College {
   protected $result;
   
-  public function getFielddata () {
-    global $request;
-    $fielddata = array(
-        "id" => $request["id"], 
-        "Name" => $request["name"]);
-    return $fielddata;
+  public function checkAction($data) {
+    $main = new Main();
+    if($data['action'] === 'create') {
+      $data['id'] = $main->generateKey($data['name']);
+      $main->updateAction($this->insertAction($data));
+    } elseif($data['action'] === 'update') {
+      $delDat = $main->queryAction($this->filterAction('cp:'.$data['id']));
+      foreach($delDat as $datArr) {
+        $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
+        $main->updateAction($this->deleteAction($datArr));
+      }
+      $main->updateAction($this->updateAction($data));
+    } elseif($data['action'] === 'delete') {
+      $delDat = $main->queryAction($this->filterAction('cp:'.$data['id']));
+      foreach($delDat as $datArr) {
+        $datArr['id'] = str_replace('https://bmake.th-brandenburg.de/cp/', '', $datArr['id']);
+        $main->updateAction($this->deleteAction($datArr));
+      }
+    }
   }
 
   public function listAction() {
@@ -67,9 +80,10 @@ class College {
       PREFIX cp: <https://bmake.th-brandenburg.de/cp/>
 
       INSERT DATA { 
-        cp:'.$datArr['name'].' a schema:Faculty ;
+        cp:'.$datArr['id'].' a schema:Faculty ;
         schema:name "'.$datArr['name'].'" .
       }';
+      echo $data;
     return $data;
   }
   
